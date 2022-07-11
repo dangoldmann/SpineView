@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100;0,200;0,300;1,100;1,200&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Work Sans", sans-serif;
+
+}
+
+body{
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(120deg,#174eb3, #461fa6);
+  height: 100vh;
+  overflow: hidden;
+}
+
+.TituloEInfo label{
+  position: absolute;
+  width: 476px;
+  height: 0px;
+  left: 102px;
+  top: 279px;
+  border: 3px solid #828282;
+}
+
+.TituloEInfo{
+  box-sizing: border-box;
+  position: absolute;
+  width: 580px;
+  height: 860px;
+  left: 50px;
+  top: 50px;
+  background: #D9D9D9;
+  border: 1px solid #D9D9D9;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 15px;
+}
+
+.TituloEInfo h1{
+  position: absolute;
+  width: 471px;
+  height: 152px;
+  left: 104px;
+  top: 95px;
+
+  font-family: 'Work Sans';
+  font-style: "black";
+  font-weight: 400;
+  font-size: 72px;
+  line-height: 84px;
+  display: flex;
+
+  color: #313030;
+}
+
+.TituloEInfo p{
+  position: absolute;
+  width: 431px;
+  height: 474px;
+  left: 104px;
+  top: 295px;
+
+  font-family: 'Work Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 23px;
+  display: flex;
+  align-items: center;
+
+  color: #313030;
+}
+
+.BotonIniciarSesion button{
+  box-sizing: border-box;
+
+  position: absolute;
+  width: 195px;
+  height: 58px;
+  left: 104px;
+  top: 801px;
+
+  background: #A868CF;
+  border: 1px solid #A868CF;
+  border-radius: 25px;
+  font-family: 'Work Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 28px;
+  display: flex;
+  align-items: center;
+  text-align: absolute;
+
+  color: #EFEDFF;
+}
+
+.BotonRegistrarse button{
+  box-sizing: border-box;
+
+  position: absolute;
+  width: 195px;
+  height: 58px;
+  left: 319px;
+  top: 801px;
+
+  background: #CD9DEB;
+  border: 2px solid #A868CF;
+  border-radius: 25px;
+
+  font-family: 'Work Sans';
+  font-sty
