@@ -1,0 +1,21 @@
+@baseUrl = http://localhost:3000/api
+@userId = 1
+
+GET {{baseUrl}}/users/
+
+
+//POST {{baseUrl}}/users/
+//Content-Type: application/json
+
+//{
+    //"name" : "Gonza"
+//}
+
+PUT {{baseUrl}}/users/1
+Content-type: application/json
+
+{
+    "name" : "Dan2"
+}
+
+DELETE {{baseUrl}}/users/1
