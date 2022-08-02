@@ -1,21 +1,27 @@
 @baseUrl = http://localhost:3000/api
-@userId = 1
+@userId = 4
 
+### obteniendo todos los usuarios
 GET {{baseUrl}}/users/
 
+### obteniendo un usuario por id
+GET {{baseUrl}}/users/{{userId}}
 
-//POST {{baseUrl}}/users/
-//Content-Type: application/json
+### creando un usuario
+POST {{baseUrl}}/users/
+Content-Type: application/json
 
-//{
-    //"name" : "Gonza"
-//}
+{
+    "name" : "Nacho"
+}
 
-PUT {{baseUrl}}/users/1
+### modificando un usuario por id
+PUT {{baseUrl}}/users/{{userId}}
 Content-type: application/json
 
 {
-    "name" : "Dan2"
+    "name" : "Dan232"
 }
 
-DELETE {{baseUrl}}/users/1
+### borrando un usuario
+DELETE {{baseUrl}}/users/{{userId}}
