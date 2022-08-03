@@ -11,6 +11,7 @@ body{
 }
 
 #TituloEInfo{
+  position:fixed;
   margin: 50px;
   width: 40%;
   height: 90%;
@@ -18,7 +19,6 @@ body{
   border-radius: 10px;
   padding: 40px;
   padding-top: 10px;
-  text-align: justify;
   font-size: 40px;
 }
 
@@ -40,7 +40,6 @@ body{
 }
 
 #parrafo2{
-  text-align: justify;
   color: #313030;
   font-style: italic;
   font-weight: 300;
@@ -56,6 +55,7 @@ input[type="submit"]{
   position: relative;
   width: 195px;
   height: 58px;
+  left: 100px;
 
   background: #A868CF;
   border: 1px solid #A868CF;
@@ -64,6 +64,7 @@ input[type="submit"]{
   font-family: 'Work Sans';
   font-weight: 400;
   font-size: 24px;
+  float: left;
 }
 #IniciarSesion:hover{
   border: 3px solid #8d51b3;
@@ -75,6 +76,7 @@ input[type="submit"]{
   position: relative;
   width: 195px;
   height: 58px;
+  right: 100px;
 
   background: #CD9DEB;
   border: 1px solid #CD9DEB;
@@ -83,6 +85,7 @@ input[type="submit"]{
   font-family: 'Work Sans';
   font-weight: 400;
   font-size: 24px;
+  float: right;
 }
 
 #Registrarse:hover{
