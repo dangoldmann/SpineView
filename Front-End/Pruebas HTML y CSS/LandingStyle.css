@@ -1,113 +1,92 @@
-@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100;0,200;0,300;1,100;1,200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;200;300;400;500;600;700&display=swap');
 *{
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
   font-family: "Work Sans", sans-serif;
-
 }
 
 body{
-  margin: 0;
-  padding: 0;
-  background: linear-gradient(120deg,#174eb3, #461fa6);
+  background: linear-gradient(90deg,#174eb3, #461fa6);
   height: 100vh;
   overflow: hidden;
 }
 
-.TituloEInfo label{
-  position: absolute;
-  width: 476px;
-  height: 0px;
-  left: 102px;
-  top: 279px;
-  border: 3px solid #828282;
+#TituloEInfo{
+  margin: 50px;
+  width: 40%;
+  height: 90%;
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  padding: 40px;
+  padding-top: 10px;
+  text-align: justify;
+  font-size: 40px;
 }
 
-.TituloEInfo{
-  box-sizing: border-box;
-  position: absolute;
-  width: 580px;
-  height: 860px;
-  left: 50px;
-  top: 50px;
-  background: #D9D9D9;
-  border: 1px solid #D9D9D9;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 15px;
+#TituloEInfo header{ 
+  text-align: justify;
+  font-weight: 600;
+  color: #313030;
+  padding: 20px;
+  border-bottom: 5px solid silver;
+  font-size: 60px;
 }
 
-.TituloEInfo h1{
-  position: absolute;
-  width: 471px;
-  height: 152px;
-  left: 104px;
-  top: 95px;
-
-  font-family: 'Work Sans';
-  font-style: "black";
+#parrafo1{
+  text-align: justify;
+  color: #313030;
   font-weight: 400;
-  font-size: 72px;
-  line-height: 84px;
-  display: flex;
-
-  color: #313030;
+  padding: 20px;
+  font-size: 25px;
 }
 
-.TituloEInfo p{
-  position: absolute;
-  width: 431px;
-  height: 474px;
-  left: 104px;
-  top: 295px;
-
-  font-family: 'Work Sans';
-  font-style: normal;
-  font-weight: 500;
+#parrafo2{
+  text-align: justify;
+  color: #313030;
+  font-style: italic;
+  font-weight: 300;
+  padding: 20px;
   font-size: 20px;
-  line-height: 23px;
-  display: flex;
-  align-items: center;
-
-  color: #313030;
 }
 
-.BotonIniciarSesion button{
-  box-sizing: border-box;
+input[type="submit"]{
+  cursor: pointer;
+}
 
-  position: absolute;
+#IniciarSesion{
+  position: relative;
   width: 195px;
   height: 58px;
-  left: 104px;
-  top: 801px;
 
   background: #A868CF;
   border: 1px solid #A868CF;
-  border-radius: 25px;
+  border-radius: 15px;
+  color: white;
   font-family: 'Work Sans';
-  font-style: normal;
   font-weight: 400;
   font-size: 24px;
-  line-height: 28px;
-  display: flex;
-  align-items: center;
-  text-align: absolute;
-
-  color: #EFEDFF;
+}
+#IniciarSesion:hover{
+  border: 3px solid #8d51b3;
+  background: #8d51b3;
+  transition: .3s;
 }
 
-.BotonRegistrarse button{
-  box-sizing: border-box;
-
-  position: absolute;
+#Registrarse{
+  position: relative;
   width: 195px;
   height: 58px;
-  left: 319px;
-  top: 801px;
 
   background: #CD9DEB;
-  border: 2px solid #A868CF;
-  border-radius: 25px;
-
+  border: 1px solid #CD9DEB;
+  border-radius: 15px;
+  color: white;
   font-family: 'Work Sans';
-  font-sty
+  font-weight: 400;
+  font-size: 24px;
+}
+
+#Registrarse:hover{
+  border: 3px solid #b77eda;
+  background: #b77eda;
+  transition: .3s;
+}
