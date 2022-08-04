@@ -71,6 +71,10 @@ input[type="submit"]{
   transition: .3s;
 }
 
+#IniciarSesion:not(:hover){
+  transition: .3s;
+}
+
 #Registrarse{
   width: 195px;
   height: 58px;
@@ -86,5 +90,9 @@ input[type="submit"]{
 #Registrarse:hover{
   border: 3px solid #b77eda;
   background: #b77eda;
+  transition: .3s;
+}
+
+#Registrarse:not(:hover){
   transition: .3s;
 }

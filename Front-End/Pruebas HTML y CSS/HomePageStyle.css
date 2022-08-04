@@ -1,12 +1,53 @@
 .body{
-    margin: 0;
-    padding: 0;
+    align-items: center;
 }
-#OSIA{
+
+.fondoRadiografia{
+    height: 100%;
+    width: 100%;
+}
+
+.titulos{
     text-align: center;
 }
 
-h2{
-    text-align: center;
+.container{
+    display: flex;
+    justify-content: center;
 }
 
+#btn_usuario{
+    width: 90px;
+    height: 90px;
+    left: 0px;
+    top: 20px;
+    background: rgba(105, 40, 243, 0.5);
+    border: rgba(105, 40, 243, 0.5);
+    border-radius: 0px 10px 10px 0px;
+    cursor: pointer;
+}
+
+.botones{
+    background-color: red;
+}
+
+#btn_escanear{
+    width: 300px;
+    height: 60px;
+    left: 521.5px;
+    top: 35.33px;
+    background: #5FCF85;
+    border: #5FCF85;
+    border-radius: 52px;
+    cursor:pointer;
+}
+
+#btn_escanear:hover{
+    width: 310px;
+    height: 65px;
+    transition: .4s;
+}
+
+#btn_escanear:not(:hover){
+    transition: .3s;
+}
