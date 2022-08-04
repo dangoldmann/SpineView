@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const bcrypt = require('bcrypt')
 
 app.use(express.json())
 
@@ -12,7 +13,6 @@ const users = [
 
 app.get('/api/users', (req, res) => {
     res.json(users)
-    //res.send(users)
 })
 
 app.get('/api/users/:id', (req, res) => {
@@ -43,15 +43,6 @@ app.post('/api/users', (req, res) => {
     res.status(201).send()
 })
 
-app.post('/api/users/login', (req, res) => {
-    const user = users.find(user => user.name = req.body.name)
-
-    if(user == null)
-    {
-        return res.status(400).send('Cannot find user')
-    }
-})
-
 app.put('/api/users/:id', (req, res) => {
     const user = users.find(c => c.id === parseInt(req.params.id))
 
@@ -75,6 +66,48 @@ app.delete('/api/users/:id', (req, res) => {
     users.splice(index, 1)
 
     res.send('The user has been deleted successfully')
+})
+
+const userLogin = []
+
+app.get('/api/usersLogin', (req, res) => {
+    res.json(userLogin)
+})
+
+app.post('/api/usersLogin', async (req, res) => {
+    try
+    {
+        const hashedPassword = await bcrypt.hash(req.body.password, 10)
+        const user = {name: req.body.name, password: hashedPassword}
+        userLogin.push(user)
+        res.status(201).send()
+    }
+    catch
+    {
+        res.status(500).send()
+    }
+})
+
+app.post('/api/usersLogin/login', async (req, res) => {
+    const user = userLogin.find(user => user.name == req.body.name)
+    
+    if(!user) return res.status(400).send('Cannot find user')
+    
+    try
+    {
+        if(await bcrypt.compare(req.body.password, user.password))
+        {
+            res.send('Success')
+        }
+        else
+        {
+            res.send('Not allowed')
+        }
+    }
+    catch
+    {
+        res.status(500).send()
+    }
 })
 
 app.listen(3000, () => console.log(`Listening on port 3000...`))
