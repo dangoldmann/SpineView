@@ -1,9 +1,9 @@
 {
   "name": "back-end",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "database.js",
   "scripts": {
-    "devStart": "nodemon index.js"
+    "devStart": "nodemon database.js"
   },
   "keywords": [],
   "author": "",

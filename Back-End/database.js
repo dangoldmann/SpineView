@@ -7,9 +7,9 @@ const pool = createPool({
     connectionLimit: 10
 })
 
-//pool.query('select * from osia.usuario', (err, res) => {
-  //  return console.log(res)
-//})
+pool.query('select * from osia.usuario', (err, res) => {
+    return console.log(res)
+})
 
 const mysql = require('mysql')
 
@@ -25,5 +25,15 @@ db.connect((err) => {
     {
         throw(err)
     }
-    console.log('MySQL connected')
+    console.log('MySQL Connected...')
 })
+
+app.get('/api/users', (req, res) => {
+    let sql = 'select * from usuarios'
+    db.query(sql, (err, result) => {
+        if(err) throw err
+        console.log(result)
+    })
+})
+
+//app.listen(3000, () => console.log(`Listening on port 3000...`))

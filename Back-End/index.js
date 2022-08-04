@@ -1,8 +1,32 @@
 const express = require('express');
 const app = express();
 const bcrypt = require('bcrypt')
+const mysql = require('mysql')
 
 app.use(express.json())
+
+const db = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "rootroot",
+    database : "osia"
+})
+
+db.connect((err) => {
+    if(err)
+    {
+        throw(err)
+    }
+    console.log('MySQL Connected...')
+})
+
+app.get('/api/users', (req, res) => {
+    let sql = 'select * from usuarios'
+    db.query(sql, (err, result) => {
+        if(err) throw err
+        console.log(result)
+    })
+})
 
 const users = [
     {id:1, name:"Dan"},
