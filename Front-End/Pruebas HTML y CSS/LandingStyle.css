@@ -8,64 +8,63 @@ body{
   background: linear-gradient(90deg,#174eb3, #461fa6);
   height: 100vh;
   overflow: hidden;
+  padding: 30px;
 }
 
 #TituloEInfo{
-  position:fixed;
-  margin: 50px;
   width: 40%;
-  height: 90%;
+  height: 100%;
   background-color: #f5f5f5;
   border-radius: 10px;
   padding: 40px;
   padding-top: 10px;
-  font-size: 40px;
+  font-size: 19px;
 }
 
 #TituloEInfo header{ 
   text-align: justify;
   font-weight: 600;
   color: #313030;
-  padding: 20px;
+  padding:5px;
   border-bottom: 5px solid silver;
-  font-size: 60px;
+  font-size: 40px;
 }
 
 #parrafo1{
   text-align: justify;
   color: #313030;
   font-weight: 400;
-  padding: 20px;
-  font-size: 25px;
 }
 
 #parrafo2{
   color: #313030;
   font-style: italic;
   font-weight: 300;
-  padding: 20px;
-  font-size: 20px;
+  font-size: 13px;
 }
 
 input[type="submit"]{
   cursor: pointer;
 }
 
+#botones {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
 #IniciarSesion{
-  position: relative;
   width: 195px;
   height: 58px;
-  left: 100px;
-
   background: #A868CF;
   border: 1px solid #A868CF;
   border-radius: 15px;
   color: white;
   font-family: 'Work Sans';
   font-weight: 400;
-  font-size: 24px;
-  float: left;
+  font-size: 17px;
 }
+
 #IniciarSesion:hover{
   border: 3px solid #8d51b3;
   background: #8d51b3;
@@ -73,19 +72,15 @@ input[type="submit"]{
 }
 
 #Registrarse{
-  position: relative;
   width: 195px;
   height: 58px;
-  right: 100px;
-
-  background: #CD9DEB;
-  border: 1px solid #CD9DEB;
+  background: #e9c5ff;
+  border: 3px solid #CD9DEB;
   border-radius: 15px;
-  color: white;
+  color: #313131;
   font-family: 'Work Sans';
   font-weight: 400;
-  font-size: 24px;
-  float: right;
+  font-size: 17px;
 }
 
 #Registrarse:hover{
