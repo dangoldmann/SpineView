@@ -96,3 +96,22 @@ input[type="submit"]{
 #Registrarse:not(:hover){
   transition: .3s;
 }
+
+@media (min-height: 800px)
+{
+  #TituloEInfo{
+    padding: 60px;
+    padding-top: 20px;
+  }
+  #TituloEInfo header{
+    font-size: 60px;
+  }
+  #parrafo1{
+    font-size: 25px;
+  }
+  #parrafo2{
+    margin-top: 150px;
+    margin-bottom: 50px;
+    font-size: 20px;
+  }
+}
