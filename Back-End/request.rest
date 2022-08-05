@@ -1,5 +1,5 @@
 @baseUrl = http://localhost:3000/api
-@userId = 5
+@userId = 10
 
 ### obteniendo todos los usuarios
 GET {{baseUrl}}/users/
@@ -12,7 +12,10 @@ POST {{baseUrl}}/users/
 Content-Type: application/json
 
 {
-    "name" : "Nacho"
+    "name" : "",
+    "surname" : "",
+    "email" : "",
+    "phone" : ""
 }
 
 ### modificando un usuario por id
@@ -20,7 +23,7 @@ PUT {{baseUrl}}/users/{{userId}}
 Content-type: application/json
 
 {
-    "name" : "Dan232"
+    "name" : "Dan"
 }
 
 ### borrando un usuario
