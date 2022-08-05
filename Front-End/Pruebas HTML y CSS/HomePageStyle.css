@@ -1,5 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;200;300;400;500;600;700&display=swap');
+
+*{
+    font-family: "Work-Sans", sans-serif;
+}
 .body{
     align-items: center;
+    display: flex;
 }
 
 .wrapper {
@@ -9,15 +15,22 @@
     perspective: 10px;
 }
 
+a{
+    margin: 0px 30px;
+}
+
 .fondoRadiografia{
+    position: absolute;
     height: 100%;
     width: 100%;
+    transform: translateZ(-10px) scale(2);
+    z-index: -1;    
 }
 
 .titulos{
     text-align: center;
     transform-style: preserve-3d;
-    z-index: -1;
+    z-index: 1;
 }
 
 .container{
@@ -37,19 +50,32 @@
     cursor: pointer;
 }
 
+#btn_usuario:hover{
+    width: 140px;
+    transition: .3s;
+}
+
+#btn_usuario:not(hover){
+    transition: .3s;
+}
+
 .botones{
-    background-color: red;
+    background-color: #666666;
 }
 
 #btn_escanear{
     width: 300px;
     height: 60px;
+    margin: 0px 30px;
     left: 521.5px;
     top: 35.33px;
     background: #5FCF85;
     border: #5FCF85;
-    border-radius: 52px;
+    border-radius: 20px;
     cursor:pointer;
+    font-size: 25px;
+    font-weight: 300;
+    color: #333;
 }
 
 #btn_escanear:hover{
