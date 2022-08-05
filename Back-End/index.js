@@ -21,12 +21,50 @@ db.connect((err) => {
 })
 
 app.get('/api/users', (req, res) => {
-    let sql = 'select * from usuarios'
+    let sql = 'select * from usuario'
     db.query(sql, (err, result) => {
         if(err) throw err
-        console.log(result)
+        res.send(result)
     })
 })
+
+app.get('/api/users/:id', (req, res) => {
+    let sql = 'select * from usuario where id = ' + req.params.id
+    db.query(sql, (err, result) => {
+        if(err) throw err
+        console.log(result.length)
+        if (result.length == 1) res.send(result)
+        else
+        {
+            res.send('User not found')
+        }
+    })
+})
+
+app.post('/api/users', (req, res) => {
+    let sql = 'insert into usuario (nombre, apellido, email, telefono) values ("' + req.body.name + '", "'+ req.body.surname +'", "' + req.body.email + '", "' + req.body.phone + '")'
+    db.query(sql, (err, result) => {
+        if(err) throw err
+        res.status(201).send('User created correctly')
+    })
+})
+
+app.put('/api/users/:id', (req, res) => {
+    let sql = 'update usuario set nombre = "' + req.body.name + '" where id = ' + req.params.id
+    db.query(sql, (err, result) => {
+        if(err) throw err
+        res.send('User updated successfully')
+    })
+})
+
+app.delete('/api/users/:id', (req, res) => {
+    let sql = 'delete from usuario where id = ' + req.params.id
+    db.query(sql, (err, result) => {
+        if(err) throw err
+        res.send('The user has been deleted successfully')
+    })
+})
+
 
 const users = [
     {id:1, name:"Dan"},
@@ -35,7 +73,7 @@ const users = [
     {id:4, name:"Pancho"}
 ]
 
-app.get('/api/users', (req, res) => {
+/*app.get('/api/users', (req, res) => {
     res.json(users)
 })
 
@@ -65,7 +103,7 @@ app.post('/api/users', (req, res) => {
     
     users.push(user)
     res.status(201).send()
-})
+})*/
 
 app.put('/api/users/:id', (req, res) => {
     const user = users.find(c => c.id === parseInt(req.params.id))

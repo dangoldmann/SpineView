@@ -28,12 +28,6 @@ db.connect((err) => {
     console.log('MySQL Connected...')
 })
 
-app.get('/api/users', (req, res) => {
-    let sql = 'select * from usuarios'
-    db.query(sql, (err, result) => {
-        if(err) throw err
-        console.log(result)
-    })
-})
+
 
 //app.listen(3000, () => console.log(`Listening on port 3000...`))
