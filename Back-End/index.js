@@ -2,15 +2,14 @@ const express = require('express');
 const app = express();
 const bcrypt = require('bcrypt')
 const mysql = require('mysql')
-
-app.use(express.json())
-
 const db = mysql.createConnection({
     host: "localhost",
     user: "root",
     password: "rootroot",
     database : "osia"
 })
+
+app.use(express.json())
 
 db.connect((err) => {
     if(err)
@@ -20,25 +19,22 @@ db.connect((err) => {
     console.log('MySQL Connected...')
 })
 
-app.get('/api/users', (req, res) => {
-    let sql = 'select * from usuario'
+function makeSelectQuery(sql, res)
+{
     db.query(sql, (err, result) => {
         if(err) throw err
         res.send(result)
     })
+}
+
+app.get('/api/users', (req, res) => {
+    let sql = 'select * from usuario'
+    makeSelectQuery(sql, res)
 })
 
 app.get('/api/users/:id', (req, res) => {
     let sql = 'select * from usuario where id = ' + req.params.id
-    db.query(sql, (err, result) => {
-        if(err) throw err
-        console.log(result.length)
-        if (result.length == 1) res.send(result)
-        else
-        {
-            res.send('User not found')
-        }
-    })
+    makeSelectQuery(sql, res)
 })
 
 app.post('/api/users', (req, res) => {
@@ -53,7 +49,10 @@ app.put('/api/users/:id', (req, res) => {
     let sql = 'update usuario set nombre = "' + req.body.name + '" where id = ' + req.params.id
     db.query(sql, (err, result) => {
         if(err) throw err
-        res.send('User updated successfully')
+
+        if(result.affectedRows != 0) res.send('User updated successfully')
+        else res.send('User not found')
+        
     })
 })
 
@@ -61,7 +60,10 @@ app.delete('/api/users/:id', (req, res) => {
     let sql = 'delete from usuario where id = ' + req.params.id
     db.query(sql, (err, result) => {
         if(err) throw err
-        res.send('The user has been deleted successfully')
+
+        if (result.affectedRows != 0) res.send('The user has been deleted successfully')
+        else res.send('User not found')
+        
     })
 })
 
