@@ -1,6 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;200;300;400;500;600;700&display=swap');
+
 body{
     margin: 0;
     padding: 0;
+    background-color: #ffffff;
 }
 .wrapper{
     height: 100vh;
@@ -9,49 +12,92 @@ body{
     perspective: 10px;
 }
 
-#backImage{
-    position:relative;
-    height: 100%;
-    width: 100%;
-    transform: translateZ(-10px);
-    z-index: -1;
-}
-
 .containerbotones{
-    position: relative;
-    padding: 5px;
-    display: flex;
-    background-color: aqua;
+    position: sticky;
+    align-items: center;
+    justify-content: center;
+    display: inline-flex;
+    top: 10px;
+    z-index: 1;
 }
 
 #btn_usuario{
     display: inline-block;
+    width: 70px;
+    height: 70px;
+    left: 0px;
+    top: 20px;
+    background: rgba(105, 40, 243, 0.5);
+    border-radius: 0px 10px 10px 0px;
+    border-color: rgba(105, 40, 243, 0.5);
+    color: #fff;
+}
+
+#btn_usuario:hover{
+    width: 140px;
+    transition: .3s;
+}
+
+#btn_usuario:not(hover){
+    transition: .3s;
 }
 
 #botones{
+    display:flex;
     align-items: center;
-    background-color: #999;
-    margin:0 auto;
+    justify-content: center;
+    color: #fff;
 }
 
+.boton{
+    color: #fff;
+    margin: 0px 30px;
+}
+
+/*primera seccion*/
 #primeraseccion{
+    position: relative;
+    background-image: url(./Imagenes/Home.png);
+    background-size: cover;
+    background-position: center;
     height: 100vh;
+    width: 100%;
     align-items: center;
     text-align: center;
-    border: solid black 2px;
+    transform: translateZ(-20px) scale(4);
+    z-index: -1;
 }
 
 #titulos{
-    background-color: #999;
-    border: solid red 2px;
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%,-50%);
 }
 
+#OSIA{
+    font-family: "Work Sans", sans-serif;
+    font-size: 200px;
+    font-weight: bold;
+    color: #fff;
+    margin: 10px;
+}
+
+#subtitulo{
+    font-family: "Work Sans", sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+}
+
+/*segunda seccion*/
 #segundaseccion{
-    height: 100vh;
+    height: 110vh;
     background-color: blueviolet;
 }
 
+
+/*tercera seccion*/
 #tercerseccion{
-    height: 100vh;
+    height: 110vh;
     background-color: blue;
 }
