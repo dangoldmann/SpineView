@@ -2,17 +2,26 @@ body{
     margin: 0;
     padding: 0;
 }
+.wrapper{
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    perspective: 10px;
+}
 
 #backImage{
+    position:relative;
     height: 100%;
     width: 100%;
+    transform: translateZ(-10px);
+    z-index: -1;
 }
 
 .containerbotones{
     position: relative;
-    margin-top:25px;
     padding: 5px;
     display: flex;
+    background-color: aqua;
 }
 
 #btn_usuario{
@@ -21,7 +30,28 @@ body{
 
 #botones{
     align-items: center;
-    display: inline-block;
     background-color: #999;
     margin:0 auto;
+}
+
+#primeraseccion{
+    height: 100vh;
+    align-items: center;
+    text-align: center;
+    border: solid black 2px;
+}
+
+#titulos{
+    background-color: #999;
+    border: solid red 2px;
+}
+
+#segundaseccion{
+    height: 100vh;
+    background-color: blueviolet;
+}
+
+#tercerseccion{
+    height: 100vh;
+    background-color: blue;
 }
