@@ -48,6 +48,8 @@ a{
     border: rgba(105, 40, 243, 0.5);
     border-radius: 0px 10px 10px 0px;
     cursor: pointer;
+    display: inline-block;
+    top:30px;
 }
 
 #btn_usuario:hover{
