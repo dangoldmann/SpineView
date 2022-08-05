@@ -1,0 +1,27 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+#backImage{
+    height: 100%;
+    width: 100%;
+}
+
+.containerbotones{
+    position: relative;
+    margin-top:25px;
+    padding: 5px;
+    display: flex;
+}
+
+#btn_usuario{
+    display: inline-block;
+}
+
+#botones{
+    align-items: center;
+    display: inline-block;
+    background-color: #999;
+    margin:0 auto;
+}
