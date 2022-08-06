@@ -1,5 +1,5 @@
 @baseUrl = http://localhost:3000/api
-@userId = 1
+@userId = 11
 
 ### obteniendo todos los usuarios
 GET {{baseUrl}}/users/
@@ -12,11 +12,11 @@ POST {{baseUrl}}/users/
 Content-Type: application/json
 
 {
-    "name" : "",
-    "surname" : "",
-    "email" : "",
-    "phone" : "",
-    "password" : ""
+    "name" : "name",
+    "surname" : "surname",
+    "email" : "email",
+    "phone" : "phone",
+    "password" : "password"
 }
 
 ### modificando un usuario por id

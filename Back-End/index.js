@@ -1,7 +1,7 @@
 const express = require('express');
-const app = express();
 const bcrypt = require('bcrypt')
 const mysql = require('mysql')
+const app = express();
 const db = mysql.createConnection({
     host: "localhost",
     user: "root",
@@ -19,26 +19,29 @@ db.connect((err) => {
     console.log('MySQL Connected...')
 })
 
-function makeSelectQuery(sql, res)
-{
+app.get('/api/users', (req, res) => {
+    let sql = 'select * from usuario'
     db.query(sql, (err, result) => {
         if(err) throw err
         res.send(result)
     })
-}
-
-app.get('/api/users', (req, res) => {
-    let sql = 'select * from usuario'
-    makeSelectQuery(sql, res)
 })
 
 app.get('/api/users/:id', (req, res) => {
-    let sql = 'select * from usuario where id = ' + req.params.id
-    makeSelectQuery(sql, res)
+    const {id} = req.params
+    let sql = `select * from usuario where id = ${id}`
+    db.query(sql, (err, result) => {
+        if(err) throw err
+        
+        if(result.length != 0) res.send(result)
+        else res.status(404).send('User not found')
+    })
 })
 
 app.post('/api/users', (req, res) => {
-    let sql = 'insert into usuario (nombre, apellido, email, telefono) values ("' + req.body.name + '", "'+ req.body.surname +'", "' + req.body.email + '", "' + req.body.phone + '")'
+    const {name, surname, email, phone, password} = req.body
+    
+    let sql = `insert into usuario (nombre, apellido, email, telefono, contraseña) values ('${name}', '${surname}', '${email}', '${phone}', '${password}')`
     db.query(sql, (err, result) => {
         if(err) throw err
         res.status(201).send('User created correctly')
@@ -46,90 +49,30 @@ app.post('/api/users', (req, res) => {
 })
 
 app.put('/api/users/:id', (req, res) => {
-    let sql = 'update usuario set nombre = "' + req.body.name + '" where id = ' + req.params.id
+    const {id} = req.params
+    const {name} = req.body
+
+    let sql = `update usuario set nombre = '${name}' where id = ${id}`
     db.query(sql, (err, result) => {
         if(err) throw err
 
         if(result.affectedRows != 0) res.send('User updated successfully')
-        else res.send('User not found')
+        else res.status(404).send('User not found')
         
     })
 })
 
 app.delete('/api/users/:id', (req, res) => {
-    let sql = 'delete from usuario where id = ' + req.params.id
+    const {id} = req.params
+
+    let sql = `delete from usuario where id = ${id}`
     db.query(sql, (err, result) => {
         if(err) throw err
-
+        
         if (result.affectedRows != 0) res.send('The user has been deleted successfully')
-        else res.send('User not found')
+        else res.status(404).send('User not found')
         
     })
-})
-
-
-const users = [
-    {id:1, name:"Dan"},
-    {id:2, name:"Ian"},
-    {id:3, name:"Ivo"},
-    {id:4, name:"Pancho"}
-]
-
-/*app.get('/api/users', (req, res) => {
-    res.json(users)
-})
-
-app.get('/api/users/:id', (req, res) => {
-    const user = users.find(c => c.id === parseInt(req.params.id))
-    
-    if(!user)
-    {
-        res.status(404).send('User not found')
-    }
-    
-    res.send(user)
-})
-
-app.post('/api/users', (req, res) => {
-    
-    if(!req.body.name || req.body.name.length < 3)
-    {
-        res.status(404).send('Name is required and should be minimum 3 characters')
-        return
-    }
-     
-    const user = {
-        id: users.length + 1,
-        name: req.body.name
-    }
-    
-    users.push(user)
-    res.status(201).send()
-})*/
-
-app.put('/api/users/:id', (req, res) => {
-    const user = users.find(c => c.id === parseInt(req.params.id))
-
-    if(!user) res.status(404).send('User not found')
-
-    if(!req.body.name || req.body.name.length < 3)
-    {
-        res.status(400).send('Name is required and should be minimum 3 characters')
-        return
-    }
-
-    user.name = req.body.name
-    res.send(user)
-})
-
-app.delete('/api/users/:id', (req, res) => {
-    const user = users.find(c => c.id === parseInt(req.params.id))
-    if(!user) res.status(404).send('User not found')
-
-    const index = users.indexOf(user)
-    users.splice(index, 1)
-
-    res.send('The user has been deleted successfully')
 })
 
 const userLogin = []
