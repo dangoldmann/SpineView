@@ -115,10 +115,7 @@ body{
 #segundaseccion{
     position: relative;
     height: 100vh;
-    background-color: blueviolet;
-    top: 0;
-    align-items: center;
-    justify-content: center;
+    background-color: #AE00FF;
     z-index: -2;
 }
 
@@ -131,9 +128,23 @@ body{
     margin: 10px;
 }
 
+.btn_masInfo{
+    text-align: center;
+    height: 75px;
+    width: 150px;
+    background-color: aquamarine;
+    border-radius: 20px;
+    border: hidden;
+    cursor: pointer;
+    font-family: "Work Sans", sans-serif;
+    font-size: 15px;
+    display: block;
+    margin: auto;
+}
+
 /*tercera seccion*/
 #tercerseccion{
     height: 110vh;
-    background-color: blue;
+    background-color: #001AFF;
     z-index: -1;
 }
