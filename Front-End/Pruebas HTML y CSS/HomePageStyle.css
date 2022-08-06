@@ -96,8 +96,6 @@ body{
     z-index: -3;
 }
 
-
-
 #OSIA{
     font-family: "Work Sans", sans-serif;
     font-size: 200px;
@@ -106,7 +104,7 @@ body{
     margin: 10px;
 }
 
-#subtitulo{
+.subtitulo{
     font-family: "Work Sans", sans-serif;
     font-size: 20px;
     font-weight: bold;
