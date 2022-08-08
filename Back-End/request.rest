@@ -30,23 +30,23 @@ Content-type: application/json
 ### borrando un usuario
 DELETE {{baseUrl}}/users/{{userId}}
 
-### show usersLogin
-GET {{baseUrl}}/usersLogin
-
-### create usersLogin
-POST {{baseUrl}}/usersLogin
+### registrando un usuario
+POST {{baseUrl}}/users/register
 Content-Type: application/json
 
 {
-    "name": "Dan",
-    "password" : "password" 
+    "name" : "name",
+    "surname" : "surname",
+    "email" : "email",
+    "phone" : "phone",
+    "password" : "password"
 }
 
 ### login
-POST {{baseUrl}}/usersLogin/login
+POST {{baseUrl}}/users/login
 Content-Type: application/json
 
 {
-    "name": "Dan",
-    "password" : "passsword" 
+    "email" : "email",
+    "password" : "password"
 }
