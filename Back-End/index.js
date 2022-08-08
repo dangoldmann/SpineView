@@ -37,16 +37,6 @@ app.get('/api/users/:id', (req, res) => {
     })
 })
 
-app.post('/api/users', (req, res) => {
-    const { name, surname, email, phone, password } = req.body
-
-    let sql = `insert into usuario (nombre, apellido, email, telefono, contraseña) values ('${name}', '${surname}', '${email}', '${phone}', '${password}')`
-    db.query(sql, (err, result) => {
-        if (err) throw err
-        res.status(201).send('User created correctly')
-    })
-})
-
 app.put('/api/users/:id', (req, res) => {
     const { id } = req.params
     const { name } = req.body
