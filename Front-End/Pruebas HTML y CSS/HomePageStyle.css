@@ -61,6 +61,8 @@ body{
 }
 
 #links li a{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 17px;
     padding:5px;
     text-decoration: none;
 }
@@ -147,4 +149,11 @@ body{
     height: 110vh;
     background-color: #001AFF;
     z-index: -1;
+}
+
+
+@media (max-width: 1520px){
+    #QuienesSomos{
+        font-size: 80px;
+    }
 }
