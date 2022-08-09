@@ -7,7 +7,16 @@ const db = mysql.createConnection({
     user: "root",
     password: "rootroot",
     database: "osia"
-})
+}) 
+
+const syncSql = require('sync-sql')
+var config = {
+    host : "localhost",
+    user : "root",
+    password : "rootroot",
+    database : "osia"
+}
+
 
 db.connect((err) => {
     if (err) {
@@ -65,31 +74,25 @@ router.delete('/:id', (req, res) => {
 function validateEmail(email)
 {
     let sql = `select * from usuario where email = '${email}'`
-    db.query(sql, (err, result) => {
-        if(err) throw err
-        
-        if(result.length == 0) 
-        {
-            console.log('Email valido')
-            return true
-        }
-        else 
-        {
-            console.log('Email no valido')
-            return false
-        }
-    })
+    var output = syncSql.mysql(config, sql)
+
+    if(output.data.rows.length == 0)
+    {
+        console.log('Email valido')
+        return true    
+    }
+    else
+    {
+        console.log('Email no valido')
+        return false
+    }
 }
 
 router.post('/register', async (req, res) => {
     const { name, surname, email, phone, password } = req.body
     if(name && surname && email && phone && password)
     {
-        
-        const isEmailValid = await validateEmail(email)
-        //const isEmailValid = new Boolean(await validateEmail(email))
-        
-        console.log(isEmailValid)
+        const isEmailValid = validateEmail(email)
 
         if(isEmailValid)
         {
@@ -119,15 +122,15 @@ router.post('/register', async (req, res) => {
 })
 
 router.post('/login', async (req, res) => {
-    const { email, password } = req.body
-    
-    let sql = `select * from usuario where email = '${email}'`
+    const {email, password} = req.body
+
+    let sql = `select contraseña from usuario where email = '${email}'`
     db.query(sql, async (err, result) => {
-        if (err) throw err
+        if(err) throw err
 
-        let hashedPassword
+        let hashedPassword 
 
-        if (result.length != 0) 
+        if(result.length != 0)
         {
             hashedPassword = result[0].contraseña
         }
@@ -143,7 +146,6 @@ router.post('/login', async (req, res) => {
             }
         }
         catch { res.status(500).send() }
-
     })
 })
 

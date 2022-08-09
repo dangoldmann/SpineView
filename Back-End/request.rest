@@ -1,5 +1,5 @@
 @baseUrl = http://localhost:3000/api
-@userId = 29
+@userId = 30
 
 ### obteniendo todos los usuarios
 GET {{baseUrl}}/users/
@@ -35,6 +35,6 @@ POST {{baseUrl}}/users/login
 Content-Type: application/json
 
 {
-    "email" : "",
-    "password" : ""
+    "email" : "goldmandan8@gmail.com",
+    "password" : "osia"
 }
