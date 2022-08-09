@@ -1,5 +1,5 @@
 @baseUrl = http://localhost:3000/api
-@userId = 30
+@userId = 1
 
 ### obteniendo todos los usuarios
 GET {{baseUrl}}/users/
@@ -8,11 +8,11 @@ GET {{baseUrl}}/users/
 GET {{baseUrl}}/users/{{userId}}
 
 ### modificando un usuario por id
-PUT {{baseUrl}}/users/{{userId}}
+PUT {{baseUrl}}/users/name_reset/{{userId}}
 Content-type: application/json
 
 {
-    "name" : "Dan2"
+    "name" : "Dan"
 }
 
 ### borrando un usuario
@@ -32,6 +32,15 @@ Content-Type: application/json
 
 ### login
 POST {{baseUrl}}/users/login
+Content-Type: application/json
+
+{
+    "email" : "goldmandan8@gmail.com",
+    "password" : "osia"
+}
+
+### modificando la contraseña
+PUT {{baseUrl}}/users/password_reset/{{userId}}
 Content-Type: application/json
 
 {

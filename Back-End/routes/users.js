@@ -19,9 +19,8 @@ var config = {
 
 
 db.connect((err) => {
-    if (err) {
-        throw (err)
-    }
+    if (err) throw (err)
+
     console.log('MySQL Connected...')
 })
 
@@ -44,7 +43,7 @@ router.get('/:id', (req, res) => {
     })
 })
 
-router.put('/:id', (req, res) => {
+router.put('/name_reset/:id', (req, res) => {
     const { id } = req.params
     const { name } = req.body
 
@@ -56,6 +55,30 @@ router.put('/:id', (req, res) => {
         else res.status(404).send('User not found')
 
     })
+})
+
+router.put('/password_reset/:id', async (req, res) => {
+    const {email, password} = req.body
+
+    if(email && password)
+    {
+        const IsUser = checkUserExistance(email)
+
+        if(IsUser)
+        {
+            const hashedPassword = await bcrypt.hash(password, 10)
+            let sql = `update usuario set contraseña = '${hashedPassword}'`
+
+            db.query(sql, (err, result) => {
+                if(err) throw err
+
+                res.send('User updated successfully')
+            })
+        }
+        else res.status(404).send('User not found')
+    }
+    else res.status(400).send('You must complete all the fields')
+    
 })
 
 router.delete('/:id', (req, res) => {
@@ -70,23 +93,6 @@ router.delete('/:id', (req, res) => {
 
     })
 })
-
-function validateEmail(email)
-{
-    let sql = `select * from usuario where email = '${email}'`
-    var output = syncSql.mysql(config, sql)
-
-    if(output.data.rows.length == 0)
-    {
-        console.log('Email valido')
-        return true    
-    }
-    else
-    {
-        console.log('Email no valido')
-        return false
-    }
-}
 
 router.post('/register', async (req, res) => {
     const { name, surname, email, phone, password } = req.body
@@ -108,17 +114,9 @@ router.post('/register', async (req, res) => {
             }
             catch { res.status(500).send() }
         }
-        else
-        {
-            res.send('An account already exists with that email address')
-        }
-        
+        else res.send('An account already exists with that email address')
     }   
-    else
-    {
-        res.status(400).send('You must complete all the fields')
-    }
-    
+    else res.status(400).send('You must complete all the fields') 
 })
 
 router.post('/login', async (req, res) => {
@@ -150,3 +148,19 @@ router.post('/login', async (req, res) => {
 })
 
 module.exports = router
+
+function validateEmail(email)
+{
+    let sql = `select * from usuario where email = '${email}'`
+    var output = syncSql.mysql(config, sql)
+
+    return output.data.rows.length == 0
+}
+
+function checkUserExistance(email)
+{
+    let sql = `select * from usuario where email = '${email}'`
+    var output = syncSql.mysql(config, sql)
+
+    return output.data.rows.length != 0
+}
