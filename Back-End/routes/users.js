@@ -62,18 +62,60 @@ router.delete('/:id', (req, res) => {
     })
 })
 
+function validateEmail(email)
+{
+    let sql = `select * from usuario where email = '${email}'`
+    db.query(sql, (err, result) => {
+        if(err) throw err
+        
+        if(result.length == 0) 
+        {
+            console.log('Email valido')
+            return true
+        }
+        else 
+        {
+            console.log('Email no valido')
+            return false
+        }
+    })
+}
+
 router.post('/register', async (req, res) => {
     const { name, surname, email, phone, password } = req.body
-    try {
-        const hashedPassword = await bcrypt.hash(password, 10)
+    if(name && surname && email && phone && password)
+    {
+        
+        const isEmailValid = await validateEmail(email)
+        //const isEmailValid = new Boolean(await validateEmail(email))
+        
+        console.log(isEmailValid)
 
-        let sql = `insert into usuario (nombre, apellido, email, telefono, contraseña) values ('${name}', '${surname}', '${email}', '${phone}', '${hashedPassword}')`
-        db.query(sql, (err, result) => {
-            if (err) throw err
-            res.status(201).send('User created correctly')
-        })
+        if(isEmailValid)
+        {
+            try 
+            {
+                const hashedPassword = await bcrypt.hash(password, 10)
+
+                let sql = `insert into usuario (nombre, apellido, email, telefono, contraseña) values ('${name}', '${surname}', '${email}', '${phone}', '${hashedPassword}')`
+                db.query(sql, (err, result) => {
+                    if (err) throw err
+                    res.status(201).send('User created correctly')
+                })
+            }
+            catch { res.status(500).send() }
+        }
+        else
+        {
+            res.send('An account already exists with that email address')
+        }
+        
+    }   
+    else
+    {
+        res.status(400).send('You must complete all the fields')
     }
-    catch { res.status(500).send() }
+    
 })
 
 router.post('/login', async (req, res) => {
