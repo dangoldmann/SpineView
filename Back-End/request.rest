@@ -1,5 +1,5 @@
 @baseUrl = http://localhost:3000/api
-@userId = 1
+@userId = 4
 
 ### obteniendo todos los usuarios
 GET {{baseUrl}}/users/
@@ -8,7 +8,7 @@ GET {{baseUrl}}/users/
 GET {{baseUrl}}/users/{{userId}}
 
 ### modificando un usuario por id
-PUT {{baseUrl}}/users/name_reset/{{userId}}
+PUT {{baseUrl}}/users/name-reset/{{userId}}
 Content-type: application/json
 
 {
@@ -36,14 +36,37 @@ Content-Type: application/json
 
 {
     "email" : "goldmandan8@gmail.com",
-    "password" : "osia"
+    "password" : "aaa"
 }
 
 ### modificando la contraseña
-PUT {{baseUrl}}/users/password_reset/{{userId}}
+PUT {{baseUrl}}/users/password-reset
 Content-Type: application/json
 
 {
     "email" : "goldmandan8@gmail.com",
     "password" : "osia"
 }
+
+### agregando una imagen
+POST {{baseUrl}}/x-rays/add-image
+Content-Type: application/json
+
+{
+    "image" : "",
+    "bodyPart" : "Pierna",
+    "userId" : "1"
+}
+
+### obteniendo una radiografia por id del usuario
+GET {{baseUrl}}/x-rays/{{userId}}
+Content-Type: application/json
+
+### borrando una radiografia
+DELETE {{baseUrl}}/x-rays/delete-image
+Content-Type: application/json
+
+{
+    "image" : "" 
+}
+

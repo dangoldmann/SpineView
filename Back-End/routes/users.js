@@ -20,8 +20,6 @@ var config = {
 
 db.connect((err) => {
     if (err) throw (err)
-
-    console.log('MySQL Connected...')
 })
 
 router.get('/', (req, res) => {
@@ -43,7 +41,7 @@ router.get('/:id', (req, res) => {
     })
 })
 
-router.put('/name_reset/:id', (req, res) => {
+router.put('/name-reset/:id', (req, res) => {
     const { id } = req.params
     const { name } = req.body
 
@@ -57,7 +55,7 @@ router.put('/name_reset/:id', (req, res) => {
     })
 })
 
-router.put('/password_reset/:id', async (req, res) => {
+router.put('/password-reset', async (req, res) => {
     const {email, password} = req.body
 
     if(email && password)
