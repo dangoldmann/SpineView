@@ -1,4 +1,4 @@
-const {Router, response} = require('express')
+const {Router} = require('express')
 const router = Router()
 const mysql = require('mysql')
 const db = mysql.createConnection({
@@ -60,8 +60,7 @@ router.get('/:idUsuario', (req, res) => {
 
 router.delete('/delete-image', (req, res) => {
     const {image} = req.body
-
-    isImage = checkImageExistance(image)
+    const isImage = checkImageExistance(image)
     
     if(isImage)
     {

@@ -2,7 +2,7 @@
 @userId = 4
 
 ### obteniendo todos los usuarios
-GET {{baseUrl}}/users/
+GET {{baseUrl}}/users/get-all
 
 ### obteniendo un usuario por id
 GET {{baseUrl}}/users/{{userId}}
@@ -36,7 +36,7 @@ Content-Type: application/json
 
 {
     "email" : "goldmandan8@gmail.com",
-    "password" : "aaa"
+    "password" : "password"
 }
 
 ### modificando la contraseña
@@ -53,7 +53,7 @@ POST {{baseUrl}}/x-rays/add-image
 Content-Type: application/json
 
 {
-    "image" : "",
+    "image" : "imagen",
     "bodyPart" : "Pierna",
     "userId" : "1"
 }
@@ -67,6 +67,6 @@ DELETE {{baseUrl}}/x-rays/delete-image
 Content-Type: application/json
 
 {
-    "image" : "" 
+    "image" : "imagen" 
 }
 
