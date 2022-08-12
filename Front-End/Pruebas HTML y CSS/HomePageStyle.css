@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;200;300;400;500;600;700&display=swap');
 
 body{
@@ -67,7 +68,7 @@ body{
 }
 
 #links li a{
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: "Poppins", sans-serif;
     font-size: 17px;
     padding:5px;
     text-decoration: none;
@@ -76,12 +77,19 @@ body{
 #links li a:hover{
     color: aquamarine;
     border-bottom: 3px solid aquamarine;
+    text-decoration: none;
+    transition: .2s;
 }
 
 .link{
     color: #fff;
     margin: 0px 30px;
     font-family: "Work-Sans", sans-serif;
+}
+
+a#btn_escanear.link{
+    text-decoration: underline;
+    font-size: 20px;
 }
 
 .titulos{
@@ -91,10 +99,10 @@ body{
 }
 
 .subtitulo{
-    font-family: "Work Sans", sans-serif;
+    font-family: "Poppins", sans-serif;
     font-size: 20px;
-    font-weight: bold;
-    color: #fff;
+    color: #fbfbfb;
+    font-weight: 200;
 }
 
 /*primera seccion*/
@@ -113,10 +121,12 @@ body{
 
 #OSIA{
     font-family: "Work Sans", sans-serif;
-    font-size: 200px;
-    font-weight: bold;
-    color: #fff;
+    font-size: 150px;
+    font-weight: 400;
+    color: #FBFBFB;
     margin: 10px;
+    letter-spacing: 0.205em;
+    text-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
 }
 
 #titulos1{
@@ -128,6 +138,9 @@ body{
     position: relative;
     height: 100vh;
     background-color: #AE00FF;
+    background-image: url(./Imagenes/QuienesSomosAlt1.png);
+    background-size: cover;
+    background-position: center;
     z-index: -2;
 }
 
@@ -135,23 +148,24 @@ body{
     position: relative;
     font-family: "Work Sans", sans-serif;
     font-size: 100px;
-    font-weight: bold;
+    font-weight: 400;
     color: #fff;
     margin: 10px;
 }
 
 .btn_masInfo{
     text-align: center;
-    height: 75px;
-    width: 150px;
-    background-color: aquamarine;
+    height: 60px;
+    width: 120px;
+    background-color: #420F84;
     border-radius: 20px;
     border: hidden;
     cursor: pointer;
-    font-family: "Work Sans", sans-serif;
-    font-size: 15px;
+    font-family: "Poppins", sans-serif;
     display: block;
-    margin: auto;
+    margin: 40px auto;
+    color: white;
+    font-size: 20px;
 }
 
 /*tercera seccion*/
