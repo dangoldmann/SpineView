@@ -199,9 +199,11 @@ a#btn_escanear.link:hover{
     margin: 10px;
 }
 
-.btn_masInfo{
+.a_masInfo{
+    padding-top:15px;
     text-align: center;
-    height: 60px; width: 120px;
+    text-decoration: none;
+    height: 45px; width: 120px;
     background-color: #420F84;
     border-radius: 20px;
     border: hidden;
