@@ -7,6 +7,10 @@ body{
     padding: 0;
     background-color: #ffffff;
 }
+*{
+    padding: 0;
+}
+
 .wrapper{
     height: 100vh;
     overflow-y: auto;
@@ -27,16 +31,14 @@ body{
 #logo{
     position: relative;
     right: 40px;
-    width: 70px;
-    height: 70px;
+    width: 70px; height: 70px;
 }
 
 #btn_usuario{
     display: inline-block;
     position: sticky;
     top: 30px;
-    width: 70px;
-    height: 70px;
+    width: 70px; height: 70px;
     left: 0px;
     background: #6928f3;
     border-radius: 0px 10px 10px 0px;
@@ -46,8 +48,7 @@ body{
 }
 
 #imgUsuario{
-    width: 50px;
-    height: 50px;
+    width: 50px; height: 50px;
 }
 
 #btn_usuario:hover{
@@ -74,13 +75,13 @@ body{
     padding:5px;
     text-decoration: none;
     font-weight: 100;
+    transition: all .2s;
 }
 
 #links li a:hover{
     color: #7fffd4;
     border-bottom: 3px solid aquamarine;
     text-decoration: none;
-    transition: .2s;
 }
 
 .link{
@@ -93,25 +94,45 @@ a#btn_escanear.link{
     text-decoration: underline;
     font-size: 20px;
 }
+a#btn_escanear.link:hover{
+    font-size: 25px;
+}
 
 .menulateral{
     position: fixed;
-    height: 100%;
-    top: 0;
-    left: 0;
+    height: 100%; width: 0;
+    top: 0; left: 0;
     background-color: #6928f3;
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
 }
+.menulateral .imgUsuario{
+    position: absolute;
+    top: 20px; left: 15px;
+    width: 50px; height: 50px;
+}
+.menulateral .cerrar{
+    position: absolute;
+    top: 0; 
+    right: 0;
+    font-size: 30px;
+    color: #fff;
+    cursor: pointer;
+    border: hidden;
+}
 
 .menulateral a{
-    padding: 8px 8px 8px 32px;
+    margin: 15px;
+    padding:8px;
     text-decoration: none;
     font-size: 20px;
     color: #ffffff;
     display: block;
     transition: 0.3s;
+    border: solid 2px #fff;
+    font-family: "raleway", sans-serif;
+    text-align: center;
 }
 
 .titulos{
@@ -122,7 +143,14 @@ a#btn_escanear.link{
 
 .subtitulo{
     font-family: "Poppins", sans-serif;
-    font-size: 20px;
+    font-size: 23px;
+    color: #fbfbfb;
+    font-weight: 200;
+}
+
+.subsubtitulo{
+    font-family: "Poppins", sans-serif;
+    font-size: 15px;
     color: #fbfbfb;
     font-weight: 200;
 }
@@ -133,8 +161,7 @@ a#btn_escanear.link{
     background-image: url(./Imagenes/Home.png);
     background-size: cover;
     background-position: center;
-    height: 100vh;
-    width: 100%;
+    height: 100vh; width: 100%;
     align-items: center;
     text-align: center;
     transform: translateZ(-20px) scale(3.5);
@@ -174,8 +201,7 @@ a#btn_escanear.link{
 
 .btn_masInfo{
     text-align: center;
-    height: 60px;
-    width: 120px;
+    height: 60px; width: 120px;
     background-color: #420F84;
     border-radius: 20px;
     border: hidden;
@@ -202,5 +228,11 @@ a#btn_escanear.link{
 
     #links li{
         padding: 0px 10px;
+    }
+}
+
+@media (min-height: 800px){
+    .titulos{
+        padding-top: 245px;
     }
 }
