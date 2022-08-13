@@ -6,8 +6,8 @@
 </head>
 <body>
     <main class="wrapper">
-        <header class="navbar">
-            <button id="btn_usuario"><img id="imgUsuario" src="./Imagenes/Usuario.png"></button>
+        <nav class="navbar">
+            <button id="btn_usuario" onclick="openSideMenu()"><img id="imgUsuario" src="./Imagenes/Usuario.png"></button>
             <ul id="links">
                 <li><a href="#segundaseccion" class="link" id="a_quienesSomos">Quiénes somos</a></li>
                 <li><a class="link" href="IngresarImagen.html" id="btn_escanear">Escanear estudio</a></li>
@@ -15,8 +15,16 @@
             </ul>
 
             <a href="#primeraseccion"><img src="./Imagenes/LogoOsia.png" id="logo"></a>
-        
-        </header>
+            
+            <div id="MenuLateral" class="menulateral">
+                <a href="#" class="link" id="cerrar" onclick="closeSideMenu()">&times;</a>
+                <ul>
+                    <a href="#segundaseccion">Quiénes somos</a>
+                    <a href="IngresarImagen.html">Escanear estudio</a>
+                    <a href="">Más Información</a>
+                </ul>
+            </div>
+        </nav>
 
         <div id="primeraseccion">
             
@@ -32,19 +40,19 @@
                 <h2 class="subtitulo">Somos una empresa de tecnología que<br>desarrolla soluciones para la salud</h2>
             </div>
             
-            <button class="btn_masInfo">+INFO</button>
+            <button class="btn_masInfo"><a href=""style="text-decoration: none; color: #ffffff">+INFO</a></button>
         </div><!--fin segunda seccion de la pagina-->
 
         <div id="tercerseccion">
             <div class="titulos" id="titulos3">
                 <h1 id="">¿Ya tenes tu estudio?</h1>
-                <button><a href="IngresarImagen.html">Escanear</a></button>
+                <button><a href="IngresarImagen.html" >Escanear</a></button>
             </div>
-        </div>
+        </div><!--fin tercera seccion de la pagina-->
 
         
     </main><!--class="wrapper"-->
 
-    <script src="SmoothScrolling.js"></script> <!--Hace que los links scrolleen suavemente a la sección de la pagina-->
+    <script src="controller.js"></script> <!--Hace que los links scrolleen suavemente a la sección de la pagina-->
 </body>
 </html>

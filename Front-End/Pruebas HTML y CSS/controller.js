@@ -7,3 +7,10 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         });
     });
 })
+
+function closeSideMenu() {
+    document.getElementById('MenuLateral').style.width = '0';
+}
+function openSideMenu(){
+    document.getElementById('MenuLateral').style.width = '300px';
+}

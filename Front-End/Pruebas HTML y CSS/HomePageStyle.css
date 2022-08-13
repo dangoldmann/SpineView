@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;200;300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
 
 body{
     margin: 0;
@@ -14,13 +15,13 @@ body{
 }
 
 .navbar{
-    position:sticky;
+    position:sticky;    
     top: 0px;
     padding: 20px 0px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: linear-gradient(rgb(20, 0, 92), rgba(80, 80, 80, 0));
+    background: linear-gradient(#3f1fb1, #50505000);
 }
 
 #logo{
@@ -37,7 +38,7 @@ body{
     width: 70px;
     height: 70px;
     left: 0px;
-    background: rgb(105, 40, 243);
+    background: #6928f3;
     border-radius: 0px 10px 10px 0px;
     border:hidden;
     color: #fff;
@@ -68,14 +69,15 @@ body{
 }
 
 #links li a{
-    font-family: "Poppins", sans-serif;
+    font-family: "Raleway", sans-serif;
     font-size: 17px;
     padding:5px;
     text-decoration: none;
+    font-weight: 100;
 }
 
 #links li a:hover{
-    color: aquamarine;
+    color: #7fffd4;
     border-bottom: 3px solid aquamarine;
     text-decoration: none;
     transition: .2s;
@@ -83,7 +85,7 @@ body{
 
 .link{
     color: #fff;
-    margin: 0px 30px;
+    margin: 0px 90px;
     font-family: "Work-Sans", sans-serif;
 }
 
@@ -92,10 +94,30 @@ a#btn_escanear.link{
     font-size: 20px;
 }
 
+.menulateral{
+    position: fixed;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #6928f3;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.menulateral a{
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #ffffff;
+    display: block;
+    transition: 0.3s;
+}
+
 .titulos{
     margin-bottom: 20px;
     text-align: center;
-    padding-top: 175px;
+    padding-top: 150px;
 }
 
 .subtitulo{
@@ -121,17 +143,14 @@ a#btn_escanear.link{
 
 #OSIA{
     font-family: "Work Sans", sans-serif;
-    font-size: 150px;
+    font-size: 175px;
     font-weight: 400;
     color: #FBFBFB;
     margin: 10px;
     letter-spacing: 0.205em;
-    text-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
+    text-shadow: 0px 4px 12px #00000040;
 }
 
-#titulos1{
-    padding-top: 120px;
-}
 
 /*segunda seccion*/
 #segundaseccion{
@@ -179,5 +198,9 @@ a#btn_escanear.link{
 @media (max-width: 1520px){
     #QuienesSomos{
         font-size: 80px;
+    }
+
+    #links li{
+        padding: 0px 10px;
     }
 }
