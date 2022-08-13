@@ -22,7 +22,7 @@ db.connect((err) => {
     if (err) throw (err)
 })
 
-router.get('/', (req, res) => {
+router.get('/get-all', (req, res) => {
     let sql = 'select * from usuario'
     db.query(sql, (err, result) => {
         if (err) throw err
