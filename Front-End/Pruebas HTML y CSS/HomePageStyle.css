@@ -75,7 +75,7 @@ body{
     padding:5px;
     text-decoration: none;
     font-weight: 100;
-    transition: all .2s;
+    transition: all .2s ease-in-out;
 }
 
 #links li a:hover{
