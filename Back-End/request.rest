@@ -1,5 +1,9 @@
+@landingUrl = http://localhost:3000/
 @baseUrl = http://localhost:3000/api
-@userId = 4
+@userId = 1
+
+### abriendo la landing page
+GET {{landingUrl}}
 
 ### obteniendo todos los usuarios
 GET {{baseUrl}}/users/get-all
@@ -53,8 +57,8 @@ POST {{baseUrl}}/x-rays/add-image
 Content-Type: application/json
 
 {
-    "image" : "imagen",
-    "bodyPart" : "Pierna",
+    "image" : "./images/hands.jpg",
+    "bodyPart" : "Brazo",
     "userId" : "1"
 }
 
