@@ -23,12 +23,8 @@ wrapper.addEventListener("scroll", () => {
     console.log(wrapper.scrollTop);
 });
 
+
 function BackToTop() {
-    /*
-    while(scrollTop != 0){
-        scrollTop -=1;
-    }
-    */
     document.wrapper.scrollTop = 0; // For Safari
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 }

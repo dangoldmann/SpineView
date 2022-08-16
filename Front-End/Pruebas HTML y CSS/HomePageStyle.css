@@ -26,11 +26,12 @@ body{
     justify-content: space-between;
     align-items: center;
     background: linear-gradient(#3f1fb1, #50505000);
-    transition:1s;
+    transition: all .5s;
 }
 
 .navbarAltColor{
     background: #6B3F8F;
+    padding: 10px 0;
 }
 
 #logo{
@@ -186,7 +187,7 @@ a#btn_escanear.link:hover{
 /*segunda seccion*/
 #segundaseccion{
     position: relative;
-    height: 100vh;
+    height: 105vh;
     background-color: #AE00FF;
     background-image: url(./Imagenes/QuienesSomosAlt1.png);
     background-size: cover;
