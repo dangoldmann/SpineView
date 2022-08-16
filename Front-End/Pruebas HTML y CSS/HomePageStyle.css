@@ -11,7 +11,7 @@ body{
     padding: 0;
 }
 
-.wrapper{
+#wrapper{
     height: 100vh;
     overflow-y: auto;
     overflow-x: hidden;
@@ -19,13 +19,18 @@ body{
 }
 
 .navbar{
-    position:sticky;    
+    position: sticky;    
     top: 0px;
     padding: 20px 0px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     background: linear-gradient(#3f1fb1, #50505000);
+    transition:1s;
+}
+
+.navbarAltColor{
+    background: #6B3F8F;
 }
 
 #logo{
@@ -36,7 +41,6 @@ body{
 
 #btn_usuario{
     display: inline-block;
-    position: sticky;
     top: 30px;
     width: 70px; height: 70px;
     left: 0px;

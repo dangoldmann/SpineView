@@ -14,3 +14,21 @@ function closeSideMenu() {
 function openSideMenu(){
     document.getElementById('MenuLateral').style.width = '300px';
 }
+
+var wrapper = document.getElementById("wrapper");
+var navbar = document.getElementById("NavBar")
+
+wrapper.addEventListener("scroll", () => {
+    navbar.classList.toggle("navbarAltColor", wrapper.scrollTop>0);
+    console.log(wrapper.scrollTop);
+});
+
+function BackToTop() {
+    /*
+    while(scrollTop != 0){
+        scrollTop -=1;
+    }
+    */
+    document.wrapper.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+}
