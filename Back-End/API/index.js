@@ -8,7 +8,7 @@ app.use(express.json())
 
 //routes
 app.use('/api/users', require('./routes/users'))
-app.use('/api/x-rays', require('./routes/x-rays'))
+app.use('/api/radiography', require('./routes/radiography'))
 
 app.get('/', (req, res) => {
     res.writeHead(200, {"Content-Type" : "text/html"})

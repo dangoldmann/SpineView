@@ -30,7 +30,7 @@ router.post('/add-image', (req, res) => {
 
         if(bodyPartID != -1)
         {
-            let sql = `insert into x-ray (image_route, id_body_part, id_user) values ('${image}', ${bodyPartID}, ${userId})`
+            let sql = `insert into radiography (image_route, id_body_part, id_user) values ('${image}', ${bodyPartID}, ${userId})`
             db.query(sql, (err, result) => {
                 if(err) throw err 
         
@@ -48,7 +48,7 @@ router.get('/:idUsuario', (req, res) => {
 
     if(isUser)
     {
-        let sql = `select image_route from x-ray where id_user = ${idUsuario}`
+        let sql = `select image_route from radiography where id_user = ${idUsuario}`
         db.query(sql, (err, result) => {
             if(err) throw err
 
@@ -64,7 +64,7 @@ router.delete('/delete-image', (req, res) => {
     
     if(isImage)
     {
-        let sql = `delete from x-ray where image_route = '${image}'`
+        let sql = `delete from radiography where image_route = '${image}'`
         db.query(sql, (err, result) => {
             if(err) throw err
 
@@ -94,7 +94,7 @@ function getBodyPartIDByName(name)
 
 function checkImageExistance(image)
 {
-    let sql = `select * from x-ray where image_route = '${image}'`
+    let sql = `select * from radiography where image_route = '${image}'`
     var output = syncSql.mysql(config, sql)
 
     return output.data.rows.length != 0

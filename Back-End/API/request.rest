@@ -27,11 +27,11 @@ POST {{baseUrl}}/users/register
 Content-Type: application/json
 
 {
-    "name" : "Dan",
-    "surname" : "Goldman",
-    "email" : "goldmandan8@gmail.com",
-    "phone" : "1138021709",
-    "password" : "password"
+    "name" : "Ian",
+    "surname" : "Polonuer",
+    "email" : "ipolonuer@gmail.com",
+    "phone" : "-",
+    "password" : "polo"
 }
 
 ### login
@@ -53,7 +53,7 @@ Content-Type: application/json
 }
 
 ### agregando una imagen
-POST {{baseUrl}}/x-rays/add-image
+POST {{baseUrl}}/radiography/add-image
 Content-Type: application/json
 
 {
@@ -63,11 +63,11 @@ Content-Type: application/json
 }
 
 ### obteniendo una radiografia por id del usuario
-GET {{baseUrl}}/x-rays/{{userId}}
+GET {{baseUrl}}/radiography/{{userId}}
 Content-Type: application/json
 
 ### borrando una radiografia
-DELETE {{baseUrl}}/x-rays/delete-image
+DELETE {{baseUrl}}/radiography/delete-image
 Content-Type: application/json
 
 {
