@@ -25,7 +25,7 @@ body{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: linear-gradient(#3f1fb1, #50505000);
+    background: linear-gradient(#111111, #50505000);
     transition: all .5s;
 }
 
@@ -95,11 +95,11 @@ body{
     font-family: "Work-Sans", sans-serif;
 }
 
-a#btn_escanear.link{
+a#a_escanear.link{
     text-decoration: underline;
     font-size: 20px;
 }
-a#btn_escanear.link:hover{
+a#a_escanear.link:hover{
     font-size: 25px;
 }
 
@@ -109,7 +109,7 @@ a#btn_escanear.link:hover{
     top: 0; left: 0;
     background-color: #6928f3;
     overflow-x: hidden;
-    transition: 0.5s;
+    transition: .5s;
     padding-top: 60px;
 }
 .menulateral .imgUsuario{
@@ -222,9 +222,26 @@ a#btn_escanear.link:hover{
 
 /*tercera seccion*/
 #tercerseccion{
-    height: 110vh;
-    background-color: #001AFF;
+    height: 100vh;
+    background-color: #5286C2;
     z-index: -1;
+}
+
+.btn_escanear{
+    padding:10px;
+    text-decoration: none;
+    height: auto; width: 240px;
+    background-color: #420F84;
+    border-radius: 20px;
+    border: hidden;
+    cursor: pointer;
+    font-family: "Poppins";
+    display: block;
+    margin: auto;
+    margin-top: 70px;
+    margin-bottom: 30px;
+    color: white;
+    font-size: 40px;
 }
 
 
