@@ -30,7 +30,7 @@ router.post('/add-image', (req, res) => {
 
         if(bodyPartID != -1)
         {
-            let sql = `insert into radiografia (imagen, id_parte_cuerpo, id_usuario) values ('${image}', ${bodyPartID}, ${userId})`
+            let sql = `insert into x-ray (image_route, id_body_part, id_user) values ('${image}', ${bodyPartID}, ${userId})`
             db.query(sql, (err, result) => {
                 if(err) throw err 
         
@@ -48,7 +48,7 @@ router.get('/:idUsuario', (req, res) => {
 
     if(isUser)
     {
-        let sql = `select imagen from radiografia where id_usuario = ${idUsuario}`
+        let sql = `select image_route from x-ray where id_user = ${idUsuario}`
         db.query(sql, (err, result) => {
             if(err) throw err
 
@@ -64,7 +64,7 @@ router.delete('/delete-image', (req, res) => {
     
     if(isImage)
     {
-        let sql = `delete from radiografia where imagen = '${image}'`
+        let sql = `delete from x-ray where image_route = '${image}'`
         db.query(sql, (err, result) => {
             if(err) throw err
 
@@ -77,7 +77,7 @@ router.delete('/delete-image', (req, res) => {
 
 function checkUserExistanceByID(id)
 {
-    let sql = `select * from usuario where id = ${id}`
+    let sql = `select * from user where id = ${id}`
     var output = syncSql.mysql(config, sql)
 
     return output.data.rows.length != 0
@@ -85,7 +85,7 @@ function checkUserExistanceByID(id)
 
 function getBodyPartIDByName(name)
 {
-    let sql = `select id from parte_cuerpo where nombre = '${name}'`
+    let sql = `select id from body_part where name = '${name}'`
     var output = syncSql.mysql(config, sql)
     
     try { return output.data.rows[0].id }
@@ -94,7 +94,7 @@ function getBodyPartIDByName(name)
 
 function checkImageExistance(image)
 {
-    let sql = `select * from radiografia where imagen = '${image}'`
+    let sql = `select * from x-ray where image_route = '${image}'`
     var output = syncSql.mysql(config, sql)
 
     return output.data.rows.length != 0
