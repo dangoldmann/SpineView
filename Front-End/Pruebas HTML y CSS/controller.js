@@ -19,7 +19,7 @@ var wrapper = document.getElementById("wrapper");
 var navbar = document.getElementById("NavBar")
 
 wrapper.addEventListener("scroll", () => {
-    navbar.classList.toggle("navbarAltColor", wrapper.scrollTop>0);
+    navbar.classList.toggle("navbarAltColor", wrapper.scrollTop>400);
     console.log(wrapper.scrollTop);
 });
 
