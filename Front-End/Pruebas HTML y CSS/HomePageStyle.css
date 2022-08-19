@@ -11,6 +11,19 @@ body{
     padding: 0;
 }
 
+::-webkit-scrollbar{
+    width: 15px;
+}
+
+::-webkit-scrollbar-thumb{
+    background: linear-gradient(#446994, #420F84);
+    border-radius: 5px;
+}
+::-webkit-scrollbar-track{
+    background: #463c4e;
+}
+
+
 #wrapper{
     height: 100vh;
     overflow-y: auto;
@@ -26,7 +39,7 @@ body{
     justify-content: space-between;
     align-items: center;
     background: linear-gradient(#111111, #50505000);
-    transition: all .5s;
+    transition: all .7s;
 }
 
 .navbarAltColor{
