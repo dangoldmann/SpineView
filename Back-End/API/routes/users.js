@@ -126,10 +126,7 @@ router.post('/login', async (req, res) => {
 
         let hashedPassword 
 
-        if(result.length != 0)
-        {
-            hashedPassword = result[0].password
-        }
+        if(result.length != 0) hashedPassword = result[0].password
         else return res.status(404).send('User not found')
         
         try 
