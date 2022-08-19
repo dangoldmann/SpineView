@@ -1,6 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap'); /*fuente para links*/
 @import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;200;300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk&display=swap'); /* fuente para titulos y subtitulos*/
 
 body{
     margin: 0;
@@ -38,7 +39,7 @@ body{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: linear-gradient(#111111, #50505000);
+    background: linear-gradient(#22142efb 25%, #4b365e00);
     transition: all .7s;
 }
 
@@ -153,14 +154,14 @@ a#a_escanear.link:hover{
     text-align: center;
 }
 
-.titulos{
+.secciontitulos{
     margin-bottom: 20px;
     text-align: center;
     padding-top: 150px;
 }
 
 .subtitulo{
-    font-family: "Poppins", sans-serif;
+    font-family: "Space Grotesk", sans-serif;
     font-size: 23px;
     color: #fbfbfb;
     font-weight: 200;
@@ -187,13 +188,13 @@ a#a_escanear.link:hover{
 }
 
 #OSIA{
-    font-family: "Work Sans", sans-serif;
+    font-family: "Space Grotesk", sans-serif;
     font-size: 175px;
     font-weight: 400;
     color: #FBFBFB;
     margin: 10px;
     letter-spacing: 0.205em;
-    text-shadow: 0px 4px 12px #00000040;
+    text-shadow: 0px 2px 12px #00000040;
 }
 
 
@@ -210,8 +211,8 @@ a#a_escanear.link:hover{
 
 #QuienesSomos{
     position: relative;
-    font-family: "Work Sans", sans-serif;
-    font-size: 100px;
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 120px;
     font-weight: 400;
     color: #fff;
     margin: 10px;
@@ -226,11 +227,11 @@ a#a_escanear.link:hover{
     border-radius: 20px;
     border: hidden;
     cursor: pointer;
-    font-family: "Poppins", sans-serif;
+    font-family: "Space Grotesk", sans-serif;
     display: block;
     margin: 40px auto;
     color: white;
-    font-size: 20px;
+    font-size: 23px;
 }
 
 /*tercera seccion*/
@@ -248,7 +249,7 @@ a#a_escanear.link:hover{
     border-radius: 20px;
     border: hidden;
     cursor: pointer;
-    font-family: "Poppins";
+    font-family: "Space Grotesk";
     display: block;
     margin: auto;
     margin-top: 70px;
@@ -260,7 +261,7 @@ a#a_escanear.link:hover{
 
 @media (max-width: 1520px){
     #QuienesSomos{
-        font-size: 80px;
+        font-size: 90px;
     }
 
     #links li{
