@@ -242,9 +242,7 @@ a#a_escanear.link:hover{
 }
 
 .btn_escanear{
-    padding:10px;
-    text-decoration: none;
-    height: auto; width: 240px;
+    padding:20px 40px;
     background-color: #420F84;
     border-radius: 20px;
     border: hidden;
@@ -252,10 +250,16 @@ a#a_escanear.link:hover{
     font-family: "Space Grotesk";
     display: block;
     margin: auto;
-    margin-top: 70px;
+    margin-top: 75px;
     margin-bottom: 30px;
     color: white;
-    font-size: 40px;
+    font-size: 50px;
+    transition:.3s;
+}
+
+.btn_escanear:hover{
+    font-size: 60px;
+    border: solid 5px #c1b7ff;
 }
 
 
