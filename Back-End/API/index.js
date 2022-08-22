@@ -1,8 +1,9 @@
-// dependencies
+//#region dependencies
 const express = require('express')
 const fs = require('fs')
 const cookieParser = require('cookie-parser')
 const session = require('express-session')
+//#endregion
 
 // creating the express aplication
 const app = express();
@@ -22,7 +23,7 @@ app.use(session({
 
 //routes
 app.use('/api/users', require('./routes/users'))
-app.use('/api/radiography', require('./routes/radiography'))
+app.use('/api/radiographies', require('./routes/radiographies'))
 
 app.get('/', (req, res) => {
     if(req.session.page_views){
@@ -34,23 +35,6 @@ app.get('/', (req, res) => {
         res.send("Welcome to this page for the first time!");
     }
 })
-
-/*app.get('/', (req, res) => {
-    res.writeHead(200, {"Content-Type" : "text/html"})
-    fs.readFile('../Front-End/Pruebas HTML y CSS/Landing.html', null, function(err, data) {
-        if(err) 
-        {
-            res.writeHead(404)
-            res.write('File not found')
-        }
-        else
-        {
-            res.write(data)
-        }
-        res.end()
-    })
-
-})*/
 
 app.get('/home', (req, res) => {
     res.send('You are in the home page')

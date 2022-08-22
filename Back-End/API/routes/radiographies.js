@@ -1,3 +1,4 @@
+//#region dependencies
 const {Router} = require('express')
 const router = Router()
 const mysql = require('mysql')
@@ -7,7 +8,6 @@ const db = mysql.createConnection({
     password: "rootroot",
     database: "osia"
 }) 
-
 const syncSql = require('sync-sql')
 var config = {
     host : "localhost",
@@ -15,11 +15,14 @@ var config = {
     password : "rootroot",
     database : "osia"
 }
+//#endregion
 
+// connecting to database
 db.connect((err) => {
     if (err) throw (err)
 })
 
+//#region endpoints
 router.post('/add-image', (req, res) => {
     const {image, bodyPart, userId} = req.body
     const isUser = checkUserExistanceByID(userId) 
@@ -74,7 +77,9 @@ router.delete('/delete-image', (req, res) => {
     else res.status(404).send('Image not found')
     
 })
+//#endregion
 
+//#region functions
 function checkUserExistanceByID(id)
 {
     let sql = `select * from user where id = ${id}`
@@ -99,5 +104,6 @@ function checkImageExistance(image)
 
     return output.data.rows.length != 0
 }
+//#endregion
 
 module.exports = router

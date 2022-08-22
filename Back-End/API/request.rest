@@ -6,41 +6,18 @@
 GET {{landingUrl}}
 
 ### obteniendo todos los usuarios
-GET {{baseUrl}}/users/get-all
+GET {{baseUrl}}/users/all
 
 ### obteniendo un usuario por id
 GET {{baseUrl}}/users/{{userId}}
 
 ### modificando un usuario por id
-PUT {{baseUrl}}/users/name-reset/{{userId}}
+PUT {{baseUrl}}/users/name-reset
 Content-type: application/json
 
 {
-    "name" : "Dan"
-}
-
-### borrando un usuario
-DELETE {{baseUrl}}/users/{{userId}}
-
-### registrando un usuario
-POST {{baseUrl}}/users/register
-Content-Type: application/json
-
-{
-    "name" : "Ian",
-    "surname" : "Polonuer",
-    "email" : "ipolonuer@gmail.com",
-    "phone" : "-",
-    "password" : "polo"
-}
-
-### login
-POST {{baseUrl}}/users/login
-Content-Type: application/json
-
-{
     "email" : "goldmandan8@gmail.com",
-    "password" : "osia"
+    "name" : "Dan"
 }
 
 ### modificando la contraseña
@@ -52,8 +29,32 @@ Content-Type: application/json
     "password" : "osia"
 }
 
+### registrando un usuario
+POST {{baseUrl}}/users/register
+Content-Type: application/json
+
+{
+    "name" : "",
+    "surname" : "",
+    "email" : "",
+    "phone" : "",
+    "password" : ""
+}
+
+### login
+POST {{baseUrl}}/users/login
+Content-Type: application/json
+
+{
+    "email" : "goldmandan8@gmail.com",
+    "password" : "osia"
+}
+
+### borrando un usuario
+DELETE {{baseUrl}}/users/{{userId}}
+
 ### agregando una imagen
-POST {{baseUrl}}/radiography/add-image
+POST {{baseUrl}}/radiographies/add-image
 Content-Type: application/json
 
 {
@@ -63,11 +64,11 @@ Content-Type: application/json
 }
 
 ### obteniendo una radiografia por id del usuario
-GET {{baseUrl}}/radiography/{{userId}}
+GET {{baseUrl}}/radiographies/{{userId}}
 Content-Type: application/json
 
 ### borrando una radiografia
-DELETE {{baseUrl}}/radiography/delete-image
+DELETE {{baseUrl}}/radiographies/delete-image
 Content-Type: application/json
 
 {
