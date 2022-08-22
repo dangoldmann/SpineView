@@ -2,8 +2,7 @@
 
 function NavBar(){
     return (
-
-            <nav className="navbar" id="NavBar">
+        <nav className="navbar" id="NavBar">
             <button id="btn_usuario" onclick="openSideMenu()"><img id="imgUsuario" src=""/></button>
             <ul id="links">
                 <li><a href="#segundaseccion" className="link" id="a_quienesSomos">Quiénes somos</a></li>
