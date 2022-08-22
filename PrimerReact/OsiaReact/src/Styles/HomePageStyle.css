@@ -1,0 +1,287 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap'); /*fuente para links*/
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;200;300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk&display=swap'); /* fuente para titulos y subtitulos*/
+
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #584b4b;
+}
+*{
+    padding: 0;
+}
+
+::-webkit-scrollbar{
+    width: 15px;
+}
+
+::-webkit-scrollbar-thumb{
+    background: linear-gradient(#446994, #420F84);
+    border-radius: 5px;
+}
+::-webkit-scrollbar-track{
+    background: #463c4e;
+}
+
+
+.wrapper{
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    perspective: 10px;
+}
+
+.navbar{
+    position: sticky;    
+    top: 0px;
+    padding: 20px 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;    
+    transition: all .7s;
+}
+
+.navbarAltColor{
+    background: #6B3F8F;
+    padding: 10px 0;
+}
+
+#logo{
+    position: relative;
+    right: 40px;
+    width: 70px; height: 70px;
+}
+
+#btn_usuario{
+    display: inline-block;
+    top: 30px;
+    width: 70px; height: 70px;
+    left: 0px;
+    background: #5923ce;
+    border-radius: 0px 10px 10px 0px;
+    border:hidden;
+    color: #fff;
+    cursor: pointer;
+}
+
+#imgUsuario{
+    width: 50px; height: 50px;
+}
+
+#btn_usuario:hover{
+    width: 140px;
+    transition: .3s;
+}
+
+#btn_usuario:not(hover){
+    transition: .3s;
+}
+
+#links{
+    list-style: none;
+}
+
+#links li{
+    display: inline-block;
+    padding: 0px 20px;
+}
+
+#links li a{
+    font-family: "Raleway", sans-serif;
+    font-size: 17px;
+    padding:5px;
+    text-decoration: none;
+    font-weight: 100;
+    transition: all .2s ease-in-out;
+}
+
+#links li a:hover{
+    color: #7fffd4;
+    border-bottom: 3px solid #7fffd4;
+    text-decoration: none;
+}
+
+.link{
+    color: #fff;
+    margin: 0px 90px;
+    font-family: "Work-Sans", sans-serif;
+}
+
+a#a_escanear.link{
+    text-decoration: none;
+    font-size: 20px;
+}
+a#a_escanear.link:hover{
+    font-size: 25px;
+}
+
+.alt{
+    transition:all .2s ease-in-out;
+    border-bottom: #7fffd4  3px solid;
+    text-decoration: none;
+}
+
+.menulateral{
+    position: absolute;
+    height: 100vh; width: 0;
+    top: 0; left: 0;
+    background-color: #5923ce;
+    overflow-x: hidden;
+    transition: .5s;
+    padding-top: 60px;
+}
+.menulateral .imgUsuario{
+    position: absolute;
+    top: 20px; left: 15px;
+    width: 50px; height: 50px;
+}
+.menulateral .cerrar{
+    position: absolute;
+    top: 0; 
+    right: 0;
+    font-size: 30px;
+    color: #fff;
+    cursor: pointer;
+    border: hidden;
+}
+
+.menulateral a{
+    margin: 15px;
+    padding:8px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #ffffff;
+    display: block;
+    transition: 0.3s;
+    border: solid 2px #fff;
+    font-family: "raleway", sans-serif;
+    text-align: center;
+}
+
+.secciontitulos{
+    margin-bottom: 20px;
+    text-align: center;
+    padding-top: 25vh;
+}
+
+.subtitulo{
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 23px;
+    color: #fbfbfb;
+    font-weight: 200;
+    max-width: 750px;
+    margin: 0 auto;
+}
+
+.subsubtitulo{
+    font-family: "Poppins", sans-serif;
+    font-size: 15px;
+    color: #fbfbfb;
+    font-weight: 200;
+}
+
+/*primera seccion*/
+#primeraseccion{
+    position: relative;
+    background-image: url(../assets/Home.png);
+    background-size: cover;
+    background-position: center;
+    height: 100vh; width: 100%;
+    align-items: center;
+    text-align: center;
+    transform: translateZ(-20px) scale(3.5);
+    z-index: -3;
+}
+
+#OSIA{
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 175px;
+    font-weight: 400;
+    color: #FBFBFB;
+    margin: 10px;
+    letter-spacing: 0.205em;
+    text-shadow: 0px 2px 12px #00000040;
+}
+
+
+/*segunda seccion*/
+#segundaseccion{
+    position: relative;
+    height: 105vh;
+    background-color: #AE00FF;
+    background-image: url(../assets/QuienesSomosAlt1.png);
+    background-size: cover;
+    background-position: center;
+    z-index: -2;
+}
+
+#QuienesSomos{
+    position: relative;
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 120px;
+    font-weight: 400;
+    color: #fff;
+    margin: 10px;
+}
+
+.a_masInfo{
+    padding-top:15px;
+    text-align: center;
+    text-decoration: none;
+    height: 45px; width: 120px;
+    background-color: #420F84;
+    border-radius: 20px;
+    border: hidden;
+    cursor: pointer;
+    font-family: "Space Grotesk", sans-serif;
+    display: block;
+    margin: 40px auto;
+    color: white;
+    font-size: 23px;
+}
+
+/*tercera seccion*/
+#tercerseccion{
+    height: 100vh;
+    background-color: #5286C2;
+    z-index: -1;
+}
+
+.btn_escanear{
+    padding:20px 40px;
+    background-color: #420F84;
+    border-radius: 20px;
+    border: hidden;
+    cursor: pointer;
+    font-family: "Space Grotesk";
+    display: block;
+    margin: auto;
+    margin-top: 75px;
+    margin-bottom: 30px;
+    color: white;
+    font-size: 50px;
+    transition:.3s;
+}
+
+.btn_escanear:hover{
+    font-size: 60px;
+    border: solid 5px #c1b7ff;
+}
+
+
+@media (max-width: 1520px){
+    #QuienesSomos{
+        font-size: 90px;
+    }
+
+    #links li{
+        padding: 0px 10px;
+    }
+}
+
+@media (min-height: 800px){
+    .titulos{
+        padding-top: 245px;
+    }
+}
