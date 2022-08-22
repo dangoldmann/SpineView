@@ -1,0 +1,16 @@
+
+
+body{
+    background-image: url(./Imagenes/IngresarImagenes.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.ingresar{
+    background-color: #943e3e;
+    width: 30%;
+    height: 100%;
+    border: dashed 3px #242ead;
+    border-radius: 10px;
+    padding: 20px;
+}
