@@ -38,8 +38,7 @@ body{
     padding: 20px 0px;
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    background: linear-gradient(#22142efb 25%, #4b365e00);
+    align-items: center;    
     transition: all .7s;
 }
 
@@ -59,7 +58,7 @@ body{
     top: 30px;
     width: 70px; height: 70px;
     left: 0px;
-    background: #6928f3;
+    background: #5923ce;
     border-radius: 0px 10px 10px 0px;
     border:hidden;
     color: #fff;
@@ -99,7 +98,7 @@ body{
 
 #links li a:hover{
     color: #7fffd4;
-    border-bottom: 3px solid aquamarine;
+    border-bottom: 3px solid #7fffd4;
     text-decoration: none;
 }
 
@@ -110,18 +109,24 @@ body{
 }
 
 a#a_escanear.link{
-    text-decoration: underline;
+    text-decoration: none;
     font-size: 20px;
 }
 a#a_escanear.link:hover{
     font-size: 25px;
 }
 
+.alt{
+    transition:all .2s ease-in-out;
+    border-bottom: #7fffd4  3px solid;
+    text-decoration: none;
+}
+
 .menulateral{
     position: absolute;
     height: 100vh; width: 0;
     top: 0; left: 0;
-    background-color: #6928f3;
+    background-color: #5923ce;
     overflow-x: hidden;
     transition: .5s;
     padding-top: 60px;
@@ -157,7 +162,7 @@ a#a_escanear.link:hover{
 .secciontitulos{
     margin-bottom: 20px;
     text-align: center;
-    padding-top: 150px;
+    padding-top: 25vh;
 }
 
 .subtitulo{
@@ -165,6 +170,8 @@ a#a_escanear.link:hover{
     font-size: 23px;
     color: #fbfbfb;
     font-weight: 200;
+    max-width: 750px;
+    margin: 0 auto;
 }
 
 .subsubtitulo{
