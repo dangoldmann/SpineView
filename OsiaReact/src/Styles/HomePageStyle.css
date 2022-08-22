@@ -7,6 +7,9 @@ body{
     margin: 0;
     padding: 0;
     background-color: #584b4b;
+    background-image: url(../assets/jaja.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 *{
     padding: 0;
