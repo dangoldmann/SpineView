@@ -2,35 +2,10 @@
 const {Router} = require('express')
 const router = Router()
 const bcrypt = require('bcrypt')
-const mysql = require('mysql')
-const db = mysql.createConnection({
-    host : "by13ydanyybv7cjflmmg-mysql.services.clever-cloud.com",
-    user : "ulnnnwrwdytoo5it",
-    password : "SSV2HmvMo5Z8KMNc4Y3I",
-    database : "by13ydanyybv7cjflmmg"
-}) 
-const syncSql = require('sync-sql')
 const jwt = require('jsonwebtoken')
-
-var config = {
-    host : "localhost",
-    user : "root",
-    password : "rootroot",
-    database : "osia"
-}
-var config2 = {
-    host : "by13ydanyybv7cjflmmg-mysql.services.clever-cloud.com",
-    user : "ulnnnwrwdytoo5it",
-    password : "SSV2HmvMo5Z8KMNc4Y3I",
-    database : "by13ydanyybv7cjflmmg"
-}
-
+const {db, syncSql} = require.main.require('./database.js')
+const {localDatabase, database} = require.main.require('./config.js')
 //#endregion
-
-// connecting to database
-db.connect((err) => {
-    if (err) throw (err)
-})
 
 //#region endpoints
 router.post('/register', async (req, res) => {
@@ -167,23 +142,23 @@ router.delete('/:id', (req, res) => {
 function validateEmail(email)
 {
     let sql = `select * from user where email = '${email}'`
-    var output = syncSql.mysql(config, sql)
-
+    var output = syncSql.mysql(database, sql)
+    
     return output.data.rows.length == 0
 }
 
 function checkUserExistance(email)
 {
     let sql = `select * from user where email = '${email}'`
-    var output = syncSql.mysql(config, sql)
-
+    var output = syncSql.mysql(database, sql)
+    
     return output.data.rows.length != 0
 }
 
 function checkUserExistanceByID(id)
 {
     let sql = `select * from user where id = ${id}`
-    var output = syncSql.mysql(config, sql)
+    var output = syncSql.mysql(database, sql)
 
     return output.data.rows.length != 0
 }

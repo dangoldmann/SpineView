@@ -1,26 +1,9 @@
 //#region dependencies
 const {Router} = require('express')
 const router = Router()
-const mysql = require('mysql')
-const db = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "rootroot",
-    database: "osia"
-}) 
-const syncSql = require('sync-sql')
-var config = {
-    host : "localhost",
-    user : "root",
-    password : "rootroot",
-    database : "osia"
-}
+const {db, syncSql} = require.main.require('./database.js')
+const {localDatabase, database} = require.main.require('./config.js')
 //#endregion
-
-// connecting to database
-db.connect((err) => {
-    if (err) throw (err)
-})
 
 //#region endpoints
 router.post('/add-image', (req, res) => {
@@ -83,7 +66,7 @@ router.delete('/delete-image', (req, res) => {
 function checkUserExistanceByID(id)
 {
     let sql = `select * from user where id = ${id}`
-    var output = syncSql.mysql(config, sql)
+    var output = syncSql.mysql(database, sql)
 
     return output.data.rows.length != 0
 }
@@ -91,7 +74,7 @@ function checkUserExistanceByID(id)
 function getBodyPartIDByName(name)
 {
     let sql = `select id from body_part where name = '${name}'`
-    var output = syncSql.mysql(config, sql)
+    var output = syncSql.mysql(database, sql)
     
     try { return output.data.rows[0].id }
     catch { return -1}
@@ -100,7 +83,7 @@ function getBodyPartIDByName(name)
 function checkImageExistance(image)
 {
     let sql = `select * from radiography where image_route = '${image}'`
-    var output = syncSql.mysql(config, sql)
+    var output = syncSql.mysql(database, sql)
 
     return output.data.rows.length != 0
 }
