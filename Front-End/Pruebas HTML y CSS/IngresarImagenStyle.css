@@ -20,6 +20,8 @@ label{
 
 #form{
     display:flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #ingresarImagenes{
@@ -30,18 +32,31 @@ label{
     border: dashed 10px #9ECBFF;
     border-radius: 10px;
     padding: 30px;
-    margin: 30px;
+    margin:15px;
     cursor: pointer;
 }
  
 .ingresarDatosUtiles{
     align-items: center;
     background-color: #9ECBFF;
-    width: 70%;
+    width: 40%;
     height: 65vh;
     border-radius: 10px;
     padding: 30px;
-    margin: 30px;
+    margin: 15px;
+}
+
+.previews{
+    width: 150px;
+    height: 70vh;
+    margin: 15px;
+    background-color: #4d5880;
+    border: dashed 15px #7fffd4;
+    border-radius: 10px;
+}
+
+.hpreviewimg{
+    font-size: 15px;
 }
 
 .enviarDatos{
