@@ -1,4 +1,5 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk&display=swap');
 
 body{
     background-image: url(./Imagenes/IngresarImagenes.jpg);
@@ -6,21 +7,37 @@ body{
     background-size: cover;
     margin: 0;
     padding: 0;
-}
 
-.ingr{
-    background-color: #943e3e;
+}
+#form{
+    display:flex;
+}
+#ingresarImagenes{
+    align-items: center;
+    background-color: #0E1D51;
     width: 30%;
-    height: 80vh;
-    border: dashed 3px #242ead;
+    height: 65vh;
+    border: dashed 10px #9ECBFF;
     border-radius: 10px;
-    padding: 20px;
+    padding: 30px;
     margin: 30px;
-    display: flex;
+    cursor: pointer;
+}
+ 
+.ingresarDatosUtiles{
+    align-items: center;
+    background-color: #9ECBFF;
+    width: 70%;
+    height: 65vh;
+    border-radius: 10px;
+    padding: 30px;
+    margin: 30px;
 }
 
 .enviarDatos{
-    padding: 10px;
+    display: inline;
+    justify-content: center;
+    padding: 10px 20px;
     background-color: #7fffd4;
     height: auto;
     width: auto;
@@ -28,5 +45,25 @@ body{
     text-align: center;
     border: hidden;
     border-radius: 10px;
-    
+    margin: 0 auto;
+    font-family: "Space Grotesk";
+    transition: all .2s;
+}
+
+.enviarDatos:hover{
+    font-size: 33px;    
+}
+
+.iconoRadiografia{
+    display: flex;
+    justify-content: center;
+    height: 200px;
+    margin: 0 auto;
+}
+
+.ingresarImagen{
+    font-family: "Space Grotesk";
+    display: flex;
+    justify-content: center;
+    color: #9ECBFF;
 }

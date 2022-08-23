@@ -6,13 +6,21 @@
     <link rel="stylesheet" href="IngresarImagenStyle.css">
 </head>
 <body>
-    <form action="" method="post">
-        <div class="ingr">
-            <input class="ingresar" type="file" accept="image/jpeg, image/png" hidden>
-            <button><img src="/Imagenes/Fondo sin nombreRecurso 1 1.svg" alt=""></button>
-            <h1>Ingresar Imagen(es)</h1>
+    
+    <form action="" method="post" id="form">
+        <div class="ingresarimagenes" id="ingresarImagenes">
+            <h1 class="ingresarImagen">Ingresar Imagen(es)</h1>
+            <input id="ingresar" class="ingresar" type="file" accept="image/jpeg, image/png" hidden>
+            <img src="/Imagenes/Fondo sin nombreRecurso 1 1.svg" class="iconoRadiografia">
         </div>
-        <input type="submit" name="" class="enviarDatos" value="Escanear">
+        
+        <div class="ingresarDatosUtiles" id="ingresarDatosUtiles">
+            
+        </div>
+        <input type="submit" value="ESCANEAR" class="enviarDatos">
     </form>
+
+    
+    <script src="ControllerIngresarImagen.js"></script>
 </body>
 </html>
