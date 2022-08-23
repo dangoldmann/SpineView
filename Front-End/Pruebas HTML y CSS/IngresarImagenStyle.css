@@ -7,11 +7,21 @@ body{
     background-size: cover;
     margin: 0;
     padding: 0;
-
 }
+
+select, label, input{
+    margin: 20px 0;
+    font-family: "Space Grotesk";
+}
+
+label{
+    font-size: 20px;
+}
+
 #form{
     display:flex;
 }
+
 #ingresarImagenes{
     align-items: center;
     background-color: #0E1D51;
@@ -35,8 +45,7 @@ body{
 }
 
 .enviarDatos{
-    display: inline;
-    justify-content: center;
+    position: absolute;
     padding: 10px 20px;
     background-color: #7fffd4;
     height: auto;

@@ -15,8 +15,33 @@
         </div>
         
         <div class="ingresarDatosUtiles" id="ingresarDatosUtiles">
-            
+            <label for="TipoEstudio">Tipo de Estudio:</label>
+            <select name="TipoEstudio" id="">
+                <option value="Radiografia">Radiografia</option>
+            </select>
+            <br>
+            <label for="ParteCuerpo">Parte del Cuerpo:</label>
+            <select name="ParteCuerpo" id="">
+                <option value="Cabeza">Cabeza</option>
+                <option value="Cuello">Cuello</option>
+                <option value="Pecho">Pecho</option>
+                <option value="Brazos">Brazos</option>
+                <option value="Piernas">Piernas</option>
+                <option value="Manos">Manos</option>
+                <option value="Pies">Pies</option>
+                <option value="Otros">Otros</option>
+            </select>
+            <br>
+            <label for="Edad">Edad:</label>
+            <input type="number" name="Edad" id="Edad" min="0" max="100" step="1" value="0">
+            <br>
+            <label for="Sexo">Sexo Biologico:</label> 
+            <select name="Sexo" id="">
+                <option value="Hombre">Masculino</option>
+                <option value="Mujer">Femenino</option>
+            </select>
         </div>
+
         <input type="submit" value="ESCANEAR" class="enviarDatos">
     </form>
 
