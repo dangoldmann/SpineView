@@ -4,19 +4,27 @@ const router = Router()
 const bcrypt = require('bcrypt')
 const mysql = require('mysql')
 const db = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "rootroot",
-    database: "osia"
+    host : "by13ydanyybv7cjflmmg-mysql.services.clever-cloud.com",
+    user : "ulnnnwrwdytoo5it",
+    password : "SSV2HmvMo5Z8KMNc4Y3I",
+    database : "by13ydanyybv7cjflmmg"
 }) 
 const syncSql = require('sync-sql')
+const jwt = require('jsonwebtoken')
+
 var config = {
     host : "localhost",
     user : "root",
     password : "rootroot",
     database : "osia"
 }
-const jwt = require('jsonwebtoken')
+var config2 = {
+    host : "by13ydanyybv7cjflmmg-mysql.services.clever-cloud.com",
+    user : "ulnnnwrwdytoo5it",
+    password : "SSV2HmvMo5Z8KMNc4Y3I",
+    database : "by13ydanyybv7cjflmmg"
+}
+
 //#endregion
 
 // connecting to database
@@ -37,7 +45,7 @@ router.post('/register', async (req, res) => {
                 const hashedPassword = await bcrypt.hash(password, 10)
 
                 let sql = `insert into user (name, surname, email, phone, password) values ('${name}', '${surname}', '${email}', '${phone}', '${hashedPassword}')`
-                db.query(sql, (err, result) => {
+                db.query(sql, (err) => {
                     if (err) throw err
                     res.status(201).send('User created correctly')
                 })
@@ -66,9 +74,9 @@ router.post('/login', async (req, res) => {
                 {
                     if (await bcrypt.compare(password, hashedPassword)) 
                     {
-                        res.send('Success')
+                        res.send('Authorized')
                     }
-                    else res.send('Incorrect password')
+                    else res.sendStatus(401)
                 }
                 catch { res.status(500).send() }
             })
