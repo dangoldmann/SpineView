@@ -75,7 +75,7 @@ INSERT INTO `user` (`id`, `name`, `surname`, `email`, `phone`, `password`) VALUE
 -- Estructura de tabla para la tabla `x-ray`
 --
 
-CREATE TABLE `x-ray` (
+CREATE TABLE `radiography` (
   `id` int(11) NOT NULL,
   `image_route` varchar(50) NOT NULL,
   `id_body_part` int(11) NOT NULL,
@@ -88,9 +88,9 @@ CREATE TABLE `x-ray` (
 -- Estructura de tabla para la tabla `x-ray_injury`
 --
 
-CREATE TABLE `x-ray_injury` (
+CREATE TABLE `radiography_injury` (
   `id` int(11) NOT NULL,
-  `id_x-ray` int(11) NOT NULL,
+  `id_radiography` int(11) NOT NULL,
   `id_injury` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -119,7 +119,7 @@ ALTER TABLE `user`
 --
 -- Indices de la tabla `x-ray`
 --
-ALTER TABLE `x-ray`
+ALTER TABLE `radiography`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_body_part_idx` (`id_body_part`),
   ADD KEY `FK2_idx` (`id_user`);
@@ -127,9 +127,9 @@ ALTER TABLE `x-ray`
 --
 -- Indices de la tabla `x-ray_injury`
 --
-ALTER TABLE `x-ray_injury`
+ALTER TABLE `radiography_injury`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `FK1_idx` (`id_x-ray`),
+  ADD KEY `FK1_idx` (`id_radiography`),
   ADD KEY `FK2_idx` (`id_injury`);
 
 --
@@ -157,13 +157,13 @@ ALTER TABLE `user`
 --
 -- AUTO_INCREMENT de la tabla `x-ray`
 --
-ALTER TABLE `x-ray`
+ALTER TABLE `radiography`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `x-ray_injury`
 --
-ALTER TABLE `x-ray_injury`
+ALTER TABLE `radiography_injury`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -173,15 +173,15 @@ ALTER TABLE `x-ray_injury`
 --
 -- Filtros para la tabla `x-ray`
 --
-ALTER TABLE `x-ray`
+ALTER TABLE `radiography`
   ADD CONSTRAINT `FK1` FOREIGN KEY (`id_body_part`) REFERENCES `body_part` (`id`),
   ADD CONSTRAINT `FK2` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`);
 
 --
 -- Filtros para la tabla `x-ray_injury`
 --
-ALTER TABLE `x-ray_injury`
-  ADD CONSTRAINT `FK3` FOREIGN KEY (`id_x-ray`) REFERENCES `x-ray` (`id`),
+ALTER TABLE `radiography_injury`
+  ADD CONSTRAINT `FK3` FOREIGN KEY (`id_radiography`) REFERENCES `radiography` (`id`),
   ADD CONSTRAINT `FK4` FOREIGN KEY (`id_injury`) REFERENCES `injury` (`id`);
 COMMIT;
 

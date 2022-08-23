@@ -45,13 +45,13 @@ router.get('/:idUsuario', (req, res) => {
 })  
 
 router.delete('/delete-image', (req, res) => {
-    const {image} = req.body
-    const isImage = checkImageExistance(image)
+    const {image_route} = req.body
+    const isImage = checkImageExistance(image_route)
     
     if(isImage)
     {
-        let sql = `delete from radiography where image_route = '${image}'`
-        db.query(sql, (err, result) => {
+        let sql = `delete from radiography where image_route = '${image_route}'`
+        db.query(sql, (err) => {
             if(err) throw err
 
             res.send('Image deleted successfullly')

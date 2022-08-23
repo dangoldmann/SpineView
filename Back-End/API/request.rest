@@ -71,10 +71,7 @@ DELETE {{baseUrl}}/radiographies/delete-image
 Content-Type: application/json
 
 {
-    "image" : "imagen" 
+    "image_route" : "imagen" 
 }
-
-### obteniendo las tablas
-GET {{baseUrl}}/radiographies/tables
 
 
