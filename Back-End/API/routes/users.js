@@ -3,9 +3,11 @@ const {Router} = require('express')
 const router = Router()
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
-const {db, syncSql} = require.main.require('./database.js')
-const {localDatabase, database} = require.main.require('./config.js')
+const {db} = require.main.require('./database.js')
+const {validateEmail, checkUserExistance, checkUserExistanceByID} = require.main.require('./usefulFunctions.js')
+const redirectHome = require.main.require('./index.js').redirectHome
 //#endregion
+
 
 //#region endpoints
 router.post('/register', async (req, res) => {
@@ -39,16 +41,18 @@ router.post('/login', async (req, res) => {
     {
         if(checkUserExistance(email))
         {
-            let sql = `select password from user where email = '${email}'`
+            let sql = `select password, id from user where email = '${email}'`
             db.query(sql, async (err, result) => {
                 if(err) throw err
-
                 let hashedPassword = result[0].password
-        
+                
                 try 
                 {
                     if (await bcrypt.compare(password, hashedPassword)) 
                     {
+                        const user = {id: result[0].id, email: email, password: hashedPassword}
+                        req.session.userId = user.id
+                        
                         res.send('Authorized')
                     }
                     else res.sendStatus(401)
@@ -136,46 +140,6 @@ router.delete('/:id', (req, res) => {
     }
     else res.status(404).send('User not found')
 })
-//#endregion
-
-//#region functions
-function validateEmail(email)
-{
-    let sql = `select * from user where email = '${email}'`
-    var output = syncSql.mysql(database, sql)
-    
-    return output.data.rows.length == 0
-}
-
-function checkUserExistance(email)
-{
-    let sql = `select * from user where email = '${email}'`
-    var output = syncSql.mysql(database, sql)
-    
-    return output.data.rows.length != 0
-}
-
-function checkUserExistanceByID(id)
-{
-    let sql = `select * from user where id = ${id}`
-    var output = syncSql.mysql(database, sql)
-
-    return output.data.rows.length != 0
-}
-
-// Authorization: Bearer <token>
-function verifyToken(req, res, next)
-{
-    const bearerHeader = req.headers['authorization']
-
-    if(typeof bearerHeader !== 'undefined')
-    {
-        const bearerToken = bearerHeader.split(' ')[1]
-        req.token = bearerToken
-        next()
-    }
-    else res.sendStatus(403)
-}
 //#endregion
 
 module.exports = router
