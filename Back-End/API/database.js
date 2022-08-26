@@ -15,7 +15,6 @@ db.connect((err) => {
             console.error("Database connection was refused");
         }
     }
-
     return 
 })
 
