@@ -84,26 +84,6 @@ router.get('/:id', (req, res) => {
     })
 })
 
-router.put('/name-reset', (req, res) => {
-    const { email, name } = req.body
-
-    if(name)
-    {
-        if(checkUserExistance(email))
-        {
-            let sql = `update user set name = '${name}' where email = '${email}'`
-            db.query(sql, (err) => {
-                if (err) throw err
-
-                res.send('User updated successfully')
-            })
-        }
-        else res.status(404).send('User not found')
-    }
-    else res.status(400).send('You must complete all the fields')
-    
-})
-
 router.put('/password-reset', async (req, res) => {
     const {email, password} = req.body
 
