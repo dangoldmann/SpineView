@@ -16,6 +16,7 @@ app.use(bodyParser.urlencoded({
 }))
 app.use(cookieParser()) 
 app.use(session({
+    name: 'sid',
     cookie: {
         maxAge: 1000 * 60 * 60 * 24,
         sameSite: true
@@ -30,8 +31,8 @@ app.use('/api/users', require('./routes/users'))
 app.use('/api/radiographies', require('./routes/radiographies'))
 
 const users = [
-    {id:1, name: 'Dan', password: 'secret'},
-    {id:2, name:'Polo', password: 'secret'}
+    {id:1, name: 'Dan', email: 'dan@gmail.com', password: 'secret'},
+    {id:2, name:'Polo', email: 'polo@gmail.com', password: 'secret'}
 ]
 
 const redirectLogin = (req, res, next) => {
@@ -78,7 +79,56 @@ app.get('/home', redirectLogin, (req, res) => {
 })
 
 app.get('/logout', redirectLogin, (req, res) => {
-    res.send('Logout')
+    req.session.destroy(err => {
+        if(err) return res.redirect('/home')
+
+        res.clearCookie('sid')
+        res.redirect('/login')
+    })
+})
+
+app.post('/login', redirectHome, (req, res) => {
+    const {email, password} = req.body
+
+    if(email && password)
+    {
+        const user = users.find(user => user.email === email && user.password === password)
+
+        if(user)
+        {
+            req.session.userId = user.id
+            return res.redirect('/home')
+        }
+    }
+
+    res.redirect('/login')
+})
+
+app.post('/register', redirectHome, (req, res) => {
+    const {name, email, password} = req.body
+
+    if(name && email && password)
+    {
+        const exists = users.some(user => user.email === email)
+
+        if(!exists)
+        {
+            const user = {
+                id: users.length+1,
+                name,
+                email,
+                password
+            }
+
+            users.push(user)
+
+            req.session.userId = user.id
+
+            return res.redirect('/home')
+        }
+    }
+
+    res.redirect('/register')
 })
 
 // starting the server

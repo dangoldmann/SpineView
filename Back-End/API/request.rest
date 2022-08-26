@@ -74,4 +74,16 @@ Content-Type: application/json
     "image_route" : "imagen" 
 }
 
+### testing sessions
+GET http://localhost:3000/home
+
+
+### login using sessions
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+    "email" : "dan@gmail.com",
+    "password" : "secret"
+}
 
