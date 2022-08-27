@@ -4,6 +4,7 @@ const fs = require('fs')
 const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
 const session = require('express-session')
+const {router: userRoutes, basePath: userBasePath} = require('./routes/users')
 //#endregion
 
 // creating the express aplication
@@ -11,9 +12,7 @@ const app = express();
 
 // middleware
 app.use(express.json())
-app.use(bodyParser.urlencoded({
-    extended : true
-}))
+app.use(bodyParser.urlencoded({ extended : true }))
 app.use(cookieParser()) 
 app.use(session({
     name: 'sid',
@@ -27,7 +26,7 @@ app.use(session({
 }))
 
 //routes
-app.use('/api/users', require('./routes/users'))
+app.use(userBasePath, userRoutes)
 app.use('/api/radiographies', require('./routes/radiographies'))
 
 const users = [

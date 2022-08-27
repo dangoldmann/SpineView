@@ -5,53 +5,46 @@
 ### abriendo la landing page
 GET {{landingUrl}}
 
-### obteniendo todos los usuarios
-GET {{baseUrl}}/users/all
+### obtener todos los usuarios
+GET http://localhost:3000/users/all
 
-### obteniendo un usuario por id
-GET {{baseUrl}}/users/{{userId}}
-
-### modificando un usuario por id
-PUT {{baseUrl}}/users/name-reset
-Content-type: application/json
-
-{
-    "email" : "goldmandan8@gmail.com",
-    "name" : "Dan"
-}
-
-### modificando la contraseña
-PUT {{baseUrl}}/users/password-reset
+### registrar a un nuevo usuario
+POST http://localhost:3000/users/register
 Content-Type: application/json
 
 {
-    "email" : "goldmandan8@gmail.com",
-    "password" : "dan"
-}
-
-### registrando un usuario
-POST {{baseUrl}}/users/register
-Content-Type: application/json
-
-{
-    "name" : "",
-    "surname" : "",
-    "email" : "",
-    "phone" : "",
-    "password" : ""
+    "name" : "Dan",
+    "surname" : "Goldman",
+    "email" : "goldmandan89@gmail.com",
+    "phone" : "1138021709",
+    "password" : "osia"
 }
 
 ### login
-POST {{baseUrl}}/users/login
+POST http://localhost:3000/users/login
 Content-Type: application/json
 
 {
     "email" : "goldmandan8@gmail.com",
-    "password" : "dan"
+    "password" : "aaa"
 }
 
-### borrando un usuario
-DELETE {{baseUrl}}/users/{{userId}}
+### reestablecer la contraseña
+PUT http://localhost:3000/users/password-reset
+Content-Type: application/json
+
+{
+    "email" : "goldmandan8@gmail.com",
+    "newPassword" : "osia"
+}
+
+### borrar un usuario
+DELETE http://localhost:3000/users
+Content-Type: application/json
+
+{
+    "email" : ""
+}
 
 ### agregando una imagen
 POST {{baseUrl}}/radiographies/add-image

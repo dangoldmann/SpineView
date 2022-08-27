@@ -1,125 +1,68 @@
-//#region dependencies
-const {Router} = require('express')
-const router = Router()
-const bcrypt = require('bcrypt')
-const jwt = require('jsonwebtoken')
-const {db} = require.main.require('./database.js')
-const {validateEmail, checkUserExistance, checkUserExistanceByID} = require.main.require('./usefulFunctions.js')
-const redirectHome = require.main.require('./index.js').redirectHome
-//#endregion
+const router = require('express').Router()
+const userController = require('../controllers/user_Controller')
 
+const basePath = '/users'
 
-//#region endpoints
 router.post('/register', async (req, res) => {
-    const { name, surname, email, phone, password } = req.body
+    const {name, surname, email, phone, password} = req.body
+    const userInfo = {name, surname, email, phone, password}
     
-    if(name && surname && email && phone && password)
-    {
-        if(validateEmail(email))
-        {
-            try 
-            {
-                const hashedPassword = await bcrypt.hash(password, 10)
+    const user = await userController.createUser(userInfo)
 
-                let sql = `insert into user (name, surname, email, phone, password) values ('${name}', '${surname}', '${email}', '${phone}', '${hashedPassword}')`
-                db.query(sql, (err) => {
-                    if (err) throw err
-                    res.status(201).send('User created correctly')
-                })
-            }
-            catch { res.status(500).send() }
+    if(user){
+        req.session.user = {
+            id: user.id,
+            name: user.name,
+            surname: user.surname,
+            email: user.email,
+            phone: user.phone,
+            password: user.password
         }
-        else res.send('An account already exists with that email address')
-    }   
-    else res.status(400).send('You must complete all the fields') 
+    }
+
+    res.send(user)
 })
 
 router.post('/login', async (req, res) => {
     const {email, password} = req.body
+    const userInfo = {email, password}
 
-    if(email && password)
-    {
-        if(checkUserExistance(email))
-        {
-            let sql = `select password, id from user where email = '${email}'`
-            db.query(sql, async (err, result) => {
-                if(err) throw err
-                let hashedPassword = result[0].password
-                
-                try 
-                {
-                    if (await bcrypt.compare(password, hashedPassword)) 
-                    {
-                        const user = {id: result[0].id, email: email, password: hashedPassword}
-                        req.session.userId = user.id
-                        
-                        res.send('Authorized')
-                    }
-                    else res.sendStatus(401)
-                }
-                catch { res.status(500).send() }
-            })
+    const user = await userController.login(userInfo)
+
+    if(user){
+        req.session.user = {
+            id: user.id,
+            name: user.name,
+            surname: user.surname,
+            email: user.email,
+            phone: user.phone,
+            password: user.password
         }
-        else res.status(404).send('User not found')
     }
-    else res.status(400).send('You must complete all the fields')
+
+    res.send(user)
 })
 
-router.get('/all', (req, res) => {
-    let sql = 'select * from user'
-    db.query(sql, (err, result) => {
-        if (err) throw err
-        res.send(result)
-    })
-})
-
-router.get('/:id', (req, res) => {
-    const { id } = req.params
-    let sql = `select * from user where id = ${id}`
-    db.query(sql, (err, result) => {
-        if (err) throw err
-
-        if (result.length != 0) res.send(result)
-        else res.status(404).send('User not found')
-    })
+router.get('/all', async (req, res) => {
+    const users = await userController.getAllUsers()
+    res.send(users)
 })
 
 router.put('/password-reset', async (req, res) => {
-    const {email, password} = req.body
-
-    if(email && password)
-    {
-        if(checkUserExistance(email))
-        {
-            const hashedPassword = await bcrypt.hash(password, 10)
-            let sql = `update user set password = '${hashedPassword}'`
-
-            db.query(sql, (err) => {
-                if(err) throw err
-
-                res.send('User updated successfully')
-            })
-        }
-        else res.status(404).send('User not found')
-    }
-    else res.status(400).send('You must complete all the fields')
-    
+    const {email, newPassword} = req.body
+    userInfo = {email, newPassword}
+    userInfo.email = req.session.user.email
+    const user = await userController.updatePassword(userInfo)
+    res.send(user)
 })
 
-router.delete('/:id', (req, res) => {
-    const { id } = req.params
-
-    if(checkUserExistanceByID(id))
-    {
-        let sql = `delete from user where id = ${id}`
-        db.query(sql, (err) => {
-            if (err) throw err
-
-            res.send('The user has been deleted successfully')
-        })
-    }
-    else res.status(404).send('User not found')
+router.delete('', async (req, res) => {
+    const {email} = req.body
+    userInfo = {email}
+    userInfo.email = req.session.user.email
+    const user = await userController.deleteUser(userInfo)
+    req.session.destroy()
+    res.json(user)
 })
-//#endregion
 
-module.exports = router
+module.exports = {router, basePath}
