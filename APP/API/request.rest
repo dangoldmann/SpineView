@@ -1,36 +1,35 @@
-@landingUrl = http://localhost:3000/
-@baseUrl = http://localhost:3000/api
+@baseUrl = http://localhost:3000
 @userId = 1
 
 ### abriendo la landing page
-GET {{landingUrl}}
-
-### obtener todos los usuarios
-GET http://localhost:3000/users/all
+GET {{baseUrl}}
 
 ### registrar a un nuevo usuario
-POST http://localhost:3000/users/register
+POST {{baseUrl}}/users/register
 Content-Type: application/json
 
 {
     "name" : "Dan",
     "surname" : "Goldman",
-    "email" : "goldmandan89@gmail.com",
+    "email" : "goldmandan8@gmail.com",
     "phone" : "1138021709",
     "password" : "osia"
 }
 
 ### login
-POST http://localhost:3000/users/login
+POST {{baseUrl}}/users/login
 Content-Type: application/json
 
 {
     "email" : "goldmandan8@gmail.com",
-    "password" : "aaa"
+    "password" : "osia"
 }
 
+### obtener todos los usuarios
+GET {{baseUrl}}/users/all
+
 ### reestablecer la contraseña
-PUT http://localhost:3000/users/password-reset
+PUT {{baseUrl}}/users/password-reset
 Content-Type: application/json
 
 {
@@ -39,32 +38,37 @@ Content-Type: application/json
 }
 
 ### borrar un usuario
-DELETE http://localhost:3000/users
+DELETE {{baseUrl}}/users
 Content-Type: application/json
 
 {
     "email" : ""
 }
 
-### agregando una imagen
-POST {{baseUrl}}/radiographies/add-image
+### agregar una radiografia
+POST {{baseUrl}}/radiography/add
 Content-Type: application/json
 
 {
-    "image" : "./images/hands.jpg",
+    "imageRoute" : "./images/hands.jpg",
     "bodyPart" : "Brazo",
     "userId" : "1"
 }
 
-### obteniendo una radiografia por id del usuario
-GET {{baseUrl}}/radiographies/{{userId}}
-
-### borrando una radiografia
-DELETE {{baseUrl}}/radiographies/delete-image
+### obteniendo las radiografias de un usuario
+GET {{baseUrl}}/radiography
 Content-Type: application/json
 
 {
-    "image_route" : "imagen" 
+    "userId" : "1"
+}
+
+### borrando una radiografia
+DELETE {{baseUrl}}/radiography/delete
+Content-Type: application/json
+
+{
+    "imageRoute" : "./images/hands.jpg"
 }
 
 ### testing sessions
@@ -79,4 +83,3 @@ Content-Type: application/json
     "email" : "dan@gmail.com",
     "password" : "secret"
 }
-

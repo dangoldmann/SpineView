@@ -5,6 +5,7 @@ const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
 const session = require('express-session')
 const {router: userRoutes, basePath: userBasePath} = require('./routes/users')
+const {router: radiographyRoutes, basePath: radiographyBasePath} = require('./routes/radiographies')
 //#endregion
 
 // creating the express aplication
@@ -27,7 +28,7 @@ app.use(session({
 
 //routes
 app.use(userBasePath, userRoutes)
-app.use('/api/radiographies', require('./routes/radiographies'))
+app.use(radiographyBasePath, radiographyRoutes)
 
 const users = [
     {id:1, name: 'Dan', email: 'dan@gmail.com', password: 'secret'},

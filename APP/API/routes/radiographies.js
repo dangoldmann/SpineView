@@ -1,65 +1,33 @@
-//#region dependencies
-const {Router} = require('express')
-const router = Router()
-const {db} = require.main.require('./database.js')
-const {checkUserExistanceByID, getBodyPartIDByName, checkImageExistance} = require.main.require('./usefulFunctions.js')
-//#endregion
+const router = require('express').Router()
+const radiographyController = require('../controllers/radiography_Controller')
 
-//#region endpoints
-router.post('/add-image', (req, res) => {
-    const {image, bodyPart, userId} = req.body
-    const isUser = checkUserExistanceByID(userId) 
+const basePath = '/radiography'
+
+router.post('/add', async (req, res) => {
+    const {imageRoute, bodyPart, userId} = req.body
+    const radiographyInfo = {imageRoute, bodyPart, userId}
     
-    if(isUser)
-    {
-        const bodyPartID = getBodyPartIDByName(bodyPart)
+    const radiography = await radiographyController.createRadiography(radiographyInfo)
 
-        if(bodyPartID != -1)
-        {
-            let sql = `insert into radiography (image_route, id_body_part, id_user) values ('${image}', ${bodyPartID}, ${userId})`
-            db.query(sql, (err, result) => {
-                if(err) throw err 
-        
-                res.send('Image added successfully')
-            })
-        }
-        else res.send('Body part not valid')
-    }
-    else res.status(404).send('User not found')
+    res.send(radiography)
 })
 
-router.get('/:idUsuario', (req, res) => {
-    const {idUsuario} = req.params
-    const isUser = checkUserExistanceByID(idUsuario)
+router.get('', async (req, res) => {
+    const {userId} = req.body
+    const userInfo = {userId}
 
-    if(isUser)
-    {
-        let sql = `select image_route from radiography where id_user = ${idUsuario}`
-        db.query(sql, (err, result) => {
-            if(err) throw err
+    const radiographies = await radiographyController.getRadiographies(userInfo)
 
-            res.send(result)
-        })
-    }
-    else res.status(404).send('User not found')
-})  
-
-router.delete('/delete-image', (req, res) => {
-    const {image_route} = req.body
-    const isImage = checkImageExistance(image_route)
-    
-    if(isImage)
-    {
-        let sql = `delete from radiography where image_route = '${image_route}'`
-        db.query(sql, (err) => {
-            if(err) throw err
-
-            res.send('Image deleted successfullly')
-        })
-    }
-    else res.status(404).send('Image not found')
-    
+    res.send(radiographies)
 })
-//#endregion
 
-module.exports = router
+router.delete('/delete', async (req, res) => {
+    const {imageRoute} = req.body
+    const radiographyInfo = {imageRoute}
+
+    const radiography = await radiographyController.deleteRadiography(radiographyInfo)
+
+    res.send(radiography)
+})
+
+module.exports = { router, basePath }

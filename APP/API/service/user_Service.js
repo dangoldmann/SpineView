@@ -1,5 +1,5 @@
 const bcrypt = require('bcrypt')
-const {db, syncSql} = require('../database')
+const {syncSql} = require('../database')
 const {localDatabase, database} = require('../config')
 
 class userService {
@@ -19,7 +19,7 @@ class userService {
             if(result.length > 0) throw new Error('User already exists with that email adress')
 
             sql = `insert into user (name, surname, email, phone, password) values ('${name}', '${surname}', '${email}', '${phone}', '${hashedPassword}')`
-            var result = syncSql.mysql(database, sql)
+            var _ = syncSql.mysql(database, sql)
 
             const newUser = {
                 name,

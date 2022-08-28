@@ -51,7 +51,7 @@ router.get('/all', async (req, res) => {
 router.put('/password-reset', async (req, res) => {
     const {email, newPassword} = req.body
     userInfo = {email, newPassword}
-    userInfo.email = req.session.user.email
+    //userInfo.email = req.session.user.email
     const user = await userController.updatePassword(userInfo)
     res.send(user)
 })
@@ -59,7 +59,7 @@ router.put('/password-reset', async (req, res) => {
 router.delete('', async (req, res) => {
     const {email} = req.body
     userInfo = {email}
-    userInfo.email = req.session.user.email
+    //userInfo.email = req.session.user.email
     const user = await userController.deleteUser(userInfo)
     req.session.destroy()
     res.json(user)
