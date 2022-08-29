@@ -13,7 +13,7 @@ class radiographyService {
             if(bodyPartId == -1) throw new Error('Body part not valid')
             
             let sql = `insert into radiography (image_route, id_body_part, id_user) values ('${imageRoute}', ${bodyPartId}, ${userId})`
-            var _ = await db.execute(sql)
+            await db.execute(sql)
 
             const newRadiography = {
                 imageRoute,
@@ -53,7 +53,7 @@ class radiographyService {
             if(!isImage) throw new Error('Image not found')
 
             let sql = `delete from radiography where image_route = '${imageRoute}'`
-            var _ = await db.execute(sql)
+            await db.execute(sql)
         }
         catch(err){
             console.log(err.message)
