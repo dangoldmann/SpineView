@@ -1,3 +1,5 @@
+import $ from jQuery;
+
 var form = document.getElementById("formRegistro");
 var output = document.getElementById("output");
 
