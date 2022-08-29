@@ -10,7 +10,7 @@ Content-Type: application/json
 {
     "name" : "Dan",
     "surname" : "Goldman",
-    "email" : "goldmandan8@gmail.com",
+    "email" : "ipolonuer@gmail.com",
     "phone" : "1138021709",
     "password" : "osia"
 }
@@ -70,9 +70,14 @@ Content-Type: application/json
     "imageRoute" : "./images/hands.jpg"
 }
 
+###
+GET {{baseUrl}}/
+
 ### testing sessions
 GET http://localhost:3000/home
 
+###
+GET {{baseUrl}}/login
 
 ### login using sessions
 POST http://localhost:3000/login
@@ -82,3 +87,6 @@ Content-Type: application/json
     "email" : "dan@gmail.com",
     "password" : "secret"
 }
+
+### 
+POST {{baseUrl}}/getSession

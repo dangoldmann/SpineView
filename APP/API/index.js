@@ -1,42 +1,38 @@
-//#region dependencies
+// dependencies
 const express = require('express')
+const app = express();
 const fs = require('fs')
-const bodyParser = require('body-parser')
-const cookieParser = require('cookie-parser')
 const session = require('express-session')
 const {router: userRoutes, basePath: userBasePath} = require('./routes/users')
 const {router: radiographyRoutes, basePath: radiographyBasePath} = require('./routes/radiographies')
-//#endregion
-
-// creating the express aplication
-const app = express();
 
 // middleware
 app.use(express.json())
-app.use(bodyParser.urlencoded({ extended : true }))
-app.use(cookieParser()) 
+app.use(express.urlencoded({ extended : true }))
 app.use(session({
-    name: 'sid',
     cookie: {
         maxAge: 1000 * 60 * 60 * 24,
         sameSite: true
     },
     secret: "Secret",
-    resave: false,
-    saveUninitialized: false
+    resave: true,
+    saveUninitialized: true
 }))
 
 //routes
 app.use(userBasePath, userRoutes)
 app.use(radiographyBasePath, radiographyRoutes)
 
-const users = [
-    {id:1, name: 'Dan', email: 'dan@gmail.com', password: 'secret'},
-    {id:2, name:'Polo', email: 'polo@gmail.com', password: 'secret'}
-]
+app.post('/getSession', async (req, res) => {
+    if(req.sessionID && req.session.user){
+        res.status(200)
+        return res.send({user: req.session.user})
+    }
+    return res.sendStatus(403)
+})
 
 const redirectLogin = (req, res, next) => {
-    if(!req.session.userId){
+    if(!req.session.user.id){
         res.redirect('/login')
     }
     else{
@@ -45,7 +41,8 @@ const redirectLogin = (req, res, next) => {
 }
 
 const redirectHome = (req, res, next) => {
-    if(req.session.userId){
+    if(req.session.user.id){
+        console.log('home')
         res.redirect('/home')
     }
     else {
@@ -54,8 +51,8 @@ const redirectHome = (req, res, next) => {
 }
 
 app.get('/', (req, res) => {
-    const { userId } = req.session
-    console.log(userId)
+    const { id } = req.session.user
+    console.log(id)
     if(req.session.page_views){
         req.session.page_views++;
         res.send("You visited this page " + req.session.page_views + " times");
@@ -75,7 +72,7 @@ app.get('/register', redirectHome, (req, res) => {
 })
 
 app.get('/home', redirectLogin, (req, res) => {
-    res.send(req.session.userId)
+    res.sendStatus(req.session.user.id)
 })
 
 app.get('/logout', redirectLogin, (req, res) => {
@@ -133,14 +130,3 @@ app.post('/register', redirectHome, (req, res) => {
 
 // starting the server
 app.listen(3000, () => console.log(`Listening on port 3000...`))
-
-module.exports = {
-    redirectHome: (req, res, next) => {
-    if(req.session.userId){
-        res.redirect('/home')
-    }
-    else {
-        next()
-    }
-}
-}
