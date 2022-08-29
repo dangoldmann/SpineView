@@ -1,26 +1,33 @@
-import $ from jQuery;
+const submit = document.getElementById("btn_submit");
+const form = document.getElementById("formRegistro");
+var datosUsuario = new FormData(form);
 
-var form = document.getElementById("formRegistro");
-var output = document.getElementById("output");
-
-form.addEventListener("submit", ()=>{
-    var formData = new FormData(form);
-
-    if(formData.get("ContraseniaUsuario"!=formData.get("ContraseniaUsuarioConfirmar"))){
-        output.innerHTML = "Las contraseñas no coinciden";
+let test = () =>{
+    console.log('a');
+    if (datosUsuario.get("ContraseniaUsuario")!=datosUsuario.get("ContraseniaUsuarioConfirmar")){
+        alert("Las contraseñas no coinciden");
     }
+
     else{
-        var req= new XMLHttpRequest();
-        req.open("POST", "/routes/users", true);
-        req.onload = function(){
-            if(req.status == 200){
-                output.innerHTML = "Usuario registrado";
-            }
-            else{
-                output.innerHTML = "Error al registrar usuario";
-            }
-        }
-        req.send(formData);
-        form.submit();
+        $.ajax({
+            method:"POST",
+            url:"http://localhost:3000/data",
+            data:JSON.stringify({datosUsuario}),
+            contentType:"application/json"
+        }).done(function(data) {
+            alert(data); // imprimimos la respuesta
+          }).fail(function() {
+            alert("Algo salió mal");
+          }).always(function() {
+            alert("Siempre se ejecuta")
+          });
+
+          window.location.href="HomePage.html";
     }
-})
+};
+
+submit.onclick = function(e){
+    e.preventDefault();
+    console.log("AAAAAAAAAAA"); 
+    test();
+};
