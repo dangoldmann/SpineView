@@ -32,9 +32,10 @@ router.post('/register', async (req, res) => {
             phone: user.phone,
             password: user.password
         }
+        res.status(201).send(user)
     }
 
-    res.status(201).send(user)
+    
 })
 
 router.post('/login', async (req, res) => {
