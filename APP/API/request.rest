@@ -1,5 +1,4 @@
 @baseUrl = http://localhost:3000
-@userId = 1
 
 ### abriendo la landing page
 GET {{baseUrl}}
@@ -46,7 +45,7 @@ Content-Type: application/json
 }
 
 ### agregar una radiografia
-POST {{baseUrl}}/radiography/add
+POST {{baseUrl}}/radiographies/add
 Content-Type: application/json
 
 {
@@ -56,7 +55,7 @@ Content-Type: application/json
 }
 
 ### obteniendo las radiografias de un usuario
-GET {{baseUrl}}/radiography
+GET {{baseUrl}}/radiographies
 Content-Type: application/json
 
 {
@@ -64,7 +63,7 @@ Content-Type: application/json
 }
 
 ### borrando una radiografia
-DELETE {{baseUrl}}/radiography/delete
+DELETE {{baseUrl}}/radiographies/delete
 Content-Type: application/json
 
 {
