@@ -1,47 +1,35 @@
-//#region dependencies
-const {syncSql} = require.main.require('./database.js')
-const {localDatabase, database} = require.main.require('./config.js')
-//#endregion
+const db = require('./db')
 
-function validateEmail(email)
-{
+async function validateEmail(email){
     let sql = `select * from user where email = '${email}'`
-    var output = syncSql.mysql(database, sql)
-    
-    return output.data.rows.length == 0
+    var [result, _] = await db.execute(sql)
+
+    return result.length == 0
 }
 
-function checkUserExistance(email)
+async function checkUserExistance(field, value)
 {
-    let sql = `select * from user where email = '${email}'`
-    var output = syncSql.mysql(database, sql)
+    let sql = `select * from user where ${field} = '${value}'`
+    var [result, _] = await db.execute(sql)
     
-    return output.data.rows.length != 0
+    return result.length != 0
 }
 
-function checkUserExistanceByID(id)
-{
-    let sql = `select * from user where id = ${id}`
-    var output = syncSql.mysql(database, sql)
-
-    return output.data.rows.length != 0
-}
-
-function getBodyPartIDByName(name)
+async function getBodyPartId(name)
 {
     let sql = `select id from body_part where name = '${name}'`
-    var output = syncSql.mysql(database, sql)
+    var [result, _] = await db.execute(sql)
     
-    try { return output.data.rows[0].id }
+    try { return result[0].id }
     catch { return -1}
 }
 
-function checkImageExistance(image)
+async function checkImageExistance(imageRoute)
 {
-    let sql = `select * from radiography where image_route = '${image}'`
-    var output = syncSql.mysql(database, sql)
+    let sql = `select * from radiography where image_route = '${imageRoute}'`
+    var [result, _] = await db.execute(sql)
 
-    return output.data.rows.length != 0
+    return result.length != 0
 }
 
-module.exports = {validateEmail, checkUserExistance, checkUserExistanceByID, getBodyPartIDByName, checkImageExistance}
+module.exports = {validateEmail, checkUserExistance, getBodyPartId, checkImageExistance}
