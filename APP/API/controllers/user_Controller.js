@@ -1,12 +1,12 @@
 const user_Service = require('../service/user_Service')
 
 class userController {
-    getAllUsers(){
-        return user_Service.getAllUsers()
+    getAll(){
+        return user_Service.getAll()
     }
     
-    createUser(userInfo){
-        return user_Service.createUser(userInfo)
+    create(userInfo){
+        return user_Service.create(userInfo)
     }
     
     login(userInfo){
@@ -17,8 +17,8 @@ class userController {
         return user_Service.updatePassword(userInfo)
     }
 
-    deleteUser(userInfo){
-        return user_Service.deleteUser(userInfo)
+    delete(userInfo){
+        return user_Service.delete(userInfo)
     }
 }
 

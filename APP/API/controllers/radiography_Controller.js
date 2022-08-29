@@ -1,16 +1,16 @@
 const radiography_Service = require('../service/radiography_Service')
 
 class radiographyController {
-    createRadiography(radiographyInfo){
-        return radiography_Service.createRadiography(radiographyInfo)
+    create(radiographyInfo){
+        return radiography_Service.create(radiographyInfo)
     }
 
-    getRadiographies(userInfo){
-        return radiography_Service.getRadiographies(userInfo)
+    getByUserId(userInfo){
+        return radiography_Service.getByUserId(userInfo)
     }
 
-    deleteRadiography(radiographyInfo){
-        return radiography_Service.deleteRadiography(radiographyInfo)
+    delete(radiographyInfo){
+        return radiography_Service.delete(radiographyInfo)
     }
 }
 
