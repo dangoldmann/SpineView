@@ -1,25 +1,25 @@
 const bcrypt = require('bcrypt')
-const {syncSql} = require('../database')
-const {localDatabase, database} = require('../config')
+const db = require('../db')
+const {validateEmail, checkUserExistance} = require('../usefulFunctions')
 
 class userService {
-    async getAllUsers(userInfo) {
+    async getAll() {
         let sql = `select * from user`
-        return syncSql.mysql(database, sql).data.rows
+        const [users, _] = await db.execute(sql)
+        return users
     }
 
-    async createUser(userInfo) {
+    async create(userInfo) {
         try {
             const {name, surname, email, phone, password} = userInfo
         
             const hashedPassword = bcrypt.hashSync(password, 10)
 
-            let sql = `select * from user where email = '${email}'`
-            var result = syncSql.mysql(database, sql).data.rows
-            if(result.length > 0) throw new Error('User already exists with that email adress')
-
-            sql = `insert into user (name, surname, email, phone, password) values ('${name}', '${surname}', '${email}', '${phone}', '${hashedPassword}')`
-            var _ = syncSql.mysql(database, sql)
+            const isEmailValid = await validateEmail(email)
+            if(!isEmailValid) throw new Error('User already exists with that email adress')
+       
+            let sql = `insert into user (name, surname, email, phone, password) values ('${name}', '${surname}', '${email}', '${phone}', '${hashedPassword}')`
+            var _ = await db.execute(sql)
 
             const newUser = {
                 name,
@@ -42,8 +42,9 @@ class userService {
             const {email, password} = userInfo
 
             let sql = `select * from user where email = '${email}'`
-            const user = syncSql.mysql(database, sql).data.rows[0]
-            
+            const [result, _] = await db.execute(sql)
+            const user = result[0]
+
             if(!user) throw new Error('User not found')
             
             if(!bcrypt.compareSync(password, user.password)) {
@@ -63,30 +64,28 @@ class userService {
         {
             const {email, newPassword} = userInfo
 
-            let sql = `select * from user where email = '${email}'`
-            var result = syncSql.mysql(database, sql)
-            if(result.data.rows.length == 0) throw new Error('User not found')
+            const isUser = await checkUserExistance('email', email)
+            if(!isUser) throw new Error('User not found')
 
             const hashedNewPassword = bcrypt.hashSync(newPassword, 10)
 
-            sql = `update user set password = '${hashedNewPassword}' where email = '${email}'`
-            var _ = syncSql.mysql(database, sql)
+            let sql = `update user set password = '${hashedNewPassword}' where email = '${email}'`
+            var _ = await db.execute(sql)
         }
         catch (err) {
             console.log(err.message)
         }
     }
 
-    async deleteUser(userInfo) {
+    async delete(userInfo) {
         try {
             const {email} = userInfo
 
-            let sql = `select * from user where email = '${email}'`
-            var result = syncSql.mysql(database, sql)
-            if(result.data.rows.length == 0) throw new Error('User not found')
+            const isUser = await checkUserExistance('email', email)
+            if(!isUser) throw new Error('User not found')
 
-            sql = `delete from user where email = '${email}'`
-            var _ = syncSql.mysql(database, sql)
+            let sql = `delete from user where email = '${email}'`
+            var _ = await db.execute(sql)
         }
         catch (err){
             console.error(err.message)

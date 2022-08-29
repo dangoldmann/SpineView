@@ -1,22 +1,19 @@
-const {syncSql} = require('../database')
-const {localDatabase, database} = require('../config')
+const db = require('../db')
+const {checkUserExistance, getBodyPartId, checkImageExistance} = require('../usefulFunctions')
 
 class radiographyService {
-    async createRadiography(radiographyInfo) {
+    async create(radiographyInfo) {
         try{
             const {imageRoute, bodyPart, userId} = radiographyInfo
             
-            let sql = `select * from user where id = ${userId}`
-            var result = syncSql.mysql(database, sql).data.rows
-            if(result.length == 0) throw new Error('User not found')
+            const isUser = await checkUserExistance('id', userId)
+            if(!isUser) throw new Error('User not found')
 
-            sql = `select id from body_part where name = '${bodyPart}'`
-            var result = syncSql.mysql(database, sql).data.rows
-            if(result.length == 0) throw new Error('Body part not valid')
-            const bodyPartId = result[0].id
+            const bodyPartId = await getBodyPartId(bodyPart)
+            if(bodyPartId == -1) throw new Error('Body part not valid')
             
-            sql = `insert into radiography (image_route, id_body_part, id_user) values ('${imageRoute}', ${bodyPartId}, ${userId})`
-            var _ = syncSql.mysql(database, sql)
+            let sql = `insert into radiography (image_route, id_body_part, id_user) values ('${imageRoute}', ${bodyPartId}, ${userId})`
+            var _ = await db.execute(sql)
 
             const newRadiography = {
                 imageRoute,
@@ -31,16 +28,15 @@ class radiographyService {
         }
     }
 
-    async getRadiographies(userInfo){
+    async getByUserId(userInfo){
         try{
             const {userId} = userInfo
 
-            let sql = `select * from user where id = ${userId}`
-            var result = syncSql.mysql(database, sql).data.rows
-            if(result.length == 0) throw new Error('User not found')
+            const isUser = await checkUserExistance('id', userId)
+            if(!isUser) throw new Error('User not found')
 
-            sql = `select image_route from radiography where id_user = ${userId}`
-            const imageRoutes = syncSql.mysql(database, sql).data.rows
+            let sql = `select image_route from radiography where id_user = ${userId}`
+            var [imageRoutes, _] = await db.execute(sql)
 
             return imageRoutes
         }
@@ -49,18 +45,15 @@ class radiographyService {
         }
     }
 
-    async deleteRadiography(radiographyInfo){
+    async delete(radiographyInfo){
         try{
             const {imageRoute} = radiographyInfo
 
-            let sql = `select * from radiography where image_route = '${imageRoute}'`
-            var result = syncSql.mysql(database, sql).data.rows
-            if(result.length == 0) throw new Error('Image not found')
+            const isImage = await checkImageExistance(imageRoute)
+            if(!isImage) throw new Error('Image not found')
 
-            sql = `delete from radiography where image_route = '${imageRoute}'`
-            var _ = syncSql.mysql(database, sql)
-
-            return result
+            let sql = `delete from radiography where image_route = '${imageRoute}'`
+            var _ = await db.execute(sql)
         }
         catch(err){
             console.log(err.message)
