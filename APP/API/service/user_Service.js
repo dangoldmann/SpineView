@@ -19,7 +19,7 @@ class userService {
             if(!isEmailValid) throw new Error('User already exists with that email adress')
        
             let sql = `insert into user (name, surname, email, phone, password) values ('${name}', '${surname}', '${email}', '${phone}', '${hashedPassword}')`
-            var _ = await db.execute(sql)
+            await db.execute(sql)
 
             const newUser = {
                 name,
@@ -70,7 +70,7 @@ class userService {
             const hashedNewPassword = bcrypt.hashSync(newPassword, 10)
 
             let sql = `update user set password = '${hashedNewPassword}' where email = '${email}'`
-            var _ = await db.execute(sql)
+            await db.execute(sql)
         }
         catch (err) {
             console.log(err.message)
@@ -85,7 +85,7 @@ class userService {
             if(!isUser) throw new Error('User not found')
 
             let sql = `delete from user where email = '${email}'`
-            var _ = await db.execute(sql)
+            await db.execute(sql)
         }
         catch (err){
             console.error(err.message)
