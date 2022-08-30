@@ -5,14 +5,7 @@ const fs = require('fs')
 const session = require('express-session')
 const {router: userRoutes, basePath: userBasePath} = require('./routes/users')
 const {router: radiographyRoutes, basePath: radiographyBasePath} = require('./routes/radiographies')
-<<<<<<< Updated upstream
-=======
 const {router: dataRoutes, basePath: dataBasePath} = require('./receiveData')
-//#endregion
-
-// creating the express aplication
-const app = express();
->>>>>>> Stashed changes
 
 // middleware
 app.use(express.json())
