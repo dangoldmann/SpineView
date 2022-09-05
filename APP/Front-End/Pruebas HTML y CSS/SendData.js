@@ -1,33 +1,25 @@
-const submit = document.getElementById("btn_submit");
-const form = document.getElementById("formRegistro");
-var datosUsuario = new FormData(form);
+document.addEventListener("DOMContentLoaded", ()=>{
+  const btn_submit = document.getElementById("btn_submit");
+  var form = document.getElementById("formRegistro");
 
-let test = () =>{
-    console.log('a');
-    if (datosUsuario.get("ContraseniaUsuario")!=datosUsuario.get("ContraseniaUsuarioConfirmar")){
-        alert("Las contraseñas no coinciden");
+  btn_submit.onclick=function(e){
+    e.preventDefault();
+    var datosUsuario = new FormData(form);
+    if(datosUsuario.get("ContraseniaUsuario") != datosUsuario.get("ContraseniaUsuarioConfirmar")){
+      alert("Las contreñas no coinciden");
     }
 
     else{
-        $.ajax({
-            method:"POST",
-            url:"http://localhost:3000/data",
-            data:JSON.stringify({datosUsuario}),
-            contentType:"application/json"
-        }).done(function(data) {
-            alert(data); // imprimimos la respuesta
-          }).fail(function() {
-            alert("Algo salió mal");
-          }).always(function() {
-            alert("Siempre se ejecuta")
-          });
-
-          window.location.href="HomePage.html";
+      $.ajax({
+        method:"POST",
+        url:"http://localhost:3000/data",
+        data:JSON.stringify({datosUsuario}),
+        contentType:"application/json"
+      }).done(function(data) {
+        window.location.href="HomePage.html"
+      }).fail(function(data){
+        alert("Algo salio mal");
+      })
     }
-};
-
-submit.onclick = function(e){
-    e.preventDefault();
-    console.log("AAAAAAAAAAA"); 
-    test();
-};
+  }
+})
