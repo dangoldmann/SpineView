@@ -2,23 +2,23 @@
 <html>
 <head>
     <title>OSIA</title>
-    <link rel="Stylesheet" href="HomePageStyle.css">
-    <link rel="icon" href="./Imagenes/LogoOsia.png">
+    <link rel="Stylesheet" href="../public/css/HomePageStyle.css">
+    <link rel="icon" href="../images/LogoOsia.png">
 </head>
 <body>
     <main id="wrapper">
         <nav class="navbar" id="NavBar">
-            <button id="btn_usuario" onclick="openSideMenu()"><img id="imgUsuario" src="./Imagenes/Usuario.png"></button>
+            <button id="btn_usuario" onclick="openSideMenu()"><img id="imgUsuario" src="../images/Usuario.png"></button>
             <ul id="links">
                 <li><a href="#segundaseccion" class="link" id="a_quienesSomos">Quiénes somos</a></li>
                 <li><a class="link" href="IngresarImagen.html" id="a_escanear">Escanear estudio</a></li>
                 <li><a class="link" href="" id="masInfo">Más Información</a></li>
             </ul>
 
-            <a href="" onclick="BackToTop()"><img src="./Imagenes/LogoOsia.png" id="logo"></a>
+            <a href="" onclick="BackToTop()"><img src="../images/LogoOsia.png" id="logo"></a>
             
             <div id="MenuLateral" class="menulateral">
-                <img class="imgUsuario" src="./Imagenes/Usuario.png">
+                <img class="imgUsuario" src="../images/Usuario.png">
                 <a href="#" class="cerrar" id="cerrar" onclick="closeSideMenu()">&laquo;</a>
                 <ul>
                     <a href="#segundaseccion">Opción 1</a>
@@ -58,6 +58,6 @@
         
     </main><!--class="wrapper"-->
 
-    <script src="controllerHomePage.js"></script>
+    <script src="../scripts/controllerHomePage.js"></script>
 </body>
 </html>
