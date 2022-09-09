@@ -1,11 +1,9 @@
 // dependencies
 const express = require('express')
 const app = express();
-const fs = require('fs')
 const session = require('express-session')
 const {router: userRoutes, basePath: userBasePath} = require('./routes/users')
 const {router: radiographyRoutes, basePath: radiographyBasePath} = require('./routes/radiographies')
-const {router: dataRoutes, basePath: dataBasePath} = require('./receiveData')
 
 // middleware
 app.use(express.json())
@@ -23,7 +21,6 @@ app.use(session({
 //routes
 app.use(userBasePath, userRoutes)
 app.use(radiographyBasePath, radiographyRoutes)
-app.use(dataBasePath, dataRoutes)
 
 app.post('/getSession', async (req, res) => {
     if(req.sessionID && req.session.user){
