@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk&display=swap');
 
 body{
-    background-image: url(./Imagenes/IngresarImagenes.jpg);
+    background-image: url(../images/IngresarImagenes.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     margin: 0;
