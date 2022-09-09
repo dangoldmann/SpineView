@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt')
 const db = require('../db')
-const {validateEmail, checkUserExistance} = require('../usefulFunctions')
+const {validateEmail, checkUserExistance} = require('../scripts/dbFunctions')
 
 class userService {
     async getAll() {

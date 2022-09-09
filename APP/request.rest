@@ -21,7 +21,7 @@ Content-Type: application/json
 
 {
     "email" : "goldmandan8@gmail.com",
-    "password" : "osia"
+    "password" : "dan"
 }
 
 ### obtener todos los usuarios
@@ -33,7 +33,7 @@ Content-Type: application/json
 
 {
     "email" : "goldmandan8@gmail.com",
-    "newPassword" : "osia"
+    "newPassword" : "dan"
 }
 
 ### borrar un usuario

@@ -1,5 +1,5 @@
 const db = require('../db')
-const {checkUserExistance, getBodyPartId, checkImageExistance} = require('../usefulFunctions')
+const {checkUserExistance, getBodyPartId, checkImageExistance} = require('../scripts/dbFunctions')
 
 class radiographyService {
     async create(radiographyInfo) {
