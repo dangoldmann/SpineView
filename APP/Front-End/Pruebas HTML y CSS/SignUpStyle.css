@@ -90,8 +90,9 @@ form .txt_field{
 }
 
 input[type="submit"]{
-  padding: 10px 15px;
-  height: 50px;
+  display: flex;
+  margin: 0 auto;
+  padding: 15px 30px;
   border: 1px;
   background: #A868CF;
   border-radius: 15px;
@@ -99,13 +100,14 @@ input[type="submit"]{
   color: #e9f4fb;
   font-weight: 700;
   cursor: pointer;
+  transition: all .3s;
 }
 input[type="submit"]:hover{
-  border-color: #A868CF;
-  transition: .5s;
+  font-size: 20px;
 }
 
 .signUp{
+  text-align: center;
   padding: 15px;
   color: #666666;
   font-size: 17px;
