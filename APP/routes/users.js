@@ -24,14 +24,6 @@ router.post('/register', async (req, res) => {
     const user = await userController.create(userInfo)
 
     if(user){
-        req.session.user = {
-            id: user.id,
-            name: user.name,
-            surname: user.surname,
-            email: user.email,
-            phone: user.phone,
-            password: user.password
-        }
         res.status(201).send(user)
     }
 
@@ -49,17 +41,6 @@ router.post('/login', async (req, res) => {
 
     const user = await userController.login(userInfo)
 
-    if(user){
-        req.session.user = {
-            id: user.id,
-            name: user.name,
-            surname: user.surname,
-            email: user.email,
-            phone: user.phone,
-            password: user.password
-        }
-    }
-
     res.send(user)
 })
 
@@ -76,7 +57,6 @@ router.put('/password-reset', async (req, res) => {
     }
 
     userInfo = {email, newPassword}
-    //userInfo.email = req.session.user.email
     const user = await userController.updatePassword(userInfo)
     res.send(user)
 })
@@ -89,7 +69,6 @@ router.delete('', async (req, res) => {
     }
     
     userInfo = {email}
-    //userInfo.email = req.session.user.email
     const user = await userController.delete(userInfo)
     req.session.destroy()
     res.json(user)
