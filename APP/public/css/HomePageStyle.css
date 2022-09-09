@@ -184,7 +184,7 @@ a#a_escanear.link:hover{
 /*primera seccion*/
 #primeraseccion{
     position: relative;
-    background-image: url(./Imagenes/Home.png);
+    background-image: url(../images/Home.png);
     background-size: cover;
     background-position: center;
     height: 100vh; width: 100%;
