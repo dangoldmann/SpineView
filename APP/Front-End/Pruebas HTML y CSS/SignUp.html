@@ -13,15 +13,27 @@
 
       <form action="" method="POST" id="formRegistro" name="formRegistro">
         <div class="txt_field">
+          <input type="text" required name="NomUsuario">
+          <span></span>
+          <label>Nombre real</label>
+        </div>
+
+        <div class="txt_field">
+          <input type="text" required name="AppellidoUsuario">
+          <span></span>
+          <label>Apellido</label>
+        </div>
+
+        <div class="txt_field">
             <input type="email" required name="EmailUsuario">
             <span></span>
             <label>Correo electronico</label>
         </div>
 
         <div class="txt_field">
-          <input type="text" required name="NomUsuario">
+          <input type="number" required name="TelUsuario">
           <span></span>
-          <label>Nombre de usuario</label>
+          <label>Telefono</label>
         </div>
 
         <div class="txt_field">
@@ -30,15 +42,20 @@
           <label>Contraseña</label>
         </div>
 
-        <div class="txt_field">
+        <div class="txt_field" >
             <input type="password" required name="ContraseniaUsuarioConfirmar">
             <span></span>
-            <label>Confirmar contraseña</label>
+            <label id="pass">Confirmar contraseña</label>
         </div>
 
-        <input type="submit" value="Registrarse" id="btn_submit">
+        <input type="submit" value="Registrar" id="btn_submit">
+        
+        <div class="signUp">
+          ¿Ya existe una cuenta? <a href="LogIn.html">Iniciar Sesion</a>
+      </div>
       </form>
-      <div id="output"></div>
+
+      
     </div>
 
     <script

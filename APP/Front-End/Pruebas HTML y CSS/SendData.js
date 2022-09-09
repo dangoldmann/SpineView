@@ -1,12 +1,13 @@
 document.addEventListener("DOMContentLoaded", ()=>{
   const btn_submit = document.getElementById("btn_submit");
   var form = document.getElementById("formRegistro");
+  var txts_passwords = document.getElementById("pass");
 
   btn_submit.onclick=function(e){
-    e.preventDefault();
     var datosUsuario = new FormData(form);
     if(datosUsuario.get("ContraseniaUsuario") != datosUsuario.get("ContraseniaUsuarioConfirmar")){
       alert("Las contreñas no coinciden");
+      txts_passwords.classList.add("password");
     }
 
     else{

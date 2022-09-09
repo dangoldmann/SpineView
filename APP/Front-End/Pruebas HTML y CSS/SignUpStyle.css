@@ -20,7 +20,7 @@ body{
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 400px;
+  width: 550px;
   background: white;
   border-radius: 10px;
   box-shadow: 10px 10px 15px rgba(0,0,0,0.05);
@@ -36,8 +36,10 @@ body{
 }
 form .txt_field{
   position: relative;
+  display: inline-block;
+
   border-bottom: 2px solid #adadad;
-  margin: 30px 0;
+  margin: 30px 10px;
 }
 .txt_field input{
   width: 100%;
@@ -58,6 +60,7 @@ form .txt_field{
   pointer-events: none;
   transition: .5s;
 }
+
 .txt_field span::before{
   content: '';
   position: absolute;
@@ -87,31 +90,34 @@ form .txt_field{
 }
 
 input[type="submit"]{
-  width: 100%;
+  padding: 10px 15px;
   height: 50px;
-  border: 1px solid;
+  border: 1px;
   background: #A868CF;
-  border-radius: 25px;
+  border-radius: 15px;
   font-size: 18px;
   color: #e9f4fb;
   font-weight: 700;
   cursor: pointer;
-  outline: none;
 }
 input[type="submit"]:hover{
   border-color: #A868CF;
   transition: .5s;
 }
-.signup_link{
-  margin: 30px 0;
-  text-align: center;
-  font-size: 16px;
+
+.signUp{
+  padding: 15px;
   color: #666666;
+  font-size: 17px;
 }
-.signup_link a{
-  color: #A868CF;
+
+.signUp a{
   text-decoration: none;
 }
-.signup_link a:hover{
+
+.signUp a:hover{
   text-decoration: underline;
+}
+.txt_field .password{
+  color: red;
 }
