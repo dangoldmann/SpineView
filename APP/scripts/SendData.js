@@ -30,24 +30,22 @@ document.addEventListener("DOMContentLoaded", ()=>{
     }
 
     else if (isComplete(datosUsuario)){
-      let options = {
-        method: "POST",
-        headers: {
-          'Content-Type':
-              'application/json;charset=utf-8'
+      fetch('http://localhost:3000/users/register', {
+        Method: 'POST',
+        Headers: {
+        Accept: 'application.json',
+          'Content-Type': 'application/json'
         },
-        body: JSON.stringify(datosUsuario)
-      }
-      /*$.ajax({
-        method:"POST",
-        url:"http://localhost:3000/data",
-        data:JSON.stringify({datosUsuario}),
-        contentType:"application/json"
-      }).done(function(data) {
-        window.location.href="HomePage.html"
-      }).fail(function(data){
-        alert("Algo salio mal");
-      })*/
+        Body: JSON.stringify(datosUsuario),
+        Cache: 'default'
+      })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data)
+      })
+      registerUser().catch(err => {
+        console.log(err)
+      })
     }
 
     else{
@@ -56,3 +54,9 @@ document.addEventListener("DOMContentLoaded", ()=>{
       
   }
 })
+
+async function registerUser(){
+  const res = await fetch('https://www.thecocktaildb.com/')
+  const blob = res.blob()
+  console.log(blob)
+}
