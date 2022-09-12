@@ -5,18 +5,6 @@ const {isEmailValid} = require('../emailValidator')
 
 const basePath = '/users'
 
-router.use(express.static('public'))
-//router.use('/css', express.static(__dirname + 'public/css'))
-//router.use('/images', express.static(__dirname + 'public/images'))
-
-router.get('/register', (req, res) => {
-    res.render('SignUp')
-})
-
-router.get('/login', (req, res) => {
-    res.render('LogIn')
-})
-
 router.post('/register', async (req, res) => {
     const {name, surname, email, phone, password} = req.body
     

@@ -4,8 +4,6 @@ const app = express();
 const {router: userRoutes, basePath: userBasePath} = require('./routes/users')
 const {router: radiographyRoutes, basePath: radiographyBasePath} = require('./routes/radiographies')
 
-app.set('view engine', 'ejs')
-
 // middleware
 app.use(express.json())
 
