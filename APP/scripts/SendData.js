@@ -30,7 +30,15 @@ document.addEventListener("DOMContentLoaded", ()=>{
     }
 
     else if (isComplete(datosUsuario)){
-      $.ajax({
+      let options = {
+        method: "POST",
+        headers: {
+          'Content-Type':
+              'application/json;charset=utf-8'
+        },
+        body: JSON.stringify(datosUsuario)
+      }
+      /*$.ajax({
         method:"POST",
         url:"http://localhost:3000/data",
         data:JSON.stringify({datosUsuario}),
@@ -39,7 +47,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
         window.location.href="HomePage.html"
       }).fail(function(data){
         alert("Algo salio mal");
-      })
+      })*/
     }
 
     else{
