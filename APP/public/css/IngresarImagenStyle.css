@@ -6,7 +6,7 @@ body{
     background-repeat: no-repeat;
     background-size: cover;
     margin: 0;
-    padding: 0;
+    padding: 30px;
 }
 
 select, label, input{
@@ -24,8 +24,10 @@ label{
     justify-content: center;
 }
 
-#ingresarImagenes{
+.ingresarimagenes{
+    display: flex;
     align-items: center;
+    justify-content:center; ;
     background-color: #0E1D51;
     width: 30%;
     height: 65vh;
@@ -60,7 +62,6 @@ label{
 }
 
 .enviarDatos{
-    position: absolute;
     padding: 10px 20px;
     background-color: #7fffd4;
     height: auto;
@@ -76,13 +77,6 @@ label{
 
 .enviarDatos:hover{
     font-size: 33px;    
-}
-
-.iconoRadiografia{
-    display: flex;
-    justify-content: center;
-    height: 200px;
-    margin: 0 auto;
 }
 
 .ingresarImagen{
