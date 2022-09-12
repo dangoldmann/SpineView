@@ -210,7 +210,7 @@ a#a_escanear.link:hover{
     position: relative;
     height: 105vh;
     background-color: #AE00FF;
-    background-image: url(./Imagenes/QuienesSomosAlt1.png);
+    background-image: url(../images/QuienesSomosAlt1.png);
     background-size: cover;
     background-position: center;
     z-index: -2;
