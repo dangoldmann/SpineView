@@ -4,6 +4,22 @@ document.addEventListener("DOMContentLoaded", ()=>{
   var txts_passwords = document.getElementById("pass");
   var lbl_password = document.getElementById("lblpass")
 
+  let isComplete = (dataform)=>{
+    let arraydata =[];
+    for (let el of dataform.values()){
+      arraydata.push(el);
+    }
+    
+    let result = arraydata.some((e)=>{
+      if (e == ""){
+        return true;
+      }
+      return false;
+    });
+    console.log(arraydata)
+    return !result;
+  }
+
   btn_submit.onclick=function(e){
     e.preventDefault();
     var datosUsuario = new FormData(form);
@@ -13,7 +29,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
       lbl_password.classList.add("passwordwrong")
     }
 
-    else{
+    else if (isComplete(datosUsuario)){
       $.ajax({
         method:"POST",
         url:"http://localhost:3000/data",
@@ -25,5 +41,10 @@ document.addEventListener("DOMContentLoaded", ()=>{
         alert("Algo salio mal");
       })
     }
+
+    else{
+      alert("Asegurate de haber completado todos los campos ");
+    }
+      
   }
 })
