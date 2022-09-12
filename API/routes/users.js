@@ -1,7 +1,6 @@
 const router = require('express').Router()
-const express = require('express')
 const userController = require('../controllers/user_Controller')
-const {isEmailValid} = require('../emailValidator')
+const {isEmailValid} = require('../scripts/emailValidator')
 
 const basePath = '/users'
 
