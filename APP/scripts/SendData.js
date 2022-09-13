@@ -16,7 +16,6 @@ document.addEventListener("DOMContentLoaded", ()=>{
       }
       return false;
     });
-    console.log(arraydata)
     return !result;
   }
 
@@ -43,20 +42,13 @@ document.addEventListener("DOMContentLoaded", ()=>{
   }
 })
 
-let obj = {
-  'name': '',
-  'surname': '',
-  'email': '',
-
-}
-
 async function register(formdata){
   const user = {
-    name: formdata.name,
-    surname: formdata.surname,
-    email: formdata.email,
-    phone: formdata.phone,
-    password: formdata.password
+    name: formdata.get('name'),
+    surname: formdata.get('surname'),
+    email: formdata.get('email'),
+    phone: formdata.get('phone'),
+    password: formdata.get('password')
   }
 
   console.log(user)
@@ -65,8 +57,8 @@ async function register(formdata){
       headers: {
         'Content-Type': "application/json"
       },
-      mode: 'no-cors',
-      body: user
+      mode: "cors",
+      body: JSON.stringify(user)
     })
     console.log(res)
   }
