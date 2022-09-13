@@ -23,29 +23,17 @@ document.addEventListener("DOMContentLoaded", ()=>{
   btn_submit.onclick=function(e){
     e.preventDefault();
     var datosUsuario = new FormData(form);
-    if(datosUsuario.get("ContraseniaUsuario") != datosUsuario.get("ContraseniaUsuarioConfirmar")){
+    
+    let isPassword = pwdMatch(datosUsuario.get('password'), datosUsuario.get('ContraseniaUsuarioConfirmar'))
+    
+    if(!isPassword){
       alert("Las contreñas no coinciden");
       txts_passwords.classList.add("passwordwrong");
       lbl_password.classList.add("passwordwrong")
     }
 
     else if (isComplete(datosUsuario)){
-      fetch('http://localhost:3000/users/register', {
-        Method: 'POST',
-        Headers: {
-        Accept: 'application.json',
-          'Content-Type': 'application/json'
-        },
-        Body: JSON.stringify(datosUsuario),
-        Cache: 'default'
-      })
-      .then(res => res.json())
-      .then(data => {
-        console.log(data)
-      })
-      registerUser().catch(err => {
-        console.log(err)
-      })
+      register(datosUsuario)
     }
 
     else{
@@ -55,8 +43,37 @@ document.addEventListener("DOMContentLoaded", ()=>{
   }
 })
 
-async function registerUser(){
-  const res = await fetch('https://www.thecocktaildb.com/')
-  const blob = res.blob()
-  console.log(blob)
+let obj = {
+  'name': '',
+  'surname': '',
+  'email': '',
+
 }
+
+async function register(formdata){
+  const user = {
+    name: formdata.name,
+    surname: formdata.surname,
+    email: formdata.email,
+    phone: formdata.phone,
+    password: formdata.password
+  }
+
+  console.log(user)
+  const res = await fetch('http://localhost:3000/users/register', {
+      method: 'POST',
+      headers: {
+        'Content-Type': "application/json"
+      },
+      mode: 'no-cors',
+      body: user
+    })
+    console.log(res)
+  }
+  
+  function pwdMatch(contraseña, contraseña2){
+    if(contraseña != contraseña2){
+      return false
+    }
+    return true
+  }
