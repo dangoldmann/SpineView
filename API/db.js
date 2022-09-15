@@ -8,4 +8,11 @@ const pool = mysql.createPool({
     database : process.env.DB_NAME
 })
 
-module.exports = pool.promise()
+const locahostPool = mysql.createPool({
+    host : process.env.LOCAL_HOST,
+    user : process.env.LOCAL_USER,
+    password : process.env.LOCAL_PASSWORD,
+    database : process.env.LOCAL_NAME
+})
+
+module.exports = locahostPool.promise()
