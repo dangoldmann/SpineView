@@ -4,8 +4,8 @@ document.addEventListener("DOMContentLoaded", ()=>{
   var txts_passwords = document.getElementById("pass");
   var lbl_password = document.getElementById("lblpass")
 
-  let isComplete = (dataform)=>{
-    let arraydata =[];
+  let isComplete = dataform => {
+    let arraydata = [];
     for (let el of dataform.values()){
       arraydata.push(el);
     }
@@ -43,6 +43,8 @@ document.addEventListener("DOMContentLoaded", ()=>{
 })
 
 async function register(formdata){
+  const url = 'http://localhost:3000/users/register'
+
   const user = {
     name: formdata.get('name'),
     surname: formdata.get('surname'),
@@ -51,15 +53,9 @@ async function register(formdata){
     password: formdata.get('password')
   }
 
-  const res = await fetch('http://localhost:3000/users/register', {
-      method: 'POST',
-      headers: {
-        'Content-Type': "application/json"
-      },
-      body: JSON.stringify(user)
-    })
-
-  console.log(res.body)
+  const res = await postRequest(url, user)
+  res.body = {name: 'Dan'}
+  console.log(res)
 }
 
 async function login(formdata){
@@ -83,3 +79,15 @@ async function login(formdata){
     }
     return true
   }
+
+async function postRequest(url, data){
+  const res = await fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  })
+
+  return res
+}
