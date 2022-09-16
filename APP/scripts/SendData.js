@@ -51,17 +51,31 @@ async function register(formdata){
     password: formdata.get('password')
   }
 
-  console.log(user)
   const res = await fetch('http://localhost:3000/users/register', {
       method: 'POST',
       headers: {
         'Content-Type': "application/json"
       },
-      mode: "cors",
       body: JSON.stringify(user)
     })
-    console.log(res)
+
+  console.log(res.body)
+}
+
+async function login(formdata){
+  const user = {
+    email: formdata.get('email'),
+    password: formdata.get('password')
   }
+
+  const res = await fetch('http://localhost:3000/users/login', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(user)
+  })
+}
   
   function pwdMatch(contraseña, contraseña2){
     if(contraseña != contraseña2){

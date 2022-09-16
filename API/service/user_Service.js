@@ -16,7 +16,7 @@ class userService {
             const hashedPassword = bcrypt.hashSync(password, 10)
 
             const isEmailValid = await validateEmail(email)
-            if(!isEmailValid) throw new Error('User already exists with that email adress')
+            if(!isEmailValid) return new Error('User already exists with that email adress')
        
             let sql = `insert into user (name, surname, email, phone, password) values ('${name}', '${surname}', '${email}', '${phone}', '${hashedPassword}')`
             await db.execute(sql)
