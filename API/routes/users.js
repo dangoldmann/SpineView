@@ -68,7 +68,6 @@ router.delete('', async (req, res) => {
     
     userInfo = {email}
     const user = await userController.delete(userInfo)
-    req.session.destroy()
     res.json(user)
 })
 
