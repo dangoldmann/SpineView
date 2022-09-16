@@ -3,9 +3,11 @@ const express = require('express')
 const app = express();
 const {router: userRoutes, basePath: userBasePath} = require('./routes/users')
 const {router: radiographyRoutes, basePath: radiographyBasePath} = require('./routes/radiographies')
+const cors = require('cors')
 
 // middleware
 app.use(express.json())
+app.use(cors())
 
 //routes
 app.use(userBasePath, userRoutes)
