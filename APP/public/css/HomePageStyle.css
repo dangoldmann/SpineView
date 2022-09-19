@@ -5,7 +5,6 @@
 
 body{
     margin: 0;
-    padding: 0;
     background-color: #ffffff;
 }
 *{
@@ -35,26 +34,25 @@ body{
 .navbar{
     position: sticky;    
     top: 0px;
-    padding: 20px 0px;
+    padding: 20px 50px;
     display: flex;
     justify-content: space-between;
     align-items: center;    
     transition: all .7s;
+
 }
 
 .navbarAltColor{
     background: #6B3F8F;
-    padding: 10px 0;
+    padding: 10px 30px;
 }
 
 #logo{
-    position: relative;
-    right: 40px;
     width: 60px;
 }
 
 #btn_usuario{
-    display: inline-block;
+    display: none;
     top: 30px;
     width: 70px; height: 70px;
     left: 0px;
@@ -84,7 +82,7 @@ body{
 
 #links li{
     display: inline-block;
-    padding: 0px 20px;
+    padding: 10px;
 }
 
 #links li a{
@@ -104,7 +102,6 @@ body{
 
 .link{
     color: #fff;
-    margin: 0px 90px;
     font-family: "Work-Sans", sans-serif;
 }
 
@@ -167,7 +164,7 @@ a#a_escanear.link:hover{
 
 .subtitulo{
     font-family: "Space Grotesk", sans-serif;
-    font-size: 23px;
+    font-size: 20px;
     color: #fbfbfb;
     font-weight: 200;
     max-width: 750px;
@@ -196,12 +193,12 @@ a#a_escanear.link:hover{
 
 #title{
     font-family: "Space Grotesk", sans-serif;
-    font-size: 150px;
+    font-size: 130px;
     font-weight: 400;
-    color: #FBFBFB;
+    color: #c9c9c9;
     margin: 10px;
     letter-spacing: 0   ;
-    text-shadow: 0px 2px 12px #00000040;
+    text-shadow: 0px 2px 7px #00000050;
 }
 
 
@@ -259,7 +256,7 @@ a#a_escanear.link:hover{
 }
 
 .btn_escanear{
-    padding:20px 40px;
+    padding:40px 80px;
     background-color: #420F84;
     border-radius: 20px;
     border: hidden;
@@ -297,5 +294,14 @@ a#a_escanear.link:hover{
 @media (min-height: 800px){
     .titulos{
         padding-top: 245px;
+    }
+}
+
+@media (max-width:1122px) {
+    #btn_usuario{
+        display: inline-block;
+    }
+    #links li{
+        display: none;
     }
 }
