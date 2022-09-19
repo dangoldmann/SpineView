@@ -42,12 +42,12 @@ router.post('/login', async (req, res, next) => {
 
     const user = await userController.login(userInfo, next)
 
-    if(user) {res.send({user: {user}})}
+    if(user) {res.send({body: {user}})}
 })
 
 router.get('/all', async (req, res) => {
     const users = await userController.getAll()
-    res.send({users: {users}})
+    res.send({body: {users}})
 })
 
 router.put('/password-reset', async (req, res, next) => {
@@ -63,7 +63,7 @@ router.put('/password-reset', async (req, res, next) => {
     
     if(user)
     {
-        res.send({user: {user}})
+        res.send({body: {user}})
     }
 })
 
@@ -80,7 +80,7 @@ router.delete('', async (req, res, next) => {
     
     if(user)
     {
-        res.send({user: {user}})
+        res.send({body: {user}})
     }
 })
 
