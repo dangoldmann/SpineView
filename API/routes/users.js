@@ -1,7 +1,7 @@
 const router = require('express').Router()
 const userController = require('../controllers/user_Controller')
 const ApiError = require('../error/ApiError')
-const {isEmailValid} = require('../scripts/emailValidator')
+const {makeDeepValidation, makeSimpleValidation} = require('../scripts/emailValidator')
 
 const basePath = '/users'
 
@@ -12,11 +12,14 @@ router.post('/register', async (req, res, next) => {
         next(ApiError.badRequest('You must complete all the fields'))
         return
     }
+
+    //const {valid, reason, validators} = await makeDeepValidation(email) // deep email validation
     
-    const {valid, reason, validators} = await isEmailValid(email)
+    const valid = await makeSimpleValidation(email) // simple email validation
 
     if(!valid){
-        next(ApiError.badRequest(`Please provide a valid email adress, ${validators[reason].reason}`))
+        next(ApiError.badRequest('Please provide a valid email adress'))
+        //next(ApiError.badRequest(`Please provide a valid email adress, ${validators[reason].reason}`))
         return
     }
 
@@ -76,11 +79,11 @@ router.delete('', async (req, res, next) => {
     }
     
     userInfo = {email}
-    const user = await userController.delete(userInfo, next)
+    const isDeleted = await userController.delete(userInfo, next)
     
-    if(user)
+    if(isDeleted)
     {
-        res.send({body: {user}})
+        res.send({body: {isDeleted}})
     }
 })
 

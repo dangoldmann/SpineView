@@ -1,7 +1,12 @@
-const emailValidator = require('deep-email-validator')
+const deepValidator = require('deep-email-validator')
+const simpleValidator = require('node-email-validation')
 
-async function isEmailValid(email){
-    return emailValidator.validate(email)
+async function makeDeepValidation(email){
+    return deepValidator.validate(email)
 }
 
-module.exports = {isEmailValid}
+async function makeSimpleValidation(email){
+    return simpleValidator.is_email_valid(email)
+}
+
+module.exports = {makeSimpleValidation, makeDeepValidation}
