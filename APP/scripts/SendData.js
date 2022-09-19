@@ -53,9 +53,9 @@ async function register(formdata){
     password: formdata.get('password')
   }
 
-  const res = await postRequest(url, user)
-  res.body = {name: 'Dan'}
-  console.log(res)
+  let res = await postRequest(url, user)
+  res = await res.json()
+  console.log(res.user)
 }
 
 async function login(formdata){

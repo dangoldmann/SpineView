@@ -21,9 +21,9 @@ router.post('/register', async (req, res) => {
     const userInfo = {name, surname, email, phone, password}
     
     const user = await userController.create(userInfo)
-    
+
     if(user){
-        res.status(201).send(user)
+        res.status(201).send({user: {user}})
     }
 
 })
