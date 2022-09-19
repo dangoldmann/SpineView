@@ -50,7 +50,7 @@ body{
 #logo{
     position: relative;
     right: 40px;
-    width: 70px; height: 70px;
+    width: 60px;
 }
 
 #btn_usuario{
@@ -97,8 +97,8 @@ body{
 }
 
 #links li a:hover{
-    color: #7fffd4;
-    border-bottom: 3px solid #7fffd4;
+    /* color: #f15656; */
+    border-bottom: 3px solid #f15656;
     text-decoration: none;
 }
 
@@ -118,7 +118,7 @@ a#a_escanear.link:hover{
 
 .alt{
     transition:all .2s ease-in-out;
-    border-bottom: #7fffd4  3px solid;
+    border-bottom: #f15656  3px solid;
     text-decoration: none;
 }
 
@@ -194,13 +194,13 @@ a#a_escanear.link:hover{
     z-index: -3;
 }
 
-#OSIA{
+#title{
     font-family: "Space Grotesk", sans-serif;
-    font-size: 175px;
+    font-size: 150px;
     font-weight: 400;
     color: #FBFBFB;
     margin: 10px;
-    letter-spacing: 0.205em;
+    letter-spacing: 0   ;
     text-shadow: 0px 2px 12px #00000040;
 }
 
@@ -243,9 +243,19 @@ a#a_escanear.link:hover{
 
 /*tercera seccion*/
 #tercerseccion{
+    display: flex;
+    align-items: center ;
+    padding: 40px;
+    padding-top: 96px;
     height: 100vh;
     background-color: #7157A8;
     z-index: -1;
+}
+
+.centersection{
+    margin: auto;
+    width: 45%;
+    text-align: center;
 }
 
 .btn_escanear{
@@ -269,6 +279,10 @@ a#a_escanear.link:hover{
     border: solid 5px #c1b7ff;
 }
 
+#tercerseccion img{
+    height: 80%;
+    margin: auto auto 0;
+}
 
 @media (max-width: 1520px){
     #QuienesSomos{
