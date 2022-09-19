@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
     return !result;
   }
 
-  btn_submit.onclick=function(e){
+  btn_submit.onclick = e => {
     e.preventDefault();
     var datosUsuario = new FormData(form);
     
@@ -63,31 +63,13 @@ async function register(formdata){
     console.log(res.body.user)
   }
 }
-
-async function login(formdata){
-  const url = 'http://localhost:3000/users/login'
-
-  const user = {
-    email: formdata.get('email'),
-    password: formdata.get('password')
-  }
-
-  let res = await postRequest(url, user)
-
-  if(res.body.error){
-    console.log(res.body.error)
-  }
-  else{
-    console.log(res.body.user)
-  }
-}
   
-  function pwdMatch(contraseña, contraseña2){
-    if(contraseña != contraseña2){
-      return false
-    }
-    return true
+function pwdMatch(contraseña, contraseña2){
+  if(contraseña != contraseña2){
+    return false
   }
+    return true
+}
 
 async function postRequest(url, data){
   const res = await fetch(url, {
