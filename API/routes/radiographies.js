@@ -1,48 +1,59 @@
 const router = require('express').Router()
 const radiographyController = require('../controllers/radiography_Controller')
+const ApiError = require('../error/ApiError')
 
 const basePath = '/radiographies'
 
-router.post('/add', async (req, res) => {
+router.post('/add', async (req, res, next) => {
     const {imageRoute, bodyPart, userId} = req.body
     
     if(!imageRoute || !bodyPart || !userId){
-        return res.status(400).send('You must complete all the fields')
+        next(ApiError.badRequest('You must complete all the fields'))
+        return
     }
 
     const radiographyInfo = {imageRoute, bodyPart, userId}
     
-    const radiography = await radiographyController.create(radiographyInfo)
+    const radiography = await radiographyController.create(radiographyInfo, next)
 
-    res.status(201).send(radiography)
+    if(radiography){
+        res.status(201).send({body: {radiography}})
+    }
+    
 })
 
-router.get('', async (req, res) => {
+router.get('', async (req, res, next) => {
     const {userId} = req.body
     
     if(!userId){
-        return res.status(400).send('You must complete all the fields')
+        next(ApiError.badRequest('You must complete all the fields'))
+        return
     }
     
     const userInfo = {userId}
 
-    const radiographies = await radiographyController.getByUserId(userInfo)
+    const imageRoutes = await radiographyController.getByUserId(userInfo, next)
 
-    res.send(radiographies)
+    if(imageRoutes){
+        res.send({body: {imageRoutes}})
+    }
 })
 
-router.delete('/delete', async (req, res) => {
+router.delete('/delete', async (req, res, next) => {
     const {imageRoute} = req.body
 
     if(!imageRoute){
-        return res.status(400).send('You must complete all the fields')
+        next(ApiError.badRequest('You must complete all the fields'))
+        return
     }
 
     const radiographyInfo = {imageRoute}
 
-    const radiography = await radiographyController.delete(radiographyInfo)
+    const isDeleted = await radiographyController.delete(radiographyInfo, next)
 
-    res.send(radiography)
+    if(isDeleted){
+        res.send({body: {isDeleted}})
+    }
 })
 
 module.exports = { router, basePath }

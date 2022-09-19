@@ -103,7 +103,7 @@ class userService {
             let sql = `delete from user where email = '${email}'`
             await db.execute(sql)
 
-            return isUser
+            return true
         }
         catch (err){
             console.error(err.message)
