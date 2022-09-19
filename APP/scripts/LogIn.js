@@ -19,7 +19,8 @@ async function login(formdata){
     }
   
     let res = await postRequest(url, user)
-  
+    res = await res.json()
+
     if(res.body.error){
       console.log(res.body.error)
     }
