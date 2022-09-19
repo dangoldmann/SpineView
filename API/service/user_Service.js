@@ -1,6 +1,7 @@
 const bcrypt = require('bcrypt')
 const db = require('../db')
 const {validateEmail, checkUserExistance} = require('../scripts/dbFunctions')
+const ApiError = require('../error/ApiError')
 
 class userService {
     async getAll() {
@@ -9,14 +10,17 @@ class userService {
         return users
     }
 
-    async create(userInfo) {
+    async create(userInfo, next) {
         try {
             const {name, surname, email, phone, password} = userInfo
         
             const hashedPassword = bcrypt.hashSync(password, 10)
 
             const isEmailValid = await validateEmail(email)
-            if(!isEmailValid) return new Error('User already exists with that email adress')
+            if(!isEmailValid) {
+                next(ApiError.badRequest('User already exists with that email adress'))
+                return 
+            }
        
             let sql = `insert into user (name, surname, email, phone, password) values ('${name}', '${surname}', '${email}', '${phone}', '${hashedPassword}')`
             await db.execute(sql)
@@ -36,7 +40,7 @@ class userService {
         }
     }
 
-    async login(userInfo){
+    async login(userInfo, next){
         try
         {
             const {email, password} = userInfo
@@ -45,10 +49,14 @@ class userService {
             const [result, _] = await db.execute(sql)
             const user = result[0]
 
-            if(!user) throw new Error('User not found')
+            if(!user) {
+                next(ApiError.badRequest('User not found'))
+                return
+            }
             
             if(!bcrypt.compareSync(password, user.password)) {
-                throw new Error('Invalid password')
+                next(ApiError.badRequest('Invalid password'))
+                return
             }
 
             return user
@@ -59,33 +67,43 @@ class userService {
         
     }
 
-    async updatePassword(userInfo){
+    async updatePassword(userInfo, next){
         try
         {
             const {email, newPassword} = userInfo
 
             const isUser = await checkUserExistance('email', email)
-            if(!isUser) throw new Error('User not found')
+            if(!isUser) {
+                next(ApiError.badRequest('User not found'))
+                return
+            }
 
             const hashedNewPassword = bcrypt.hashSync(newPassword, 10)
 
             let sql = `update user set password = '${hashedNewPassword}' where email = '${email}'`
             await db.execute(sql)
+
+            return isUser
         }
         catch (err) {
             console.log(err.message)
         }
     }
 
-    async delete(userInfo) {
+    async delete(userInfo, next) {
         try {
             const {email} = userInfo
 
             const isUser = await checkUserExistance('email', email)
-            if(!isUser) throw new Error('User not found')
+            if(!isUser) {
+                next(ApiError.badRequest('User not found'))
+                return
+            }
 
             let sql = `delete from user where email = '${email}'`
             await db.execute(sql)
+
+            return isUser
         }
         catch (err){
             console.error(err.message)

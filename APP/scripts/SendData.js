@@ -55,22 +55,31 @@ async function register(formdata){
 
   let res = await postRequest(url, user)
   res = await res.json()
-  console.log(res.user)
+
+  if(res.body.error){
+    console.log(res.body.error)
+  }
+  else{
+    console.log(res.body.user)
+  }
 }
 
 async function login(formdata){
+  const url = 'http://localhost:3000/users/login'
+
   const user = {
     email: formdata.get('email'),
     password: formdata.get('password')
   }
 
-  const res = await fetch('http://localhost:3000/users/login', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(user)
-  })
+  let res = await postRequest(url, user)
+
+  if(res.body.error){
+    console.log(res.body.error)
+  }
+  else{
+    console.log(res.body.user)
+  }
 }
   
   function pwdMatch(contraseña, contraseña2){
