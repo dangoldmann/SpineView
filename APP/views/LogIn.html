@@ -11,23 +11,23 @@
     <div class="center">
       <h1>Iniciar sesión</h1>
 
-      <form action="" method="POST">
+      <form action="" method="POST" id="formLogIn" name="formLogIn">
 
         <div class="txt_field">
-          <input type="text" required name="NomUsuario">
+          <input type="email" required name="email">
           <span></span>
           <label>Usuario</label>
         </div>
 
         <div class="txt_field">
-          <input type="password" required name="ContraseniaUsuario">
+          <input type="password" required name="password">
           <span></span>
           <label>Contraseña</label>
         </div>
 
         <div class="pass">Olvide mi contraseña</div>
 
-        <input type="submit" value="Ingresar">
+        <input type="submit" value="Ingresar" id="btn_submit">
 
         <div class="signup_link">
           ¿No tenes cuenta? <a href="register">Registrarse</a>
@@ -35,6 +35,6 @@
 
       </form>
     </div>
-
+    <script src="../scripts/LogIn.js"></script>
   </body>
 </html>

@@ -1,74 +1,87 @@
 const router = require('express').Router()
 const userController = require('../controllers/user_Controller')
+const ApiError = require('../error/ApiError')
 const {isEmailValid} = require('../scripts/emailValidator')
 
 const basePath = '/users'
 
-router.post('/register', async (req, res) => {
+router.post('/register', async (req, res, next) => {
     const {name, surname, email, phone, password} = req.body
     
     if(!name || !surname || !email || !phone || !password){
-        return res.status(400).send('You must complete all the fields')
+        next(ApiError.badRequest('You must complete all the fields'))
+        return
     }
     
     const {valid, reason, validators} = await isEmailValid(email)
 
-    if(!valid) return res.status(400).send({
-        message: 'Please provide a valid email adress',
-        reason: validators[reason].reason
-    })
+    if(!valid){
+        next(ApiError.badRequest(`Please provide a valid email adress, ${validators[reason].reason}`))
+        return
+    }
 
     const userInfo = {name, surname, email, phone, password}
     
-    const user = await userController.create(userInfo)
-
+    const user = await userController.create(userInfo, next)
+    
     if(user){
-        res.status(201).send({user: {user}})
+        res.status(201).send({body: {user}})
     }
 
 })
 
-router.post('/login', async (req, res) => {
+router.post('/login', async (req, res, next) => {
     const {email, password} = req.body
     
     if(!email || !password){
-        return res.status(400).send('You must complete all the fields')
+        next(ApiError.badRequest('You must complete all the fields'))
+        return
     }
 
     const userInfo = {email, password}
 
-    const user = await userController.login(userInfo)
+    const user = await userController.login(userInfo, next)
 
-    res.send(user)
+    if(user) {res.send({body: {user}})}
 })
 
 router.get('/all', async (req, res) => {
     const users = await userController.getAll()
-    res.send(users)
+    res.send({body: {users}})
 })
 
-router.put('/password-reset', async (req, res) => {
+router.put('/password-reset', async (req, res, next) => {
     const {email, newPassword} = req.body
     
     if(!email || !newPassword){
-        return res.status(400).send('You must complete all the fields')
+        next(ApiError.badRequest('You must complete all the fields'))
+        return
     }
 
     userInfo = {email, newPassword}
-    const user = await userController.updatePassword(userInfo)
-    res.send(user)
+    const user = await userController.updatePassword(userInfo, next)
+    
+    if(user)
+    {
+        res.send({body: {user}})
+    }
 })
 
-router.delete('', async (req, res) => {
+router.delete('', async (req, res, next) => {
     const {email} = req.body
     
     if(!email){
-        return res.status(400).send('You must complete all the fields')
+        next(ApiError.badRequest('You must complete all the fields'))
+        return
     }
     
     userInfo = {email}
-    const user = await userController.delete(userInfo)
-    res.json(user)
+    const user = await userController.delete(userInfo, next)
+    
+    if(user)
+    {
+        res.send({body: {user}})
+    }
 })
 
 module.exports = {router, basePath}

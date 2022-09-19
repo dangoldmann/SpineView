@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
     return !result;
   }
 
-  btn_submit.onclick=function(e){
+  btn_submit.onclick = e => {
     e.preventDefault();
     var datosUsuario = new FormData(form);
     
@@ -55,30 +55,21 @@ async function register(formdata){
 
   let res = await postRequest(url, user)
   res = await res.json()
-  console.log(res.user)
-}
 
-async function login(formdata){
-  const user = {
-    email: formdata.get('email'),
-    password: formdata.get('password')
+  if(res.body.error){
+    console.log(res.body.error)
   }
-
-  const res = await fetch('http://localhost:3000/users/login', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(user)
-  })
+  else{
+    console.log(res.body.user)
+  }
 }
   
-  function pwdMatch(contraseña, contraseña2){
-    if(contraseña != contraseña2){
-      return false
-    }
-    return true
+function pwdMatch(contraseña, contraseña2){
+  if(contraseña != contraseña2){
+    return false
   }
+    return true
+}
 
 async function postRequest(url, data){
   const res = await fetch(url, {
