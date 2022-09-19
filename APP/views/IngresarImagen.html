@@ -1,54 +1,36 @@
 <!DOCTYPE html>
 <html>
 <head> 
-    <title>OSIA</title>
-    <link rel="icon" href="../images/LogoOsia.png">
+    <title>Ingresar Estudio</title>
+    <link rel="icon" href="../public/images/LogoOsia.png">
     <link rel="stylesheet" href="../public/css/IngresarImagenStyle.css">
 </head>
 <body>
+    <nav>
+        <img src="../public/images/LogoOsia.png" alt="">
+        <a href="HomePage.html">Volver al inicio</a>
+        <span style="width:80px; height: 80px;"></span>
+    </nav>
     
-    <form action="" method="post" id="form">
-        <div class="ingresarimagenes" id="ingresarImagenes">
+    <form action="" method="post">
+        <div class="mainForm">
+            <div class="ingresarimagenes" id="ingresarImagenes">
+            <img src="../public/images/Cloud-upload.png">
             <h1 class="ingresarImagen">Ingresar Imagen(es)</h1>
-            <input id="ingresar" class="ingresar" type="file" accept="image/jpeg, image/png" hidden>
-            <img src="../public/images/Fondo sin nombreRecurso 1 1.svg" class="iconoRadiografia">
+            <input id="imgInput" name="imgInput" class="imgInput" type="file" accept="image/jpeg, image/png" hidden>
+        </div>
+
+        <section class="previews">
+            <h1 class="h1previewimg">Acá se previzualizaran imagenes</h1>
+        </section>
         </div>
         
-        <div class="previews">
-            <h1 class="hpreviewimg">Aca se previzualizan imagenes</h1>
-        </div>
-
-        <div class="ingresarDatosUtiles" id="ingresarDatosUtiles">
-            <label for="TipoEstudio">Tipo de Estudio:</label>
-            <select name="TipoEstudio" id="">
-                <option value="Radiografia">Radiografia</option>
-            </select>
-            <br>
-            <label for="ParteCuerpo">Parte del Cuerpo:</label>
-            <select name="ParteCuerpo" id="">
-                <option value="Cabeza">Cabeza</option>
-                <option value="Cuello">Cuello</option>
-                <option value="Pecho">Pecho</option>
-                <option value="Brazos">Brazos</option>
-                <option value="Piernas">Piernas</option>
-                <option value="Manos">Manos</option>
-                <option value="Pies">Pies</option>
-                <option value="Otros">Otros</option>
-            </select>
-            <br>
-            <label for="Edad">Edad:</label>
-            <input type="number" name="Edad" id="Edad" min="0" max="100" step="1" value="0">
-            <br>
-            <label for="Sexo">Sexo Biologico:</label> 
-            <select name="Sexo" id="">
-                <option value="Hombre">Masculino</option>
-                <option value="Mujer">Femenino</option>
-            </select>
-        </div>
 
         <input type="submit" value="ESCANEAR" class="enviarDatos">
+        
     </form>
 
+    
     
     <script src="../scripts/ControllerIngresarImagen.js"></script>
 </body>
