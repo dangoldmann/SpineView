@@ -77,9 +77,10 @@ form .txt_field{
   width: 100%;
 }
 .pass{
-  margin: -5px 0 20px 5px;
+  margin: 10px;
   color: #b8a6e3;
   cursor: pointer;
+  text-align: center;
 }
 .pass:hover{
   text-decoration: underline;
@@ -101,7 +102,7 @@ input[type="submit"]:hover{
   transition: .5s;
 }
 .signup_link{
-  margin: 30px 0;
+  margin: 20px;
   text-align: center;
   font-size: 16px;
   color: #666666;
