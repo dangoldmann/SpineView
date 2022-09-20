@@ -62,11 +62,11 @@ router.put('/password-reset', async (req, res, next) => {
     }
 
     userInfo = {email, newPassword}
-    const user = await userController.updatePassword(userInfo, next)
+    const passwordReset = await userController.updatePassword(userInfo, next)
     
-    if(user)
+    if(passwordReset)
     {
-        res.send({body: {user}})
+        res.send({body: {passwordReset}})
     }
 })
 
