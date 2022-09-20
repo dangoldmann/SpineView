@@ -1,11 +1,3 @@
--- ----------------------------------------------------------------------------
--- MySQL Workbench Migration
--- Migrated Schemata: osia
--- Source Schemata: osia
--- Created: Tue Sep 20 11:33:34 2022
--- Workbench Version: 8.0.27
--- ----------------------------------------------------------------------------
-
 SET FOREIGN_KEY_CHECKS = 0;
 
 -- ----------------------------------------------------------------------------
@@ -22,7 +14,7 @@ CREATE TABLE IF NOT EXISTS `osia`.`body_part` (
   `name` VARCHAR(30) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 2
+AUTO_INCREMENT = 1
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -35,7 +27,7 @@ CREATE TABLE IF NOT EXISTS `osia`.`injury` (
   `description` LONGTEXT NULL DEFAULT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 2
+AUTO_INCREMENT = 1
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -57,7 +49,7 @@ CREATE TABLE IF NOT EXISTS `osia`.`radiography` (
     FOREIGN KEY (`id_user`)
     REFERENCES `osia`.`user` (`id`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 11
+AUTO_INCREMENT = 1
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -79,7 +71,7 @@ CREATE TABLE IF NOT EXISTS `osia`.`radiography_injury` (
     FOREIGN KEY (`id_injury`)
     REFERENCES `osia`.`injury` (`id`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 7
+AUTO_INCREMENT = 1
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -95,7 +87,7 @@ CREATE TABLE IF NOT EXISTS `osia`.`user` (
   `password` VARCHAR(100) NULL DEFAULT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 49
+AUTO_INCREMENT = 1
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 SET FOREIGN_KEY_CHECKS = 1;

@@ -1,11 +1,11 @@
-// dependencies
+require('dotenv').config()
 const express = require('express')
 const app = express();
-const {router: userRoutes, basePath: userBasePath} = require('./routes/users')
-const {router: radiographyRoutes, basePath: radiographyBasePath} = require('./routes/radiographies')
 const cors = require('cors')
 const apiErrorHandler = require('./error/api-error-handler');
 const ApiError = require('./error/ApiError');
+const {router: userRoutes, basePath: userBasePath} = require('./routes/users')
+const {router: radiographyRoutes, basePath: radiographyBasePath} = require('./routes/radiographies')
 
 // middleware
 app.use(express.json())
