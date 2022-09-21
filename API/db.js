@@ -7,6 +7,8 @@ const conn = mysql.createConnection({
     password: process.env.DB_PASSWORD,
     port: process.env.DB_PORT,
     database: process.env.DB_DATABASE
-}) 
+}) // RAILWAY CONNECTION
 
-module.exports = conn.promise()
+const connection = mysql.createConnection(process.env.DB_URL) // PLANET SCALE CONNECTION
+
+module.exports = connection.promise()
