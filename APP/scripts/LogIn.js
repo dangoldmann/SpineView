@@ -25,7 +25,7 @@ async function login(formdata){
     res = await res.json()
 
     if(res.body.error){
-      errorMsg=res.body.error.message;
+      actOnError(res.body.error.message)
       console.log(errorMsg)
     }
     window.location.href = './HomePage.html'

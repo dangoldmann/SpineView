@@ -60,7 +60,7 @@ async function register(formdata){
   res = await res.json()
 
   if(res.body.error){
-    console.log(res.body.error)
+    actOnError(res.body.error.message);
     return
   }
   window.location.href="./HomePage.html";
