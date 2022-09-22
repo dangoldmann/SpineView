@@ -114,3 +114,8 @@ input[type="submit"]:hover{
 .signup_link a:hover{
   text-decoration: underline;
 }
+
+.txt_field .thisIsWrong{
+  color: red;
+  border: red;
+}

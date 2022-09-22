@@ -120,7 +120,7 @@ input[type="submit"]:hover{
 .signUp a:hover{
   text-decoration: underline;
 }
-.txt_field .passwordwrong{
+.txt_field .thisIsWrong{
   color: red;
   border: red;
 }
