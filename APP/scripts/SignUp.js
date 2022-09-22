@@ -1,3 +1,5 @@
+const apiUrl = 'https://osia-api-production.up.railway.app'
+
 document.addEventListener("DOMContentLoaded", ()=>{
   const btn_submit = document.getElementById("btn_submit");
   var form = document.getElementById("formRegistro");
@@ -27,8 +29,8 @@ document.addEventListener("DOMContentLoaded", ()=>{
     
     if(!isPassword){
       alert("Las contreñas no coinciden");
-      txts_passwords.classList.add("passwordwrong");
-      lbl_password.classList.add("passwordwrong")
+      txts_passwords.classList.add("thisIsWrong");
+      lbl_password.classList.add("thisIsWrong")
     }
 
     else if (isComplete(datosUsuario)){
@@ -43,8 +45,9 @@ document.addEventListener("DOMContentLoaded", ()=>{
 })
 
 async function register(formdata){
-  const url = 'http://localhost:3000/users/register'
-
+  const registerRoute = '/users/register'
+  const url = apiUrl + registerRoute
+  
   const user = {
     name: formdata.get('name'),
     surname: formdata.get('surname'),
@@ -58,10 +61,9 @@ async function register(formdata){
 
   if(res.body.error){
     console.log(res.body.error)
+    return
   }
-  else{
-    console.log(res.body.user)
-  }
+  window.location.href="./HomePage.html";
 }
   
 function pwdMatch(contraseña, contraseña2){
@@ -81,4 +83,22 @@ async function postRequest(url, data){
   })
 
   return res
+}
+
+function actOnError(msg){
+if(msg == "User not found"){
+  alert("msg");
+}
+
+else if(msg == "Invalid password"){
+  alert(msg);
+}
+
+else if(msg =="Invalid email adress"){
+  alert(msg);
+}
+
+else{
+  alert("Algo salio mal")
+}
 }

@@ -1,3 +1,5 @@
+const apiUrl = 'https://osia-api-production.up.railway.app'
+
 document.addEventListener('DOMContentLoaded', () => {
     const btn_submit = document.getElementById("btn_submit");
     var form = document.getElementById("formLogIn");
@@ -11,7 +13,8 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 async function login(formdata){
-    const url = 'http://localhost:3000/users/login'
+    const loginRoute = '/users/login'
+    const url = apiUrl + loginRoute
   
     const user = {
       email: formdata.get('email'),
@@ -22,11 +25,10 @@ async function login(formdata){
     res = await res.json()
 
     if(res.body.error){
-      console.log(res.body.error)
+      errorMsg=res.body.error.message;
+      console.log(errorMsg)
     }
-    else{
-      console.log(res.body.user)
-    }
+    window.location.href = './HomePage.html'
 }
 
 async function postRequest(url, data){
@@ -39,4 +41,18 @@ async function postRequest(url, data){
     })
   
     return res
+}
+
+function actOnError(msg){
+  if(msg == "User not found"){
+    alert("msg");
+  }
+
+  else if(msg == "Invalid password"){
+    alert(msg);
+  }
+
+  else{
+    alert("Algo salio mal")
+  }
 }
