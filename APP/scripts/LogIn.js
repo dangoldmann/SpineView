@@ -1,4 +1,6 @@
 const apiUrl = 'https://osia-api-production.up.railway.app'
+//const apiUrl = 'http://localhost:3000'
+
 var lbl_email = document.getElementById("email")
 var txt_field_email = document.getElementById("txt_field_email")
 var txt_field_pwd = document.getElementById("pwd")
@@ -31,6 +33,9 @@ async function login(formdata){
       actOnError(res.body.error.message)
       console.log(errorMsg)
     }
+    console.log(res.body)
+
+    document.cookie = `token=${res.body.token}; max-age=86400;`
     window.location.href = './HomePage.html'
 }
 

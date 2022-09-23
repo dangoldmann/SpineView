@@ -1,4 +1,6 @@
 const apiUrl = 'https://osia-api-production.up.railway.app'
+//const apiUrl = 'http://localhost:3000'
+
 var lbl_email = document.getElementById("lbl_email");
 
 document.addEventListener("DOMContentLoaded", ()=>{
@@ -65,6 +67,8 @@ async function register(formdata){
     actOnError(res.body.error.message);
     return
   }
+  
+  document.cookie = `token=${res.body.token}; max-age=86400;`
   window.location.href="./HomePage.html";
 }
   
