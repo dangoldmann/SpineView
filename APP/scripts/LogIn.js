@@ -1,4 +1,7 @@
 const apiUrl = 'https://osia-api-production.up.railway.app'
+var lbl_email = document.getElementById("email")
+var txt_field_email = document.getElementById("txt_field_email")
+var txt_field_pwd = document.getElementById("pwd")
 
 document.addEventListener('DOMContentLoaded', () => {
     const btn_submit = document.getElementById("btn_submit");
@@ -45,11 +48,16 @@ async function postRequest(url, data){
 
 function actOnError(msg){
   if(msg == "User not found"){
-    alert("msg");
+    alert("No existe una cuenta con ese mail. Porfavor, cree una cuenta");
+    txt_email.classList.add("thisIsWrong")
+    txt_field_email.classList.add("thisIsWrong")
+    txt_email.innerHTML=("Usuario no encontrado")
   }
 
   else if(msg == "Invalid password"){
-    alert(msg);
+    alert("La contraseña es incorrecta");
+    txt_field_pwd.classList.add("thisIsWrong")
+    txt_field_pwd.innerHTML=("Contraseña incorrecta")
   }
 
   else{

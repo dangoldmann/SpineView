@@ -80,14 +80,6 @@ form .txt_field{
 .txt_field input:valid ~ span::before{
   width: 100%;
 }
-.pass{
-  margin: 20px;
-  color: #a6a6a6;
-  cursor: pointer;
-}
-.pass:hover{
-  text-decoration: underline;
-}
 
 input[type="submit"]{
   display: flex;

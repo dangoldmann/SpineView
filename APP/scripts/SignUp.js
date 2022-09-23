@@ -1,4 +1,5 @@
 const apiUrl = 'https://osia-api-production.up.railway.app'
+var lbl_email = document.getElementById("lbl_email");
 
 document.addEventListener("DOMContentLoaded", ()=>{
   const btn_submit = document.getElementById("btn_submit");
@@ -30,7 +31,8 @@ document.addEventListener("DOMContentLoaded", ()=>{
     if(!isPassword){
       alert("Las contreñas no coinciden");
       txts_passwords.classList.add("thisIsWrong");
-      lbl_password.classList.add("thisIsWrong")
+      lbl_password.classList.add("thisIsWrong");
+      lbl_email.classList.remove("thisIsWrong");
     }
 
     else if (isComplete(datosUsuario)){
@@ -86,19 +88,18 @@ async function postRequest(url, data){
 }
 
 function actOnError(msg){
-if(msg == "User not found"){
-  alert("msg");
-}
-
-else if(msg == "Invalid password"){
+if(msg == "User already exists with that email adress"){
   alert(msg);
+  lbl_email.classList.add("thisIsWrong")
 }
 
 else if(msg =="Invalid email adress"){
   alert(msg);
+  lbl_email.classList.add("thisIsWrong")
+  
 }
 
 else{
-  alert("Algo salio mal")
+  alert(msg)
 }
 }

@@ -116,6 +116,6 @@ input[type="submit"]:hover{
 }
 
 .txt_field .thisIsWrong{
-  color: red;
-  border: red;
+  color: red!important;
+  border: red!important;
 }
