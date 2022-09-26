@@ -31,9 +31,8 @@ async function login(formdata){
 
     if(res.body.error){
       actOnError(res.body.error.message)
-      console.log(errorMsg)
+      return
     }
-    console.log(res.body)
 
     document.cookie = `token=${res.body.token}; max-age=86400;`
     window.location.href = './HomePage.html'
