@@ -24,6 +24,5 @@ wrapper.addEventListener("scroll", () => {
     navbar.classList.toggle("navbarAltColor", wrapper.scrollTop>=1 );
     quienesSomos.classList.toggle("alt", wrapper.scrollTop>600 && wrapper.scrollTop<=1331);
     a_escanear.classList.toggle("alt", wrapper.scrollTop>1331);
-    console.log(wrapper.scrollTop);
 });
 
