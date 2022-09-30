@@ -12,27 +12,28 @@
         <span style="width:80px; height: 80px;"></span>
     </nav>
     
-    <form action="" method="post">
+    <form action="" method="post" id="form">
         <div class="mainForm">
             <div class="ingresarimagenes" id="ingresarImagenes">
-            <img src="../public/images/Cloud-upload.png">
-            <h1 class="ingresarImagen">Ingresar Imagen(es)</h1>
-            <input id="imgInput" name="imgInput" class="imgInput" type="file" accept="image/jpeg, image/png" hidden>
-        </div>
+                <img src="../public/images/Cloud-upload.png">
+                <h1 class="ingresarImagen">Ingresar Imagen</h1>
+                <input id="imgInput" name="imgInput" class="imgInput" type="file" accept="image/jpeg, image/png" hidden>
+            </div>
 
-        <section class="previews" id="previews">
-            <img src="" alt="" class="img-preview__image">
-            <span class="img-preview__default-text">No hay imagen seleccionada</span>
-        </section>
+            <section class="previews" id="previews">
+                <img src="" alt="" class="img-preview__image">
+                <span class="img-preview__default-text">No hay imagen seleccionada</span>
+            </section>
         </div>
         
 
-        <input type="submit" value="ESCANEAR" class="enviarDatos">
+        <input type="submit" value="ESCANEAR" class="enviarDatos" id="btn_submit">
         
     </form>
 
     
     <script src="../scripts/previewImg.js"></script>
     <script src="../scripts/ControllerIngresarImagen.js"></script>
+    <script src="../scripts/sendImages.js"></script>
 </body>
 </html>
