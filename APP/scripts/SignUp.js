@@ -63,8 +63,8 @@ async function register(formdata){
   let res = await postRequest(url, user)
   res = await res.json()
 
-  if(res.body.error){
-    actOnError(res.body.error.message);
+  if(res.error){
+    actOnError(res.error.message);
     return
   }
   
