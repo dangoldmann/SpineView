@@ -25,5 +25,6 @@ document.addEventListener("DOMContentLoaded", ()=>{
         ingresarImagenes.style.display = "none";
         previewContainer.classList.add("bigPreview");
         redo.style.display = "inline-block";
+        console.log(inpFile.files);
     });
 });

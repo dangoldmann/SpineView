@@ -59,7 +59,14 @@ form{
 }
 
 .ingresarimagenes img{
-    width: 200px;
+    width: 150px;
+    margin: auto;
+    display: flex;
+}
+.ingresarimagenes h1{
+    margin: auto;
+    text-align: center;
+    color: #502660;
 }
 
 #ingresarImagenes.highlight{
