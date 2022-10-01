@@ -10,18 +10,20 @@ document.addEventListener("DOMContentLoaded", ()=>{
         var imageToUpload = imgInput.files[0];
         
         if(imageToUpload){
-            sendImage(imageToUpload);
+            const formdata = new FormData();
+            formdata.append('image', imageToUpload);
+            const res = sendImage(formdata);
         }
         else{
             inputArea.classList.add("highlight");   
         }
     }
 
-    async function sendImage(imageToUpload){
+    async function sendImage(formdata){
         const url= apiUrl + '/images/upload';
-        const res = await fetch(url, {
+        let res = await fetch(url, {
             method: 'POST',
-            body: imageToUpload
+            body: formdata
         })
         return res;
     }
