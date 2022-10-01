@@ -1,25 +1,29 @@
 document.addEventListener("DOMContentLoaded", ()=>{
     const apiUrl = 'http://localhost:3000';
-    const form= document.getElementById("form");
+    const imgInput = document.getElementById("imgInput");
     const btn_submit = document.getElementById("btn_submit");
+    var inputArea = document.getElementById("ingresarImagenes");
 
-    let isComplete = dataform => {
-        let arraydata = [];
-        for (let el of dataform.values()){
-            arraydata.push(el);
-        }
-        
-        let result = arraydata.some((e)=>{
-            if (e == ""){
-                return true;
-            }
-            return false;
-        });
-        return !result;
-    }
 
     btn_submit.onclick = e => {
         e.preventDefault();
-        var imageToUpload = new FormData(form);
+        var imageToUpload = imgInput.files[0];
+        
+        if(imageToUpload){
+            sendImage(imageToUpload);
+        }
+        else{
+            inputArea.classList.add("highlight");   
+        }
     }
+
+    async function sendImage(imageToUpload){
+        const url= apiUrl + '/images/upload';
+        const res = await fetch(url, {
+            method: 'POST',
+            body: imageToUpload
+        })
+        return res;
+    }
+
 });
