@@ -1,4 +1,9 @@
+const apiUrl = 'https://osia-api-production.up.railway.app'
+//const apiUrl = 'http://localhost:3000'
+
 document.addEventListener("DOMContentLoaded", ()=>{
+    checkCookies()
+
     var form = document.getElementById("ingresarImagenes");
     var fileInput = document.getElementById("imgInput");
     var dropArea = document.getElementById("ingresarImagenes")
@@ -81,3 +86,21 @@ document.addEventListener("DOMContentLoaded", ()=>{
         redo.style.display = "inline-block";
     }
 });
+
+async function checkCookies(){
+    let res = await getRequest(apiUrl)
+    res = await res.json()
+    
+    if(res.redirect){
+        window.location.href = res.redirect.destination
+    }
+}
+
+async function getRequest(url){
+    const res = await fetch(url, {
+        method: 'GET',
+        credentials: 'include'
+    })
+
+    return res
+}

@@ -1,11 +1,13 @@
-//const apiUrl = 'https://osia-api-production.up.railway.app'
-const apiUrl = 'http://localhost:3000'
+const apiUrl = 'https://osia-api-production.up.railway.app'
+//const apiUrl = 'http://localhost:3000'
 
 var lbl_email = document.getElementById("email")
 var txt_field_email = document.getElementById("txt_field_email")
 var txt_field_pwd = document.getElementById("pwd")
 
 document.addEventListener('DOMContentLoaded', () => {
+    checkCookies()
+  
     const btn_submit = document.getElementById("btn_submit");
     var form = document.getElementById("formLogIn");
 
@@ -16,6 +18,17 @@ document.addEventListener('DOMContentLoaded', () => {
         login(datosUsuario)
     }
 })
+
+async function checkCookies(){
+  const url = apiUrl + '/users/login'
+
+  let res = await getRequest(url)
+  res = await res.json()
+
+  if(res.redirect){
+    window.location.href = res.redirect.destination
+  }
+}
 
 async function login(formdata){
     const loginRoute = '/users/login'
@@ -34,20 +47,7 @@ async function login(formdata){
       return
     }
 
-    //window.location.href = './HomePage.html'
-}
-
-async function postRequest(url, data){
-    const res = await fetch(url, {
-      method: 'POST',
-      credentials: 'include',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data)
-    })
-  
-    return res
+    window.location.href = './HomePage.html'
 }
 
 function actOnError(msg){
@@ -67,4 +67,26 @@ function actOnError(msg){
   else{
     alert("Algo salio mal")
   }
+}
+
+async function postRequest(url, data){
+  const res = await fetch(url, {
+    method: 'POST',
+    credentials: 'include',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  })
+
+  return res
+}
+
+async function getRequest(url){
+  const res = await fetch(url, {
+    method: 'GET',
+    credentials: 'include'
+  })
+
+  return res
 }

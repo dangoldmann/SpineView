@@ -1,3 +1,19 @@
+const apiUrl = 'https://osia-api-production.up.railway.app'
+//const apiUrl = 'http://localhost:3000'
+
+document.addEventListener('DOMContentLoaded', () => {
+    checkCookies()
+})
+
+async function checkCookies(){
+    let res = await getRequest(apiUrl)
+    res = await res.json()
+    
+    if(res.redirect){
+        window.location.href = res.redirect.destination
+    }
+}
+
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -26,3 +42,11 @@ wrapper.addEventListener("scroll", () => {
     a_escanear.classList.toggle("alt", wrapper.scrollTop>1331);
 });
 
+async function getRequest(url){
+    const res = await fetch(url, {
+        method: 'GET',
+        credentials: 'include'
+    })
+
+    return res
+}

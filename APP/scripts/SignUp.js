@@ -1,9 +1,11 @@
-//const apiUrl = 'https://osia-api-production.up.railway.app'
-const apiUrl = 'http://localhost:3000'
+const apiUrl = 'https://osia-api-production.up.railway.app'
+//const apiUrl = 'http://localhost:3000'
 
 var lbl_email = document.getElementById("lbl_email");
 
 document.addEventListener("DOMContentLoaded", ()=>{
+  checkCookies()
+
   const btn_submit = document.getElementById("btn_submit");
   var form = document.getElementById("formRegistro");
   var txts_passwords = document.getElementById("pass");
@@ -68,7 +70,7 @@ async function register(formdata){
     return
   }
   
-  //window.location.href="./HomePage.html";
+  window.location.href="./HomePage.html";
 }
   
 function pwdMatch(contraseña, contraseña2){
@@ -78,18 +80,16 @@ function pwdMatch(contraseña, contraseña2){
     return true
 }
 
-async function postRequest(url, data){
-  const res = await fetch(url, {
-    method: 'POST',
-    credentials: 'include',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(data)
-  })
+async function checkCookies(){
+  const url = apiUrl + '/users/register'
 
-  return res
-}
+  let res = await getRequest(url)
+  res = await res.json()
+
+  if(res.redirect){
+    window.location.href = res.redirect.destination
+  }
+} 
 
 function actOnError(msg){
 if(msg == "User already exists with that email adress"){
@@ -106,4 +106,26 @@ else if(msg =="Invalid email adress"){
 else{
   alert(msg)
 }
+}
+
+async function postRequest(url, data){
+  const res = await fetch(url, {
+    method: 'POST',
+    credentials: 'include',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  })
+
+  return res
+}
+
+async function getRequest(url){
+  const res = await fetch(url, {
+    method: 'GET',
+    credentials: 'include'
+  })
+
+  return res
 }

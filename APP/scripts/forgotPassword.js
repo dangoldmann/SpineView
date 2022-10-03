@@ -1,7 +1,9 @@
-//const apiUrl = 'https://osia-api-production.up.railway.app'
-const apiUrl = 'http://localhost:3000'
+const apiUrl = 'https://osia-api-production.up.railway.app'
+//const apiUrl = 'http://localhost:3000'
 
 document.addEventListener('DOMContentLoaded', () => {
+    checkCookies()
+    
     const btn_submit = document.getElementById('btn_submit')
     const form = document.getElementById('formResetPassword')
 
@@ -25,6 +27,15 @@ async function forgotPassword(formData) {
     }
 }
 
+async function checkCookies(){
+    let res = await getRequest(apiUrl)
+    res = await res.json()
+
+    if(res.redirect){
+        window.location.href = res.redirect.destination
+    }
+}
+
 async function postRequest(url, data){
     const res = await fetch(url, {
       method: 'POST',
@@ -35,5 +46,14 @@ async function postRequest(url, data){
       body: JSON.stringify(data)
     })
   
+    return res
+}
+
+async function getRequest(url){
+    const res = await fetch(url, {
+        method: 'GET',
+        credentials: 'include'
+    })
+
     return res
 }
