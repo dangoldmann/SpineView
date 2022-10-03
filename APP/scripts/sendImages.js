@@ -21,11 +21,11 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
     async function sendImage(formdata){
         const url= apiUrl + '/images/upload';
-        let res = await fetch(url, {
+        var res = await fetch(url, {
             method: 'POST',
             body: formdata
         })
         return res;
     }
-
+    
 });
