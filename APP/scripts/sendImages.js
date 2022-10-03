@@ -3,12 +3,13 @@ document.addEventListener("DOMContentLoaded", ()=>{
     const imgInput = document.getElementById("imgInput");
     const btn_submit = document.getElementById("btn_submit");
     var inputArea = document.getElementById("ingresarImagenes");
+    var imageToUpload;
     var res;
 
 
     btn_submit.onclick = e => {
         e.preventDefault();
-        var imageToUpload = imgInput.files[0];
+        imageToUpload = imgInput.files[0];
         
         if(imageToUpload){
             const formdata = new FormData();
@@ -34,8 +35,10 @@ document.addEventListener("DOMContentLoaded", ()=>{
         .catch(err => {
             let diverror= document.getElementById("error");
             let divwrapper = document.getElementById("wrapper");
+            let intentaste = document.getElementById("intentaste");
             divwrapper.style.display = "none";
             diverror.style.display = "flex";
+            intentaste.innerHTML="No se pudo subir \""+imageToUpload.name+"\"";
         });
         return res;
     }
