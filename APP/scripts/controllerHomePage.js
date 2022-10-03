@@ -50,3 +50,8 @@ async function getRequest(url){
 
     return res
 }
+function logout(){
+    if (confirm("¿Está seguro que desea cerrar sesión?")){
+        window.location.reload();
+    }
+}
