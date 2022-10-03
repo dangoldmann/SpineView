@@ -1,0 +1,124 @@
+.navbar{
+    position: sticky;    
+    top: 0px;
+    padding: 20px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;    
+    transition: all .7s;
+
+}
+
+.navbarAltColor{
+    background: #6B3F8F;
+    padding: 10px 30px;
+}
+
+#logo{
+    width: 60px;
+}
+
+#btn_usuario{
+    display: none;
+    top: 30px;
+    width: 70px; height: 70px;
+    left: 0px;
+    background: #5923ce;
+    border-radius: 0px 10px 10px 0px;
+    border:hidden;
+    color: #fff;
+    cursor: pointer;
+}
+
+#imgUsuario{
+    width: 50px; height: 50px;
+}
+
+#btn_usuario:hover{
+    width: 140px;
+    transition: .3s;
+}
+
+#btn_usuario:not(hover){
+    transition: .3s;
+}
+
+#links{
+    list-style: none;
+}
+
+#links li{
+    display: inline-block;
+    padding: 10px;
+}
+
+#links li a{
+    font-family: "Raleway", sans-serif;
+    font-size: 17px;
+    padding:5px;
+    text-decoration: none;
+    font-weight: 100;
+    transition: all .2s ease-in-out;
+}
+
+#links li a:hover{
+    /* color: #f15656; */
+    border-bottom: 3px solid #f15656;
+    text-decoration: none;
+}
+
+.link{
+    color: #fff;
+    font-family: "Work-Sans", sans-serif;
+}
+
+a#a_escanear.link{
+    text-decoration: none;
+    font-size: 20px;
+}
+a#a_escanear.link:hover{
+    font-size: 25px;
+}
+
+.alt{
+    transition:all .2s ease-in-out;
+    border-bottom: #f15656  3px solid;
+    text-decoration: none;
+}
+
+.menulateral{
+    position: absolute;
+    height: 100vh; width: 0;
+    top: 0; left: 0;
+    background-color: #5923ce;
+    overflow-x: hidden;
+    transition: .5s;
+    padding-top: 60px;
+}
+.menulateral .imgUsuario{
+    position: absolute;
+    top: 20px; left: 15px;
+    width: 50px; height: 50px;
+}
+.menulateral .cerrar{
+    position: absolute;
+    top: 0; 
+    right: 0;
+    font-size: 30px;
+    color: #fff;
+    cursor: pointer;
+    border: hidden;
+}
+
+.menulateral a{
+    margin: 15px;
+    padding:8px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #ffffff;
+    display: block;
+    transition: 0.3s;
+    border: solid 2px #fff;
+    font-family: "raleway", sans-serif;
+    text-align: center;
+}
