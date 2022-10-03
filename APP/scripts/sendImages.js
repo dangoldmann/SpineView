@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
     const imgInput = document.getElementById("imgInput");
     const btn_submit = document.getElementById("btn_submit");
     var inputArea = document.getElementById("ingresarImagenes");
+    var res;
 
 
     btn_submit.onclick = e => {
@@ -12,7 +13,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
         if(imageToUpload){
             const formdata = new FormData();
             formdata.append('image', imageToUpload);
-            const res = sendImage(formdata);
+            res = sendImage(formdata);
         }
         else{
             inputArea.classList.add("highlight");   
@@ -25,7 +26,17 @@ document.addEventListener("DOMContentLoaded", ()=>{
             method: 'POST',
             body: formdata
         })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+            return data;
+        })
+        .catch(err => {
+            let diverror= document.getElementById("error");
+            let divwrapper = document.getElementById("wrapper");
+            divwrapper.style.display = "none";
+            diverror.style.display = "flex";
+        });
         return res;
     }
-    
 });

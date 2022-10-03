@@ -134,7 +134,7 @@ form{
     cursor: default;
 }
 
-.btn_wrongimg{
+.btn_wrongimg, .btn{
     margin: 10px;
     text-align: center;
     font-size: 10px;
@@ -147,4 +147,18 @@ form{
     cursor: pointer;
     transition: all .2s;
     display: inline;
+    text-decoration: none;
+}
+
+#error{
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    height: 100vh;
+    width: 100vw;
+    background: linear-gradient(107.56deg, #C95D5D 0%, #5286C2 100%);
+    position: absolute;
+    color: #c42424;
+    flex-flow: column wrap;
 }

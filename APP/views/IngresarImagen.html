@@ -5,39 +5,51 @@
     <link rel="icon" href="../public/images/LogoOsia.png">
     <link rel="stylesheet" href="../public/css/IngresarImagenStyle.css">
 </head>
-<body>
-    <nav>
-        <img src="../public/images/LogoOsia.png" alt="">
-        <a href="HomePage.html">Volver al inicio</a>
-        <span style="width:80px; height: 80px;"></span>
-    </nav>
-    
-    <form action="" method="post" id="form">
-        <div class="mainForm">
-            <div class="ingresarimagenes" id="ingresarImagenes">
-                <div>
-                    <img src="../public/images/uploadIcon.png" draggable="false">
-                    <h1>Clickeá o arrastrá un archivo <br>para ingresar una imagen</h1>
-                    <input id="imgInput" name="imgInput" class="imgInput" type="file" accept="image/jpeg" hidden>
+<body> 
+    <div id="wrapper">
+        <nav>
+            <img src="../public/images/LogoOsia.png" alt="">
+            <a href="HomePage.html">Volver al inicio</a>
+            <span style="width:80px; height: 80px;"></span>
+        </nav>
+        
+        <form action="" method="post" id="form">
+            <div class="mainForm">
+                <div class="ingresarimagenes" id="ingresarImagenes">
+                    <div>
+                        <img src="../public/images/uploadIcon.png" draggable="false">
+                        <h1>Clickeá o arrastrá un archivo <br>para ingresar una imagen</h1>
+                        <input id="imgInput" name="imgInput" class="imgInput" type="file" accept="image/jpeg" hidden>
+                    </div>
                 </div>
+
+                <section class="previews" id="previews">
+                    <img src="" alt="" class="img-preview__image">
+                    <span class="img-preview__default-text">No hay imagen seleccionada</span>
+                </section>
             </div>
+            
+            <div class="redo" id="redo">
+                <h1 class="wrongimg">¿Te equivocaste de imagen?</h1>
+                <a class="btn_wrongimg" onclick=document.location.reload()>Cambiar imagen</a>
+            </div>
+            
+            <input type="submit" value="ESCANEAR" class="enviarDatos" id="btn_submit">
+            
+        </form>
+    </div>
 
-            <section class="previews" id="previews">
-                <img src="" alt="" class="img-preview__image">
-                <span class="img-preview__default-text">No hay imagen seleccionada</span>
-            </section>
+
+    <div id="error">
+        <h1 class="errormsg1 errormsg">Lo sentimos, algo Salió Mal</h1>
+        <!-- <h2 class="errormsg2 errormsg">Parece que el servidor no esta en funcionamiento</h2> -->
+        <h2 class="errormsg3 errormsg">Parece que la IA o el servidor no estan en funcionamiento</h2>
+        <div class="btns">
+            <a class="btn" onclick=document.location.reload()>volver a intentar</a>
+            <a href="HomePage.html" class="btn">Volver al inicio</a>
         </div>
         
-        <div class="redo" id="redo">
-            <h1 class="wrongimg">¿Te equivocaste de imagen?</h1>
-            <a class="btn_wrongimg" onclick=document.location.reload()>Cambiar imagen</a>
-        </div>
-        
-        <input type="submit" value="ESCANEAR" class="enviarDatos" id="btn_submit">
-        
-    </form>
-
-    
+    </div>
     <script src="../scripts/previewImg.js"></script>
     <script src="../scripts/ControllerIngresarImagen.js"></script>
     <script src="../scripts/sendImages.js"></script>
