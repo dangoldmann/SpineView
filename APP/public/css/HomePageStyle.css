@@ -68,6 +68,7 @@ body{
     background-position: center;
     background-repeat: no-repeat;
     transition: all .2s;
+    z-index: 100;
 }
 #btn_logOut:hover{
     background-color: #ca3232;
