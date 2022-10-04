@@ -1,3 +1,5 @@
+import {html, render} from 'https://unpkg.com/lit-html?module';
+
 document.addEventListener("DOMContentLoaded", ()=>{
     const apiUrl = 'http://localhost:3000';
     const imgInput = document.getElementById("imgInput");
@@ -36,9 +38,22 @@ document.addEventListener("DOMContentLoaded", ()=>{
             let diverror= document.getElementById("error");
             let divwrapper = document.getElementById("wrapper");
             let intentaste = document.getElementById("intentaste");
-            divwrapper.style.display = "none";
-            diverror.style.display = "flex";
-            intentaste.innerHTML="No se pudo subir \""+imageToUpload.name+"\"";
+            let divhero = document.getElementById("hero");
+
+            const myTemplate = (imagename) => html`
+                <div id="error">
+                    <h1 class="errormsg1 errormsg">Lo sentimos, algo Salió Mal</h1>
+                    <!-- <h2 class="errormsg2 errormsg">Parece que el servidor no esta en funcionamiento</h2> -->
+                    <h2 class="errormsg2 errormsg">Parece que la IA o el servidor no estan en funcionamiento</h2>
+                    <h3 class="errormsg3 errormsg" id="intentaste">No se pudo subir "${imagename}"</h3>
+                    <div class="btns">
+                        <a class="btn" onclick=document.location.reload()>volver a intentar</a>
+                        <a href="HomePage.html" class="btn">Volver al inicio</a>
+                    </div>
+                </div>`;
+            divhero.style.display = "none";
+            let imagename=imageToUpload.name
+            render(myTemplate(imagename), divwrapper);
         });
         return res;
     }
