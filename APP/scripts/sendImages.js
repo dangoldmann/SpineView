@@ -2,7 +2,6 @@ import {html, render} from 'https://unpkg.com/lit-html?module';
 import {apiUrl} from './config.js'
 
 document.addEventListener("DOMContentLoaded", ()=>{
-    console.log(apiUrl)
     const imgInput = document.getElementById("imgInput");
     const btn_submit = document.getElementById("btn_submit");
     var inputArea = document.getElementById("ingresarImagenes");
@@ -26,11 +25,11 @@ document.addEventListener("DOMContentLoaded", ()=>{
     }
 
 async function sendImage(formData) {
-    const url = apiUrl + '/images/upload'
+    const url = apiUrl + '/radiographies/upload'
     let res = await postRequest(url, formData)
 
     if(res.error) alert(res.error.message)
-    console.log(res)
+    console.log(res.radiography)
     
 }
 
