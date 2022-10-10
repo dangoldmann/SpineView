@@ -1,7 +1,5 @@
 import {html, render} from 'https://unpkg.com/lit-html?module';
-
-const apiUrl = 'https://osia-api-production.up.railway.app'
-//const apiUrl = 'http://localhost:3000'
+import {apiUrl} from './config.js'
 
 document.addEventListener("DOMContentLoaded", ()=>{
     const imgInput = document.getElementById("imgInput");
@@ -26,14 +24,17 @@ document.addEventListener("DOMContentLoaded", ()=>{
         sendImage(formData);
     }
 
+});
+
+
 async function sendImage(formData) {
     const url = apiUrl + '/images/upload'
+
     let res = await postRequest(url, formData)
 
-    if(res.error) alert(res.error.message)
+    if(res.error) return alert(res.error.message)
     console.log(res)
-    
-}
+}  
 
 async function postRequest(url, data){
     const res = await fetch(url, {
@@ -65,4 +66,3 @@ async function postRequest(url, data){
 
     return res.json()
 }
-});

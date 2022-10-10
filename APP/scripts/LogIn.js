@@ -1,5 +1,4 @@
-const apiUrl = 'https://osia-api-production.up.railway.app'
-//const apiUrl = 'http://localhost:3000'
+import {apiUrl} from './config.js'
 
 var lbl_email = document.getElementById("email")
 var txt_field_email = document.getElementById("txt_field_email")
