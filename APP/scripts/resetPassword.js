@@ -1,5 +1,5 @@
-//const apiUrl = 'https://osia-api-production.up.railway.app'
-const apiUrl = 'http://localhost:3000'
+const apiUrl = 'https://osia-api-production.up.railway.app'
+//const apiUrl = 'http://localhost:3000'
 
 document.addEventListener('DOMContentLoaded', () => {
     const btn_submit = document.getElementById("btn_submit");
