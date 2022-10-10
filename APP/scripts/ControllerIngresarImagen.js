@@ -2,7 +2,7 @@ import {apiUrl} from './config.js'
 
 document.addEventListener("DOMContentLoaded", ()=>{
     checkCookies()
-
+    
     var form = document.getElementById("ingresarImagenes");
     var fileInput = document.getElementById("imgInput");
     var dropArea = document.getElementById("ingresarImagenes")

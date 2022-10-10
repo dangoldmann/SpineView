@@ -2,7 +2,7 @@ import {apiUrl} from './config.js'
 
 document.addEventListener('DOMContentLoaded', () => {
     checkCookies()
-
+    
     const btn_logout = document.getElementById('btn_logOut')
 
     btn_logout.onclick = e => {
