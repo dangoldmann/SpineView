@@ -1,5 +1,5 @@
 import {apiUrl} from './config.js'
-import {postRequest} from './http_requests'
+import {postRequest} from './http_requests.js'
 
 document.addEventListener('DOMContentLoaded', () => {
     const btn_submit = document.getElementById('btn_submit')

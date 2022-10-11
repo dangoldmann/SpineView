@@ -1,5 +1,5 @@
 import {apiUrl} from './config.js'
-import {getRequest} from './http_requests'
+import {getRequest} from './http_requests.js'
 
 document.addEventListener('DOMContentLoaded', () => {
     checkCookies()
