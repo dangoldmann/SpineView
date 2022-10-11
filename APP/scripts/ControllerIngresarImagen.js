@@ -1,4 +1,5 @@
 import {apiUrl} from './config.js'
+import {getRequest} from './http_requests'
 
 document.addEventListener("DOMContentLoaded", ()=>{
     checkCookies()
@@ -88,18 +89,8 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
 async function checkCookies(){
     let res = await getRequest(apiUrl)
-    res = await res.json()
     
     if(res.redirect){
         window.location.href = res.redirect.destination
     }
-}
-
-async function getRequest(url){
-    const res = await fetch(url, {
-        method: 'GET',
-        credentials: 'include'
-    })
-
-    return res
 }

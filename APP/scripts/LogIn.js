@@ -1,4 +1,5 @@
 import {apiUrl} from './config.js'
+import { getRequest, postRequest } from './http_requests.js'
 
 var lbl_email = document.getElementById("email")
 var txt_field_email = document.getElementById("txt_field_email")
@@ -22,7 +23,6 @@ async function checkCookies(){
   const url = apiUrl + '/users/login'
 
   let res = await getRequest(url)
-  res = await res.json()
 
   if(res.redirect){
     window.location.href = res.redirect.destination
@@ -39,7 +39,6 @@ async function login(formdata){
     }
   
     let res = await postRequest(url, user)
-    res = await res.json()
 
     if(res.error){
       actOnError(res.error.message)
@@ -66,26 +65,4 @@ function actOnError(msg){
   else{
     alert("Algo salio mal")
   }
-}
-
-async function postRequest(url, data){
-  const res = await fetch(url, {
-    method: 'POST',
-    credentials: 'include',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(data)
-  })
-
-  return res
-}
-
-async function getRequest(url){
-  const res = await fetch(url, {
-    method: 'GET',
-    credentials: 'include'
-  })
-
-  return res
 }

@@ -1,4 +1,5 @@
 import {apiUrl} from './config.js'
+import {postRequest} from './http_requests'
 
 document.addEventListener('DOMContentLoaded', () => {
     const btn_submit = document.getElementById('btn_submit')
@@ -17,22 +18,8 @@ async function forgotPassword(formData) {
     const email = formData.get('email')
 
     let res = await postRequest(url, {email})
-    res = await res.json()
 
     if(res.error){
         alert(res.error.message)
     }
-}
-
-async function postRequest(url, data){
-    const res = await fetch(url, {
-      method: 'POST',
-      credentials: 'include',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data)
-    })
-  
-    return res
 }

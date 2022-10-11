@@ -1,4 +1,5 @@
 import {apiUrl} from './config.js'
+import {getRequest} from './http_requests'
 
 document.addEventListener('DOMContentLoaded', () => {
     checkCookies()
@@ -16,7 +17,6 @@ async function logOut(){
     const url = apiUrl + '/users/logout'
 
     let res = await getRequest(url)
-    res = await res.json()
 
     if(res.redirect){
         window.location.href = res.redirect.destination
@@ -25,7 +25,6 @@ async function logOut(){
 
 async function checkCookies(){
     let res = await getRequest(apiUrl)
-    res = await res.json()
     
     if(res.redirect){
         window.location.href = res.redirect.destination
@@ -60,27 +59,6 @@ wrapper.addEventListener("scroll", () => {
     a_escanear.classList.toggle("alt", wrapper.scrollTop>1331);
 });
 
-async function postRequest(url, data){
-    const res = await fetch(url, {
-      method: 'POST',
-      credentials: 'include',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data)
-    })
-  
-    return res
-  }
-
-async function getRequest(url){
-    const res = await fetch(url, {
-        method: 'GET',
-        credentials: 'include'
-    })
-
-    return res
-}
 function logout(){
     if (confirm("¿Está seguro que desea cerrar sesión?")){
         window.location.reload();

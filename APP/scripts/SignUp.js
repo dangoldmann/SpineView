@@ -1,4 +1,5 @@
 import {apiUrl} from './config.js'
+import { getRequest, postRequest } from './http_requests.js';
 
 var lbl_email = document.getElementById("lbl_email");
 
@@ -62,7 +63,6 @@ async function register(formdata){
   }
 
   let res = await postRequest(url, user)
-  res = await res.json()
 
   if(res.error){
     actOnError(res.error.message);
@@ -83,7 +83,6 @@ async function checkCookies(){
   const url = apiUrl + '/users/register'
 
   let res = await getRequest(url)
-  res = await res.json()
 
   if(res.redirect){
     window.location.href = res.redirect.destination
@@ -91,40 +90,18 @@ async function checkCookies(){
 } 
 
 function actOnError(msg){
-if(msg == "User already exists with that email adress"){
-  alert(msg);
-  lbl_email.classList.add("thisIsWrong")
-}
+  if(msg == "User already exists with that email adress"){
+    alert(msg);
+    lbl_email.classList.add("thisIsWrong")
+  }
 
-else if(msg =="Invalid email adress"){
-  alert(msg);
-  lbl_email.classList.add("thisIsWrong")
+  else if(msg =="Invalid email adress"){
+    alert(msg);
+    lbl_email.classList.add("thisIsWrong")
   
-}
+  }
 
-else{
-  alert(msg)
-}
-}
-
-async function postRequest(url, data){
-  const res = await fetch(url, {
-    method: 'POST',
-    credentials: 'include',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(data)
-  })
-
-  return res
-}
-
-async function getRequest(url){
-  const res = await fetch(url, {
-    method: 'GET',
-    credentials: 'include'
-  })
-
-  return res
+  else{
+    alert(msg)
+  }
 }
