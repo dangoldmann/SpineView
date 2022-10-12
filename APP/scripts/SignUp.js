@@ -5,7 +5,7 @@ import {checkCookies} from './cookies.js'
 var lbl_email = document.getElementById("lbl_email");
 
 document.addEventListener("DOMContentLoaded", ()=>{
-  checkCookies('/users/register')
+  checkCookies('/auth/register')
 
   const btn_submit = document.getElementById("btn_submit");
   var form = document.getElementById("formRegistro");
@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
 })
 
 async function register(formdata){
-  const registerRoute = '/users/register'
+  const registerRoute = '/auth/register'
   const url = apiUrl + registerRoute
   
   const user = {
