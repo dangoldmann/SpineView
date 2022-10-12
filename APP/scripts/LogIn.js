@@ -1,13 +1,13 @@
 import {apiUrl} from './config.js'
-import { postRequest } from './http_requests.js'
-import { checkCookies } from './cookies.js'
+import {postRequest} from './http_requests.js'
+import {checkCookies} from './cookies.js'
 
 var lbl_email = document.getElementById("email")
 var txt_field_email = document.getElementById("txt_field_email")
 var txt_field_pwd = document.getElementById("pwd")
 
 document.addEventListener('DOMContentLoaded', () => {
-    checkCookies()
+    checkCookies('/auth/login')
   
     const btn_submit = document.getElementById("btn_submit");
     var form = document.getElementById("formLogIn");
@@ -32,8 +32,7 @@ async function login(formdata){
     let res = await postRequest(url, user)
 
     if(res.error){
-      actOnError(res.error.message)
-      return
+      return actOnError(res.error.message)
     }
 
     window.location.href = './HomePage.html'

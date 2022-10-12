@@ -3,7 +3,7 @@ import {getRequest} from './http_requests.js'
 import {checkCookies} from './cookies.js'
 
 document.addEventListener('DOMContentLoaded', () => {
-    checkCookies()
+    checkCookies('')
     
     const btn_logout = document.getElementById('btn_logOut')
 

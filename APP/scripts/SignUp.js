@@ -1,11 +1,11 @@
 import {apiUrl} from './config.js'
-import { postRequest } from './http_requests.js';
+import {postRequest} from './http_requests.js';
 import {checkCookies} from './cookies.js'
 
 var lbl_email = document.getElementById("lbl_email");
 
 document.addEventListener("DOMContentLoaded", ()=>{
-  checkCookies()
+  checkCookies('/users/register')
 
   const btn_submit = document.getElementById("btn_submit");
   var form = document.getElementById("formRegistro");
