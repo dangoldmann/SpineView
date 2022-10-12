@@ -12,6 +12,7 @@ body {
     justify-content: center;
     align-items: center;
     align-content: center;
+    flex-flow: column wrap;
 }
 
 table{
@@ -39,3 +40,14 @@ th,tr{
 
 tr:nth-child(Odd) {background-color: #f2f2f2}
 tr:nth-child(even) {background-color: #ffffff}
+
+#btn_editInfo{
+    margin: 25px;
+    background-color: #d96459;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: 20px;
+    font-family: 'Poppins', sans-serif;
+}
