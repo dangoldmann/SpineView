@@ -10,7 +10,9 @@ document.addEventListener('DOMContentLoaded', () => {
     btn_logout.onclick = e => {
         e.preventDefault()
 
-        logOut()
+    if (confirm("¿Está seguro que desea cerrar sesión?")){
+       logOut()
+    }
     }
 })
 
@@ -32,14 +34,15 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             behavior: 'smooth'
         });
     });
-})
+});
 
-function closeSideMenu() {
+const closeSideMenu=(() =>{
     document.getElementById('MenuLateral').style.width = '0';
-}
-function openSideMenu(){
+});
+
+const openSideMenu = (()=>{
     document.getElementById('MenuLateral').style.width = '300px';
-}
+});
 
 var wrapper = document.getElementById("wrapper");
 var navbar = document.getElementById("NavBar")
@@ -51,9 +54,3 @@ wrapper.addEventListener("scroll", () => {
     quienesSomos.classList.toggle("alt", wrapper.scrollTop>600 && wrapper.scrollTop<=1331);
     a_escanear.classList.toggle("alt", wrapper.scrollTop>1331);
 });
-
-function logout(){
-    if (confirm("¿Está seguro que desea cerrar sesión?")){
-        window.location.reload();
-    }
-}
