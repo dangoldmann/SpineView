@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 async function checkCookies(){
-  const url = apiUrl + '/users/login'
+  const url = apiUrl + '/auth/login'
 
   let res = await getRequest(url)
 
@@ -30,7 +30,7 @@ async function checkCookies(){
 }
 
 async function login(formdata){
-    const loginRoute = '/users/login'
+    const loginRoute = '/auth/login'
     const url = apiUrl + loginRoute
   
     const user = {
@@ -45,7 +45,7 @@ async function login(formdata){
       return
     }
 
-    window.location.href = './HomePage.html'
+    //window.location.href = './HomePage.html'
 }
 
 function actOnError(msg){

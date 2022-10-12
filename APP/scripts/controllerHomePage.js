@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 async function logOut(){
-    const url = apiUrl + '/users/logout'
+    const url = apiUrl + '/auth/logout'
 
     let res = await getRequest(url)
 
