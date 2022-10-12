@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Información Personal</title>
+    <link rel="stylesheet" href="../public/css/NavBarStyle.css">
+    <link rel="stylesheet" href="../public/css/UserInfoStyle.css">
+</head>
+<body style="background-color: #333;">
+    <nav class="navbar" id="NavBar">
+        <button id="btn_usuario" onclick="openSideMenu()"><img id="imgUsuario" src="../public/images/Usuario.png"></button>
+
+        <ul id="links">
+            <li><a href="HomePage.html" class="link" id="a_quienesSomos">Volver al inicio</a></li>
+            <li><a class="link" href="IngresarImagen.html" id="a_escanear">Escanear estudio</a></li>
+            <li><a class="link" href="aboutUs.html" id="masInfo">Más Información</a></li>
+        </ul>
+        <a href="#top"><img src="../public/images/LOGO 6.png" id="logo"></a>
+        
+        
+        <div id="MenuLateral" class="menulateral">
+            <img class="imgUsuario" src="../public/images/Usuario.png">
+            <a href="#" class="cerrar" id="cerrar" onclick="closeSideMenu()">&laquo;</a>
+            <ul>
+                <a href="./UserInfo.html">Mi informacion</a>
+                <a href="./IngresarImagen.html">Ver mis estudios</a>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="flex-container">
+        <table>
+            <tr>
+                <th>Nombre Completo</th>
+                <td>Juan Perez</td>
+            <tr>
+                <th>Correo Electronico</th>
+                <td>ejemplo@gmail.com</td>
+            </tr>
+            <tr>
+                <th>Número de telefono</th>
+                <td>11 1234 5678</td>
+            </tr>
+            <tr>
+                <th>¿Necesitas cambiar la contraseña?</th>
+                <td><a href="./forgotPassword.html">Cambiar contraseña</a></td>
+            </tr>
+        </table>
+        
+    </div>
+
+    <script src="../scripts/OpenCloseSideMenu.js"></script>
+</body>
+</html>
