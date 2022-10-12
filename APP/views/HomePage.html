@@ -12,22 +12,21 @@
         <div id="top"></div>
         <nav class="navbar" id="NavBar">
             <button id="btn_usuario" onclick="openSideMenu()"><img id="imgUsuario" src="../public/images/Usuario.png"></button>
-            <a href="#top"><img src="../public/images/LOGO 6.png" id="logo"></a>
+
             <ul id="links">
                 <li><a href="#segundaseccion" class="link" id="a_quienesSomos">Quiénes somos</a></li>
                 <li><a class="link" href="IngresarImagen.html" id="a_escanear">Escanear estudio</a></li>
                 <li><a class="link" href="aboutUs.html" id="masInfo">Más Información</a></li>
             </ul>
-
+            <a href="#top"><img src="../public/images/LOGO 6.png" id="logo"></a>
             
             
             <div id="MenuLateral" class="menulateral">
                 <img class="imgUsuario" src="../public/images/Usuario.png">
                 <a href="#" class="cerrar" id="cerrar" onclick="closeSideMenu()">&laquo;</a>
                 <ul>
-                    <a href="#segundaseccion">¿Quiénes somos?</a>
-                    <a href="./IngresarImagen.html">Escanear un estudio</a>
-                    <a href="./aboutUs.html">Más información</a>
+                    <a href="./UserInfo.html">Mi informacion</a>
+                    <a href="./IngresarImagen.html">Ver mis estudios</a>
                 </ul>
             </div>
         </nav>
@@ -64,5 +63,6 @@
     </main><!--class="wrapper"-->
 
     <script type="module" src="../scripts/controllerHomePage.js"></script>
+    <script src="../scripts/OpenCloseSideMenu.js"></script>
 </body>
 </html>

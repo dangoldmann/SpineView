@@ -192,12 +192,3 @@ body{
         padding-top: 245px;
     }
 }
-
-@media (max-width:1122px) {
-    #btn_usuario{
-        display: inline-block;
-    }
-    #links li{
-        display: none;
-    }
-}

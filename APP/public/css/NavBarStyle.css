@@ -1,7 +1,7 @@
 .navbar{
     position: sticky;    
     top: 0px;
-    padding: 20px 50px;
+    padding: 20px 0;
     display: flex;
     justify-content: space-between;
     align-items: center;    
@@ -11,15 +11,15 @@
 
 .navbarAltColor{
     background: #6B3F8F;
-    padding: 10px 30px;
+    padding: 10px 0px;
 }
 
 #logo{
+    margin: 0 25px;
     width: 60px;
 }
 
 #btn_usuario{
-    display: none;
     top: 30px;
     width: 70px; height: 70px;
     left: 0px;
@@ -51,6 +51,7 @@
     display: inline-block;
     padding: 10px;
 }
+
 
 #links li a{
     font-family: "Raleway", sans-serif;
