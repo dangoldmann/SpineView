@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap'); 
 
 body {
     background: linear-gradient(107.56deg, #502660 0%, #5286C2 100%);
@@ -7,7 +7,7 @@ body {
     margin: 0;
 }
 *{
-    font-family: "Raleway", sans-serif;;
+    font-family: "poppins", sans-serif;;
 }
 nav{
     display: flex;

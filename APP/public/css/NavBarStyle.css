@@ -54,7 +54,7 @@
 
 
 #links li a{
-    font-family: "Raleway", sans-serif;
+    font-family: "poppins", sans-serif;
     font-size: 17px;
     padding:5px;
     text-decoration: none;
@@ -89,26 +89,35 @@ a#a_escanear.link:hover{
 
 .menulateral{
     position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     height: 100vh; width: 0;
     top: 0; left: 0;
     background-color: #5923ce;
     overflow-x: hidden;
     transition: .5s;
-    padding-top: 60px;
+}
+.menulateral div{
+    display: flex;
+    width: 90%;
+    justify-content: space-between;
+    align-items: center;
 }
 .menulateral .imgUsuario{
-    position: absolute;
+    display: inline-block;
     top: 20px; left: 15px;
     width: 50px; height: 50px;
 }
 .menulateral .cerrar{
-    position: absolute;
+    display: inline-block;
     top: 0; 
     right: 0;
     font-size: 30px;
     color: #fff;
     cursor: pointer;
     border: hidden;
+    font-family: "Raleway", sans-serif;
 }
 
 .menulateral a{
@@ -120,6 +129,6 @@ a#a_escanear.link:hover{
     display: block;
     transition: 0.3s;
     border: solid 2px #fff;
-    font-family: "raleway", sans-serif;
+    font-family: "poppins", sans-serif;
     text-align: center;
 }

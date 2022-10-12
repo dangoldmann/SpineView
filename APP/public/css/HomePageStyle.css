@@ -1,7 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap'); /*fuente para links*/
-@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;200;300;400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk&display=swap'); /* fuente para titulos y subtitulos*/
 
 body{
     margin: 0;
@@ -38,7 +35,7 @@ body{
 }
 
 .subtitulo{
-    font-family: "Space Grotesk", sans-serif;
+    font-family: "poppins", sans-serif;
     font-size: 20px;
     color: #fbfbfb;
     font-weight: 200;
@@ -88,8 +85,8 @@ body{
 }
 
 #title{
-    font-family: "Space Grotesk", sans-serif;
-    font-size: 130px;
+    font-family: "poppins", sans-serif;
+    font-size: 140px;
     font-weight: 400;
     color: #c9c9c9;
     margin: 10px;
@@ -111,7 +108,7 @@ body{
 
 #QuienesSomos{
     position: relative;
-    font-family: "Space Grotesk", sans-serif;
+    font-family: "poppins", sans-serif;
     font-size: 120px;
     font-weight: 400;
     color: #fff;
@@ -127,7 +124,7 @@ body{
     border-radius: 20px;
     border: hidden;
     cursor: pointer;
-    font-family: "Space Grotesk", sans-serif;
+    font-family: "poppins", sans-serif;
     display: block;
     margin: 40px auto;
     color: white;
@@ -157,7 +154,7 @@ body{
     border-radius: 20px;
     border: hidden;
     cursor: pointer;
-    font-family: "Space Grotesk";
+    font-family: "poppins";
     display: block;
     margin: auto;
     margin-top: 75px;
