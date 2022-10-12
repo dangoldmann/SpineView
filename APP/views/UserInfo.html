@@ -23,32 +23,42 @@
             <a href="#" class="cerrar" id="cerrar" onclick="closeSideMenu()">&laquo;</a>
             <ul>
                 <a href="./UserInfo.html">Mi informacion</a>
-                <a href="./userStudies.html">Ver mis estudios</a>
             </ul>
         </div>
     </nav>
 
-    <div class="flex-container">
-        <table>
-            <tr>
-                <th>Nombre Completo</th>
-                <td>Juan Perez</td>
-            <tr>
-                <th>Correo Electronico</th>
-                <td>ejemplo@gmail.com</td>
-            </tr>
-            <tr>
-                <th>Número de telefono</th>
-                <td>11 1234 5678</td>
-            </tr>
-            <tr>
-                <th>¿Necesitas cambiar la contraseña?</th>
-                <td><a href="./forgotPassword.html">Cambiar contraseña</a></td>
-            </tr>
-        </table>
-        <a id="btn_editInfo" href="">Editar Información</a>
-    </div>
+    <div class="container">
+        <div class="buttons">
+            <a class="btn" id="btn_infousuario" onclick="openTab('tab1')">Información Personal</a>
+            <a class="btn" id="btn_estudios" onclick="openTab('tab2')">historial de estudios</a>
+        </div>
+        <div id="tab1" class="tab userInfo">
+            <table>
+                <tr>
+                    <th>Nombre Completo</th>
+                    <td>Juan Perez</td>
+                <tr>
+                    <th>Correo Electronico</th>
+                    <td>ejemplo@gmail.com</td>
+                </tr>
+                <tr>
+                    <th>Número de telefono</th>
+                    <td>11 1234 5678</td>
+                </tr>
+                <tr>
+                    <th>¿Necesitas cambiar la contraseña?</th>
+                    <td><a href="./forgotPassword.html">Cambiar contraseña</a></td>
+                </tr>
+            </table>
+            <a id="btn_editInfo" href="">Editar Información</a>
+        </div>
 
+        <div id="tab2" class="tab userStudies">
+            <h1>aqui apareceran los estudios</h1>
+        </div>
+    </div>
+    
+    <script src="../scripts/controllerUserInfo.js"></script>
     <script src="../scripts/OpenCloseSideMenu.js"></script>
 </body>
 </html>
