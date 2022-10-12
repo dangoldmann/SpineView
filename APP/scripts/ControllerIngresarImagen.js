@@ -1,5 +1,4 @@
-import {apiUrl} from './config.js'
-import {getRequest} from './http_requests.js'
+import {checkCookies} from './cookies.js'
 
 document.addEventListener("DOMContentLoaded", ()=>{
     checkCookies()
@@ -86,11 +85,3 @@ document.addEventListener("DOMContentLoaded", ()=>{
         redo.style.display = "inline-block";
     }
 });
-
-async function checkCookies(){
-    let res = await getRequest(apiUrl)
-    
-    if(res.redirect){
-        window.location.href = res.redirect.destination
-    }
-}

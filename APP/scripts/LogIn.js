@@ -1,5 +1,6 @@
 import {apiUrl} from './config.js'
-import { getRequest, postRequest } from './http_requests.js'
+import { postRequest } from './http_requests.js'
+import { checkCookies } from './cookies.js'
 
 var lbl_email = document.getElementById("email")
 var txt_field_email = document.getElementById("txt_field_email")
@@ -19,16 +20,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 })
 
-async function checkCookies(){
-  const url = apiUrl + '/auth/login'
-
-  let res = await getRequest(url)
-
-  if(res.redirect){
-    window.location.href = res.redirect.destination
-  }
-}
-
 async function login(formdata){
     const loginRoute = '/auth/login'
     const url = apiUrl + loginRoute
@@ -45,7 +36,7 @@ async function login(formdata){
       return
     }
 
-    //window.location.href = './HomePage.html'
+    window.location.href = './HomePage.html'
 }
 
 function actOnError(msg){

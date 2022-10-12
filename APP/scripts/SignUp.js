@@ -1,5 +1,6 @@
 import {apiUrl} from './config.js'
-import { getRequest, postRequest } from './http_requests.js';
+import { postRequest } from './http_requests.js';
+import {checkCookies} from './cookies.js'
 
 var lbl_email = document.getElementById("lbl_email");
 
@@ -78,16 +79,6 @@ function pwdMatch(contraseña, contraseña2){
   }
     return true
 }
-
-async function checkCookies(){
-  const url = apiUrl + '/users/register'
-
-  let res = await getRequest(url)
-
-  if(res.redirect){
-    window.location.href = res.redirect.destination
-  }
-} 
 
 function actOnError(msg){
   if(msg == "User already exists with that email adress"){

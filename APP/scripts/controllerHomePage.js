@@ -1,5 +1,6 @@
 import {apiUrl} from './config.js'
 import {getRequest} from './http_requests.js'
+import {checkCookies} from './cookies.js'
 
 document.addEventListener('DOMContentLoaded', () => {
     checkCookies()
@@ -16,16 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
 async function logOut(){
     const url = apiUrl + '/auth/logout'
 
-    let res = await getRequest(url)
+    const res = await getRequest(url)
 
-    if(res.redirect){
-        window.location.href = res.redirect.destination
-    }
-}
-
-async function checkCookies(){
-    let res = await getRequest(apiUrl)
-    
     if(res.redirect){
         window.location.href = res.redirect.destination
     }
