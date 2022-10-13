@@ -13,11 +13,10 @@ body{
 }
 
 ::-webkit-scrollbar-thumb{
-    background: linear-gradient(#446994, #420F84);
-    border-radius: 5px;
+    background: #c3dbff;
 }
 ::-webkit-scrollbar-track{
-    background: #463c4e;
+    background: #7a7a7a;
 }
 
 
@@ -152,7 +151,7 @@ body{
     padding:40px 80px;
     background-color: #420F84;
     border-radius: 20px;
-    border: hidden;
+    border: 5px solid #420F84;
     cursor: pointer;
     font-family: "poppins";
     display: block;
@@ -165,7 +164,6 @@ body{
 }
 
 .btn_escanear:hover{
-    font-size: 60px;
     border: solid 5px #c1b7ff;
 }
 
