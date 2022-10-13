@@ -15,12 +15,13 @@ body {
 
 .tab{
     border-radius: 10px;
-    height: 80vh;
+    height: auto;
     width: 70vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding-top: 40px;
 }
 .userStudies {
     display: none;
@@ -49,7 +50,7 @@ tr{
     text-align: center;
 }
 th,tr{
-    padding: 25px 15px;
+    padding: 1% 15px;
     border: 2px solid #d96459;
     border-collapse: collapse;
 }
