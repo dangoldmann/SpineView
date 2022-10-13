@@ -2,9 +2,13 @@ import {apiUrl} from './config.js'
 import {getRequest} from './http_requests.js'
 import {checkCookies} from './cookies.js'
 
+const lblNombreCompleto = document.getElementById('lblNombreCompleto')
+
 document.addEventListener('DOMContentLoaded', () => {
     checkCookies('')
-    
+
+    loadUserName()
+
     const btn_logout = document.getElementById('btn_logOut')
 
     btn_logout.onclick = e => {
@@ -15,6 +19,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     }
 })
+
+async function loadUserName(){
+    const url = apiUrl + '/users/full-name'
+
+    const res = await getRequest(url)
+
+    lblNombreCompleto.textContent = res.fullName
+}
 
 async function logOut(){
     const url = apiUrl + '/auth/logout'
