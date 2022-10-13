@@ -15,7 +15,7 @@ body {
 
 .tab{
     border-radius: 10px;
-    height: 70vh;
+    height: 80vh;
     width: 70vw;
     display: flex;
     flex-direction: column;
@@ -28,7 +28,7 @@ body {
 }
 
 .userInfo{
-    background-color: #879eb9;
+    background-color:   #dd9999;
 }
 
 table{
@@ -49,7 +49,7 @@ tr{
     text-align: center;
 }
 th,tr{
-    padding: 15px;
+    padding: 25px 15px;
     border: 2px solid #d96459;
     border-collapse: collapse;
 }
@@ -70,6 +70,7 @@ tr:nth-child(even) {background-color: #ffffff}
 #btn_editInfo{
     margin: 25px;
     background-color: #d96459;
+    border: hidden;
 
 }
 
@@ -77,7 +78,7 @@ tr:nth-child(even) {background-color: #ffffff}
     height: fit-content;
     width: fit-content;
     margin: 25px;
-    background-color: #879eb9;
+    background-color: #dd9999;
 }
 
 #btn_estudios{
