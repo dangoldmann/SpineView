@@ -32,20 +32,20 @@
     <div class="container">
         <div class="buttons">
             <a class="btn" id="btn_infousuario" onclick="openTab('tab1')">Información Personal</a>
-            <a class="btn" id="btn_estudios" onclick="openTab('tab2')">historial de estudios</a>
+            <a class="btn" id="btn_estudios" onclick="openTab('tab2')">Historial de estudios</a>
         </div>
         <div id="tab1" class="tab userInfo">
             <table>
                 <tr>
                     <th>Nombre Completo</th>
-                    <td>Juan Perez</td>
+                    <td id="fullName">Juan Perez</td>
                 <tr>
                     <th>Correo Electronico</th>
-                    <td>ejemplo@gmail.com</td>
+                    <td id="email">ejemplo@gmail.com</td>
                 </tr>
                 <tr>
                     <th>Número de telefono</th>
-                    <td>11 1234 5678</td>
+                    <td id="phone">11 1234 5678</td>
                 </tr>
                 <tr>
                     <th>Foto de perfil</th>
@@ -65,7 +65,7 @@
         </div>
     </div>
     
-    <script src="../scripts/controllerUserInfo.js"></script>
+    <script type="module" src="../scripts/controllerUserInfo.js"></script>
     <script src="../scripts/OpenCloseSideMenu.js"></script>
 </body>
 </html>
