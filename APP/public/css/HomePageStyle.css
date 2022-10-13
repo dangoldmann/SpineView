@@ -10,6 +10,7 @@ body{
 
 ::-webkit-scrollbar{
     width: 15px;
+    margin: 20px;
 }
 
 ::-webkit-scrollbar-thumb{
