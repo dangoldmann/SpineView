@@ -10,6 +10,7 @@
 
 .navbar div{
     display: flex;
+    align-items: center;
 }
 .navbar div h1{
     font-family: "poppins", sans-serif;
@@ -18,6 +19,7 @@
     font-weight: 300;
     margin: auto 10px;
     cursor: pointer;
+    width: 230px;
 }
 .navbar div h1 span{
     font-weight: bold;
@@ -40,6 +42,7 @@
     border:hidden;
     color: #fff;
     cursor: pointer;
+    transition: all .3s;
 }
 
 #imgUsuario{
@@ -48,14 +51,13 @@
 
 #btn_usuario:hover{
     width: 140px;
-    transition: .3s;
 }
 
-#btn_usuario:not(hover){
-    transition: .3s;
+#linksalt{
+    display: none;
 }
 
-#links{
+#links, #linksalt{
     list-style: none;
 }
 
@@ -80,10 +82,23 @@
     border-bottom: 3px solid #f15656;
     text-decoration: none;
 }
-
 .link{
     color: #fff;
     font-family: "Work-Sans", sans-serif;
+}
+
+a#btn_logOut{
+    background-color: #e23f3f;
+    border: hidden;
+    border-radius: 100%;
+    height: 40px;   width: 40px;
+    cursor: pointer;
+    background-image: url(../images/logout.png);
+    background-size: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: all .2s;
+    margin-top: 100%;
 }
 
 a#a_escanear.link{
@@ -109,15 +124,21 @@ a#a_escanear.link{
     transition: .5s;
 }
 .menulateral div{
+    padding: 5px 0;
+    background-color: #774a9c;
     display: flex;
-    width: 90%;
+    width: 100%;
     justify-content: space-between;
     align-items: center;
+}
+.menulateral h1{
+    text-align: center;
 }
 .menulateral .imgUsuario{
     display: inline-block;
     top: 20px;  left: 15px;
     width: 50px;    height: 50px;
+    margin: 15px;
 }
 .menulateral .cerrar{
     display: inline-block;
@@ -127,7 +148,7 @@ a#a_escanear.link{
     color: #fff;
     cursor: pointer;
     border: hidden;
-    font-family: "Raleway", sans-serif;
+    font-family:'Times New Roman', Times, serif
 }
 
 .menulateral a{
@@ -141,4 +162,30 @@ a#a_escanear.link{
     border: solid 2px #fff;
     font-family: "poppins", sans-serif;
     text-align: center;
+}
+#a{
+    width: 70%;
+}
+
+@media screen and (max-width:1041px){
+    #links li a{
+        font-size: 14px;
+    }
+    a#a_escanear.link{
+        text-decoration: none;
+        font-size: 17px;
+    }
+    .navbar div h1{
+        width: 150px;
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width:850px) {
+    #links{
+        display:none;
+    }
+    #linksalt{
+        display: block;
+    }
 }

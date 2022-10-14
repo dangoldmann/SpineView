@@ -3,6 +3,7 @@ import {getRequest} from './http_requests.js'
 import {checkCookies} from './cookies.js'
 
 const lblNombreCompleto = document.getElementById('lblNombreCompleto')
+const lblNombreSideMenu= document.getElementById("lblNombreCompletoSideMenu")
 
 document.addEventListener('DOMContentLoaded', () => {
     checkCookies('')
@@ -23,6 +24,7 @@ async function loadUserName(){
     const res = await getRequest(url)
 
     lblNombreCompleto.textContent = res.fullName
+    lblNombreSideMenu.textContent = res.fullName
 }
 
 async function logOut(){

@@ -3,7 +3,7 @@ const closeSideMenu=(() =>{
 });
 
 const openSideMenu = (()=>{
-    document.getElementById('MenuLateral').style.width = '300px';
+    document.getElementById('MenuLateral').style.width = '350px';
 });
 
 var openTab = (tabName) => {
@@ -18,3 +18,9 @@ var openTab = (tabName) => {
     }
     document.getElementById(tabName).style.display = "flex";
 }
+
+document.addEventListener('keydown', function(event) {
+    if (event.key == "Escape") {
+        closeSideMenu();
+    }
+});
