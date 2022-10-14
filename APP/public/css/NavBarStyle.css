@@ -17,6 +17,7 @@
     padding:5px;
     font-weight: 300;
     margin: auto 10px;
+    cursor: pointer;
 }
 .navbar div h1 span{
     font-weight: bold;
@@ -32,9 +33,8 @@
 }
 
 #btn_usuario{
-    top: 30px;
-    width: 70px; height: 70px;
-    left: 0px;
+    top: 30px;    left: 0px;
+    width: 70px;    height: 70px;
     background: #5923ce;
     border-radius: 0px 10px 10px 0px;
     border:hidden;
@@ -43,7 +43,7 @@
 }
 
 #imgUsuario{
-    width: 50px; height: 50px;
+    width: 50px;    height: 50px;
 }
 
 #btn_usuario:hover{
@@ -102,8 +102,8 @@ a#a_escanear.link{
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 100vh; width: 0;
-    top: 0; left: 0;
+    height: 100vh;  width: 0;
+    top: 0;   left: 0;
     background-color: #5923ce;
     overflow-x: hidden;
     transition: .5s;
@@ -116,8 +116,8 @@ a#a_escanear.link{
 }
 .menulateral .imgUsuario{
     display: inline-block;
-    top: 20px; left: 15px;
-    width: 50px; height: 50px;
+    top: 20px;  left: 15px;
+    width: 50px;    height: 50px;
 }
 .menulateral .cerrar{
     display: inline-block;
