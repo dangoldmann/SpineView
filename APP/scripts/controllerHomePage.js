@@ -13,10 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     btn_logout.onclick = e => {
         e.preventDefault()
-
-    if (confirm("¿Está seguro que desea cerrar sesión?")){
-       logOut()
-    }
+        logOut()
     }
 })
 
