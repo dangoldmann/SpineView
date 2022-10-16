@@ -10,7 +10,6 @@ body{
 
 ::-webkit-scrollbar{
     width: 15px;
-    margin: 20px;
 }
 
 ::-webkit-scrollbar-thumb{
@@ -50,6 +49,26 @@ body{
     font-weight: 200;
 }
 
+#btn_logOut{
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    background-color: #e23f3f;
+    border: hidden;
+    border-radius: 100%;
+    height: 70px;
+    width: 70px;
+    cursor: pointer;
+    background-image: url(../images/logout.png);
+    background-size: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: all .2s;
+    z-index: 100;
+}
+#btn_logOut:hover{
+    background-color: #ca3232;
+}
 
 /*primera seccion*/
 #primeraseccion{

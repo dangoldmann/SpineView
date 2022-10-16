@@ -7,29 +7,40 @@
     <link rel="stylesheet" href="../public/css/NavBarStyle.css">
 </head>
 <body>
-    <button id="btn_logOut" onclick=logout()></button>
+    
     <main id="wrapper">
         <div id="top"></div>
         <nav class="navbar" id="NavBar">
-            <div>
+            <div id="left">
                 <button id="btn_usuario" onclick="openSideMenu()"><img id="imgUsuario" src="../public/images/Usuario.png"></button>
                 <h1 onclick="openSideMenu()">Hola,  <span id="lblNombreCompleto"></span></h1>
             </div>
             
-            <ul id="links">
-                <li><a href="#segundaseccion" class="link" id="a_quienesSomos">Quiénes somos</a></li>
-                <li><a class="link" href="IngresarImagen.html" id="a_escanear">Escanear estudio</a></li>
-                <li><a class="link" href="aboutUs.html" id="masInfo">Más Información</a></li>
-            </ul>
-            <a href="#top"><img src="../public/images/LOGO 6.png" id="logo"></a>
+            <div id="right">
+                <ul id="links">
+                    <li><a href="#segundaseccion" class="link" id="a_quienesSomos">Quiénes somos</a></li>
+                    <li><a class="link" href="IngresarImagen.html" id="a_escanear">Escanear estudio</a></li>
+                    <li><a class="link" href="aboutUs.html" id="masInfo">Más Información</a></li>
+                </ul>
+                <a href="#top"><img src="../public/images/LOGO 6.png" id="logo"></a>
+            </div>
+            
             
             
             <div id="MenuLateral" class="menulateral">
                 <div>
                     <img class="imgUsuario" src="../public/images/Usuario.png">
+                    <h1 id="lblNombreCompletoSideMenu"></h1>
                     <a href="#" class="cerrar" id="cerrar" onclick="closeSideMenu()">&laquo;</a>
                 </div>
-                <a href="./UserInfo.html">Mi informacion</a>
+                
+                <a id="a" href="./UserInfo.html">Mi informacion</a>
+                <ul id="linksalt">
+                    <li><a href="#segundaseccion" class="link" id="a_quienesSomos">Quiénes somos</a></li>
+                    <li><a class="link" href="IngresarImagen.html" id="a_escanear">Escanear estudio</a></li>
+                    <li><a class="link" href="aboutUs.html" id="masInfo">Más Información</a></li>
+                </ul>
+                <a id="btn_logOut" onclick=logout()></a>  
             </div>
         </nav>
         

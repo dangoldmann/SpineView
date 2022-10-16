@@ -7,6 +7,7 @@ checkCookies('')
 const lblFullName = document.getElementById('fullName')
 const lblEmail = document.getElementById('email')
 const lblPhone = document.getElementById('phone')
+const lblNombreSideMenu= document.getElementById("lblNombreCompletoSideMenu")
 
 document.addEventListener('DOMContentLoaded', () => {
     loadData()
@@ -22,3 +23,29 @@ async function loadData(){
     lblEmail.textContent = userInfo.email
     lblPhone.textContent = userInfo.phone
 }
+
+async function loadUserName(){
+    const url = apiUrl + '/users/full-name'
+
+    const res = await getRequest(url)
+
+    lblNombreSideMenu.textContent = res.fullName
+}
+
+const btn_logout = document.getElementById('btn_logOut')
+
+    btn_logout.onclick = e => {
+        e.preventDefault()
+        logOut()
+}
+
+async function logOut(){
+    const url = apiUrl + '/auth/logout'
+
+    const res = await getRequest(url)
+
+    if(res.redirect){
+        window.location.href = res.redirect.destination
+    }
+}
+loadUserName();

@@ -21,11 +21,13 @@
         <div id="MenuLateral" class="menulateral">
             <div>
                 <img class="imgUsuario" src="../public/images/Usuario.png">
+                <h1 id="lblNombreCompletoSideMenu"></h1>
                 <a href="#" class="cerrar" id="cerrar" onclick="closeSideMenu()">&laquo;</a>
             </div>
             <ul>
                 <a href="./UserInfo.html">Mi informacion</a>
             </ul>
+            <a id="btn_logOut" onclick=logout()></a>
         </div>
     </nav>
 
@@ -38,14 +40,14 @@
             <table>
                 <tr>
                     <th>Nombre Completo</th>
-                    <td id="fullName"></td>
+                    <td id="fullName">cargando...</td>
                 <tr>
                     <th>Correo Electronico</th>
-                    <td id="email"></td>
+                    <td id="email">cargando...</td>
                 </tr>
                 <tr>
                     <th>Número de telefono</th>
-                    <td id="phone"></td>
+                    <td id="phone">cargando..</td>
                 </tr>
                 <tr>
                     <th>Foto de perfil</th>
