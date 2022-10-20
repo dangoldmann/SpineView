@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap'); 
+
+body {
+    background: linear-gradient(107.56deg, #502660 0%, #5286C2 100%);
+    padding: 0;
+    margin: 0;
+}
+*{
+    font-family: "poppins", sans-serif;;
+}
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #6B3F8F;
+}
+nav img{
+    width: 60px;
+}
+nav a{
+    color:#fff;
+    font-size: 17px;
+    padding:5px;
+    text-decoration: none;
+    font-weight: 100;
+    transition: all .2s ease-in-out;
+}
+nav a:hover{
+    font-size: 20px;
+    border-bottom: 3px solid #f15656;
+    text-decoration: none;
+}
+.hero{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+.hero h1{
+    color: #fff;
+    font-size: 40px;
+    font-weight: 300;
+    margin: 0;
+    padding: 0;
+}
+.hero .below{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    width: 80%;
+}
+
+.image{  
+    padding: 5px;
+    background-color: #5286C2;
+    border: #502660 5px solid;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero .image img{
+}
+
+.hero .below table{
+    width: 50%;
+    border-collapse: collapse;
+    border: 1px hidden #fff;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+    background-color: #6B3F8F;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 100;
+}
+
+.hero .below table caption{
+    padding: 5px;
+    font-size: 30px;
+    background-color: #545353;
+}
+
+.hero .below table tr td, .hero .below table tr th{
+    border: #fff 1px solid;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+}
+
+tr:nth-child(Odd) {background-color: #646464}
+tr:nth-child(even) {background-color: #787878}
