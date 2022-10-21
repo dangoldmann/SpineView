@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400&display=swap');
 
 body {
     background: linear-gradient(107.56deg, #502660 0%, #5286C2 100%);
@@ -87,4 +87,43 @@ tr:nth-child(even) {background-color: #ffffff}
     width: fit-content;
     margin: 25px;
     background-color: #5286C2;
+}
+
+.studies{
+    display: flex;
+    width: 65vw;
+    padding: 20px;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+}
+
+.studies .study{
+    margin: 10px;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    border:#502660 5px solid;
+    border-radius: 10px;
+    background-color: #e1efff;
+}
+
+.studies .study img{  
+    width: 260px;
+    height: 170px;  
+    object-fit: cover;
+    border-radius: 5px 5px 0px 0px;
+}
+.studytext{
+    padding: 0 10px;
+    margin: 10px;
+}
+
+.studytext h4,.studytext h5 {
+    margin: 10px 0;
+    font-family: poppins;
+    width: 200px;
+}
+.studytext span{
+    font-weight: 400;
 }

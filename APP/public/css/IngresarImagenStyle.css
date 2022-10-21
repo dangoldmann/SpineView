@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap'); 
 
 body {
-    background: linear-gradient(107.56deg, #502660 0%, #5286C2 100%);
-    height: 100vh;
+    background: linear-gradient(107.56deg, #502660 0%, #5286C2 100%);   
+    height: 110vh;
     padding: 0;
     margin: 0;
 }
@@ -101,6 +101,7 @@ form{
     width: 70vw;
     height: 70vh;
 }
+
 .enviarDatos{   
     margin: 10px;
     text-align: center;

@@ -29,8 +29,8 @@ async function sendImage(formData) {
     let res = await postRequest(url, formData)
 
     if(res.error) alert(res.error.message)
-    console.log(res.radiography)
-    
+
+    if(res.redirect) window.location.href = res.redirect.destination
 }
 
 async function postRequest(url, data){
@@ -55,7 +55,8 @@ async function postRequest(url, data){
                     <a class="btn" onclick=document.location.reload()>volver a intentar</a>
                     <a href="HomePage.html" class="btn">Volver al inicio</a>
                 </div>
-            </div>`;
+            </div>
+        `;
         divhero.style.display = "none";
         let imagename=imageToUpload.name
         render(myTemplate(imagename), divwrapper);
