@@ -30,7 +30,10 @@ async function sendImage(formData) {
 
     if(res.error) alert(res.error.message)
 
-    if(res.redirect) window.location.href = res.redirect.destination
+    if(res.ok){
+        let id = res.stdId
+        window.location.href="./ResultadosImagen.html?="+id
+    }
 }
 
 async function postRequest(url, data){
@@ -40,9 +43,7 @@ async function postRequest(url, data){
       body: data
     })
     .catch(err => {
-        let diverror= document.getElementById("error");
         let divwrapper = document.getElementById("wrapper");
-        let intentaste = document.getElementById("intentaste");
         let divhero = document.getElementById("hero");
 
         const myTemplate = (imagename) => html`
@@ -50,7 +51,7 @@ async function postRequest(url, data){
                 <h1 class="errormsg1 errormsg">Lo sentimos, algo Salió Mal</h1>
                 <!-- <h2 class="errormsg2 errormsg">Parece que el servidor no esta en funcionamiento</h2> -->
                 <h2 class="errormsg2 errormsg">Parece que la IA o el servidor no estan en funcionamiento</h2>
-                <h3 class="errormsg3 errormsg" id="intentaste">No se pudo subir "${imagename}"</h3>
+                <h3 class="errormsg3 errormsg">No se pudo subir "${imagename}"</h3>
                 <div class="btns">
                     <a class="btn" onclick=document.location.reload()>volver a intentar</a>
                     <a href="HomePage.html" class="btn">Volver al inicio</a>
