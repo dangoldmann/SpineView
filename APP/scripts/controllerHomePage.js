@@ -1,13 +1,13 @@
 import {apiUrl} from './config.js'
 import {getRequest} from './http_requests.js'
-import {checkCookies} from './cookies.js'
+import { logOut } from './logout.js'
+import { verifyRefreshToken } from './refreshToken.js'
 
 const lblNombreCompleto = document.getElementById('lblNombreCompleto')
 const lblNombreSideMenu= document.getElementById("lblNombreCompletoSideMenu")
+const accessToken = localStorage.getItem('accessToken')
 
 document.addEventListener('DOMContentLoaded', () => {
-    checkCookies('')
-
     loadUserName()
 
     const btn_logout = document.getElementById('btn_logOut')
@@ -21,20 +21,18 @@ document.addEventListener('DOMContentLoaded', () => {
 async function loadUserName(){
     const url = apiUrl + '/users/full-name'
 
-    const res = await getRequest(url)
+    const res = await getRequest(url, accessToken)
+
+    if(res.error) {
+        verifyRefreshToken()    
+        accessToken = localStorage.getItem('accessToken')
+        res = await getRequest(url, accessToken)
+    }  
+
+    if(res.error) return alert(res.error.message)
 
     lblNombreCompleto.textContent = res.fullName
     lblNombreSideMenu.textContent = res.fullName
-}
-
-async function logOut(){
-    const url = apiUrl + '/auth/logout'
-
-    const res = await getRequest(url)
-
-    if(res.redirect){
-        window.location.href = res.redirect.destination
-    }
 }
 
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {

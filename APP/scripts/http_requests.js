@@ -1,18 +1,20 @@
-async function getRequest(url) {
+async function getRequest(url, accessToken) {
     const res = await fetch(url, {
         method: 'GET',
-        credentials: 'include'
+        headers: {
+            'Authorization' : 'Bearer ' + accessToken
+        }
     })
 
     return res.json()
 }
 
-async function postRequest(url, data) {
+async function postRequest(url, data, accessToken) {
     const res = await fetch(url, {
         method: 'POST',
-        credentials: 'include',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization' : 'Bearer ' + accessToken
         },
         body: JSON.stringify(data)
     })

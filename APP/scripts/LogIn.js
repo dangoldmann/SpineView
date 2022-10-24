@@ -1,14 +1,11 @@
 import {apiUrl} from './config.js'
 import {postRequest} from './http_requests.js'
-import {checkCookies} from './cookies.js'
 
 var lbl_email = document.getElementById("email")
 var txt_field_email = document.getElementById("txt_field_email")
 var txt_field_pwd = document.getElementById("pwd")
 
 document.addEventListener('DOMContentLoaded', () => {
-    checkCookies('/auth/login')
-  
     const btn_submit = document.getElementById("btn_submit");
     var form = document.getElementById("formLogIn");
 
@@ -21,26 +18,25 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 async function login(formdata){
-    const loginRoute = '/auth/login'
-    const url = apiUrl + loginRoute
-  
-    const user = {
-      email: formdata.get('email'),
-      password: formdata.get('password')
-    }
-  
-    let res = await postRequest(url, user)
+  const url = apiUrl + '/auth/login'
 
-    if(res.error){
-      return actOnError(res.error.message)
-    }
+  const user = {
+    email: formdata.get('email'),
+    password: formdata.get('password')
+  }
 
-    window.location.href = './HomePage.html'
+  const res = await postRequest(url, user, '')
+
+  if(res.error) return actOnError(res.error.message)
+  
+  localStorage.setItem('accessToken', res.access_token)
+  
+  window.location.href = './HomePage.html'
 }
 
 function actOnError(msg){
   if(msg == "User not found"){
-    alert("No existe una cuenta con ese mail. Porfavor, cree una cuenta");
+    alert("No existe una cuenta con ese mail. Porfavor, cree una cuenta.");
     txt_email.classList.add("thisIsWrong")
     txt_field_email.classList.add("thisIsWrong")
     txt_email.innerHTML=("Usuario no encontrado")

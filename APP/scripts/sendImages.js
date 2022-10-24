@@ -1,13 +1,14 @@
 import {html, render} from 'https://unpkg.com/lit-html?module';
 import {apiUrl} from './config.js'
+import { verifyRefreshToken } from './refreshToken.js';
+
+let accessToken = localStorage.getItem('accessToken')
 
 document.addEventListener("DOMContentLoaded", ()=>{
     const imgInput = document.getElementById("imgInput");
     const btn_submit = document.getElementById("btn_submit");
     var inputArea = document.getElementById("ingresarImagenes");
     var imageToUpload;
-    var res;
-
 
     btn_submit.onclick = e => {
         e.preventDefault();
@@ -26,9 +27,16 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
 async function sendImage(formData) {
     const url = apiUrl + '/radiographies/upload'
+    
     let res = await postRequest(url, formData)
 
-    if(res.error) alert(res.error.message)
+    if(res.error) {
+        verifyRefreshToken()    
+        accessToken = localStorage.getItem('accessToken')
+        res = await postRequest(url, formData)
+    }  
+
+    if(res.error) return alert(res.error.message)
 
     if(res.ok){
         let id = res.stdId
@@ -39,7 +47,9 @@ async function sendImage(formData) {
 async function postRequest(url, data){
     const res = await fetch(url, {
       method: 'POST',
-      credentials: 'include',
+      headers: {
+        'Authorization' : 'Bearer ' + accessToken
+      },
       body: data
     })
     .catch(err => {

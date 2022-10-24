@@ -18,24 +18,20 @@ async function forgotPassword(formData) {
     const url = apiUrl + '/users/forgot-password'
     const email = formData.get('email')
 
-    let res = await postRequest(url, {email})
+    let res = await postRequest(url, {email}, '')
 
-    if(res.error){
-        alert(res.error.message)
-    }
-    else{
-        let heroDiv= document.getElementById('hero')
-        let center= document.getElementById("center")
-        heroDiv.style.display = "none"
+    if(res.error) return alert(res.error.message)
 
-        const myTemplate = () => html`
-            <div id="mailsent">
-                <h1>Se envio el email</h1>
-                <h3>Revisa tu casilla de correo</h3>
-                <a href="Login.html" class="btn">Volver al LogIn</a>
-            </div>`;
-        
-        render(myTemplate(), center)
-        
-    }
+    let heroDiv= document.getElementById('hero')
+    let center= document.getElementById("center")
+    heroDiv.style.display = "none"
+
+    const myTemplate = () => html`
+        <div id="mailsent">
+            <h1>Se envio el email</h1>
+            <h3>Revisa tu casilla de correo</h3>
+            <a href="Login.html" class="btn">Volver al LogIn</a>
+        </div>`;
+    
+    render(myTemplate(), center)
 }
