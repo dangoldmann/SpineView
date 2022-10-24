@@ -13,7 +13,6 @@ document.getElementById("DOMContentLoaded",()=>{
 
     async function loadData(){
         const url = apiUrl + '/users/info'
-
         const res = await getRequest(url)
         const userInfo = res.userInfo
 
