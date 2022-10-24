@@ -1,10 +1,13 @@
 import {html, render} from 'https://unpkg.com/lit-html?module';
 import {apiUrl} from './config.js'
 import {getRequest} from './http_requests.js'
+import { verifyRefreshToken } from './refreshToken.js';
 
+const accessToken = localStorage.getItem('accessToken')
 const studiesTab= document.getElementById("studies")
 var studiesArray=[]
 
+<<<<<<< Updated upstream
 let createStudyBox=(id, image, date, result)=>{
     let studybox = (stdId, stdimage, stddate, stdresult)=> html`
     <a href="./ResultadosImagen.html?id=${stdId}">
@@ -17,6 +20,35 @@ let createStudyBox=(id, image, date, result)=>{
         </div>
     </a>`;
     var completestudybox = studybox(id, image, date, result)
+=======
+async function getStudies(){
+    const url = apiUrl + '/radiographies/all'
+
+    const res = await getRequest(url, accessToken)
+
+    if(res.error) {
+        verifyRefreshToken()    
+        accessToken = localStorage.getItem('accessToken')
+        res = await getRequest(url, accessToken)
+    }  
+
+    if(res.error) return alert(res.error.message)
+
+    const studies = res.radiographies
+    console.log(studies)
+}
+
+var createStudyBox=(image, date, result)=>{
+    var studybox = (stdimage, stddate, stdresult)=> html`
+    <div class="study">
+    <img src="${stdimage}" alt="">
+    <div class="studytext">
+        <h5>Fecha: <span>${stddate}</span></h5>
+        <h5>Resultado: <span>${stdresult}</span></h5>
+    </div>
+    </div>`;
+    var completestudybox = studybox(image, date, result)
+>>>>>>> Stashed changes
     return completestudybox;
 }
 
@@ -55,3 +87,8 @@ allUserStudies.forEach(el => {
 });
 
 render(studiesArray, studiesTab)
+<<<<<<< Updated upstream
+=======
+
+export {getStudies}
+>>>>>>> Stashed changes

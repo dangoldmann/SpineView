@@ -1,17 +1,13 @@
 import {apiUrl} from './config.js'
 import {postRequest} from './http_requests.js';
-import {checkCookies} from './cookies.js'
 
 var lbl_email = document.getElementById("lbl_email");
+const btn_submit = document.getElementById("btn_submit");
+var form = document.getElementById("formRegistro");
+var txts_passwords = document.getElementById("pass");
+var lbl_password = document.getElementById("lblpass")
 
 document.addEventListener("DOMContentLoaded", ()=>{
-  checkCookies('/auth/register')
-
-  const btn_submit = document.getElementById("btn_submit");
-  var form = document.getElementById("formRegistro");
-  var txts_passwords = document.getElementById("pass");
-  var lbl_password = document.getElementById("lblpass")
-
   let isComplete = dataform => {
     let arraydata = [];
     for (let el of dataform.values()){
@@ -52,8 +48,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
 })
 
 async function register(formdata){
-  const registerRoute = '/auth/register'
-  const url = apiUrl + registerRoute
+  const url = apiUrl + '/auth/register'
   
   const user = {
     name: formdata.get('name'),
@@ -63,14 +58,13 @@ async function register(formdata){
     password: formdata.get('password')
   }
 
-  let res = await postRequest(url, user)
+  const res = await postRequest(url, user, '')
 
-  if(res.error){
-    actOnError(res.error.message);
-    return
-  }
+  if(res.error) return actOnError(res.error.message)
   
-  window.location.href="./HomePage.html";
+  localStorage.setItem('accessToken', res.access_token)
+
+  window.location.href = "./HomePage.html"
 }
   
 function pwdMatch(contraseña, contraseña2){
