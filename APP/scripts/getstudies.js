@@ -5,16 +5,18 @@ import {getRequest} from './http_requests.js'
 const studiesTab= document.getElementById("studies")
 var studiesArray=[]
 
-var createStudyBox=(image, date, result)=>{
-    var studybox = (stdimage, stddate, stdresult)=> html`
-    <div class="study">
-    <img src="${stdimage}" alt="">
-    <div class="studytext">
-        <h5>Fecha: <span>${stddate}</span></h5>
-        <h5>Resultado: <span>${stdresult}</span></h5>
-    </div>
-    </div>`;
-    var completestudybox = studybox(image, date, result)
+let createStudyBox=(id, image, date, result)=>{
+    let studybox = (stdId, stdimage, stddate, stdresult)=> html`
+    <a href="./ResultadosImagen.html?id=${stdId}">
+        <div class="study" id="study">
+        <img src="${stdimage}">
+        <div class="studytext">
+            <h5>Fecha: <span>${stddate}</span></h5>
+            <h5>Resultado: <span>${stdresult}</span></h5>
+        </div>
+        </div>
+    </a>`;
+    var completestudybox = studybox(id, image, date, result)
     return completestudybox;
 }
 
@@ -27,25 +29,28 @@ var createStudyBox=(image, date, result)=>{
 
 // var allUserStudies = getStudies()
 
-var allUserStudies=[ //Hardcodeado
+let allUserStudies=[ //Hardcodeado
     {
+        stdId:"a",
         stdimage:"../public/images/columna.jpg",
-        stddate:"xx/xx/xx",
+        stddate:"dd/mm/aaaa",
         stdresult:"Fisura de vertebra"
     },
     {
+        stdId:"a",
         stdimage:"../public/images/Home.png",
-        stddate:"xx/xx/xx",
+        stddate:"dd/mm/aaaa",
         stdresult:"Hernia de discos"
     }
 ]
 
 allUserStudies.forEach(el => {
+    var id= el.stdId
     var image= el.stdimage
     var date=el.stddate
     var result=el.stdresult
     
-    var studyBox = createStudyBox(image, date, result)
+    var studyBox = createStudyBox(id, image, date, result)
     studiesArray.push(studyBox)
 });
 

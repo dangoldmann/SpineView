@@ -29,7 +29,7 @@ body {
 }
 
 .userInfo{
-    background-color:   #dd9999;
+    background-color:   #d38080;
 }
 
 table{
@@ -79,7 +79,7 @@ tr:nth-child(even) {background-color: #ffffff}
     height: fit-content;
     width: fit-content;
     margin: 25px;
-    background-color: #dd9999;
+    background-color: #d38080;
 }
 
 #btn_estudios{
@@ -95,6 +95,10 @@ tr:nth-child(even) {background-color: #ffffff}
     padding: 20px;
     flex-flow: row wrap;
     justify-content: flex-start;
+}
+.studies a{
+    color: #332c2b;
+    text-decoration: none;
 }
 
 .studies .study{
