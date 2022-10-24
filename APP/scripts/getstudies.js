@@ -27,7 +27,7 @@ var createStudyBox=(image, date, result)=>{
 
 // var allUserStudies = getStudies()
 
-var allUserStudies=[
+var allUserStudies=[ //Hardcodeado
     {
         stdimage:"../public/images/columna.jpg",
         stddate:"xx/xx/xx",
