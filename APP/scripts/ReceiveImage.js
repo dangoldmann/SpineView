@@ -33,7 +33,28 @@ const studyresult = (stdimage, stddate, stdname, stdresult, stdlocation, stdprec
     </table>
 </div>`;
 
-render(studyresult("https://picsum.photos/2500/3000", "2020-12-12", "Juan Perez", "Hernia de disco", "Recuadrada en la imagen", "99%"), heroDiv);
+// const result = await getRequest('/api/studyresult');
+// var stdname = result[0].name;
+// var stddate = result[0].date;
+// var stdresult = result[0].result;
+// var stdlocation = result[0].location;
+// var stdprecisison = result[0].precision;
+
+const result = {
+    Date:"2021-05-05",
+    name: "Juan Perez",
+    result: "Hernia", 
+    location: "Recuadrada en la imagen",
+    precision: "99%"
+};
+
+var stdname = result.name;
+var stddate = result.Date;
+var stdresult = result.result;
+var stdlocation = result.location;
+var stdprecisison = result.precision;
+
+render(studyresult("https://picsum.photos/2500/3000", stddate, stdname, stdresult, stdlocation, stdprecisison), heroDiv);
 
 var imageTag = document.getElementById("stdimage")
 var label = document.getElementById("label")
