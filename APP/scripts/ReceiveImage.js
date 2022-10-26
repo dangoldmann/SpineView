@@ -9,7 +9,8 @@ const studyresult = (stdimage, stddate, stdname, stdresult, stdlocation, stdprec
 <div class="below">
     <div class="image">
         <img id="stdimage" src="${stdimage}" alt="" onclick="window.open(this.src, '_blank');">
-        <h1 id="label">Abrir en una pestaña</h1>
+        <h1>Espera mientras carga la imagen, esto puede tardar unos momentos</h1>
+        <h2 id="label">Abrir en una pestaña</h2>
     </div> 
     <table>
         <caption>Detectado:</caption>
@@ -44,6 +45,7 @@ const studyresult = (stdimage, stddate, stdname, stdresult, stdlocation, stdprec
 // var stdprecisison = result[0].precision;
 
 const result = {
+    stdurl:"https://picsum.photos/2500/3000",
     Date:"2021-05-05",
     name: "Juan Perez",
     result: "Hernia", 
@@ -51,7 +53,7 @@ const result = {
     precision: "99%"
 };
 
-let stdurl = "https://picsum.photos/2500/3000"
+let stdurl = result.stdurl
 let stdname = result.name
 let stddate = result.Date
 let stdresult = result.result
@@ -59,6 +61,7 @@ let stdlocation = result.location
 let stdprecisison = result.precision
 
 render(studyresult(stdurl, stddate, stdname, stdresult, stdlocation, stdprecisison), heroDiv);
+document.getElementById("loading").style.display="none"
 
 var imageTag = document.getElementById("stdimage")
 var label = document.getElementById("label")

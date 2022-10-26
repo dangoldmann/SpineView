@@ -24,38 +24,34 @@ async function getStudies(){
     console.log(studies)
 }
 
-var createStudyBox=(image, date, result)=>{
-    var studybox = (stdimage, stddate, stdresult)=> html`
-    <div class="study">
-    <img src="${stdimage}" alt="">
-    <div class="studytext">
-        <h5>Fecha: <span>${stddate}</span></h5>
-        <h5>Resultado: <span>${stdresult}</span></h5>
-    </div>
-    </div>`;
-    var completestudybox = studybox(image, date, result)
+// let allUserStudies=getStudies()
+//La funcion getStudies() deberia devolver un array de objetos, dentro de cada objeto tiene que haber
+//un ID, la fecha del estudio y el resultado
+
+var createStudyBox=(stdid, date, result)=>{
+    var studybox = (stdid, stddate, stdresult)=> html`
+    <a href="./ResultadosImagen.html?=${stdid}">
+        <div class="study">
+            <img src="https://picsum.photos/200/300?=${stdid}" alt="">
+            <div class="studytext">
+                <h5>Fecha: <span>${stddate}</span></h5>
+                <h5>Resultado: <span>${stdresult}</span></h5>
+            </div>
+        </div>
+    </a>`
+    ;
+    var completestudybox = studybox(stdid, date, result)
     return completestudybox;
 }
 
-// async function getStudies(){
-//     const url = apiUrl + "/radiographies"
-//     const res = await getRequest(url)
-//     var allUserStudies = res.studies
-//     return allUserStudies
-// }
-
-// var allUserStudies = getStudies()
-
 let allUserStudies=[ //Hardcodeado
     {
-        stdId:"a",
-        stdimage:"../public/images/columna.jpg",
+        stdId:"1",
         stddate:"dd/mm/aaaa",
         stdresult:"Fisura de vertebra"
     },
     {
-        stdId:"a",
-        stdimage:"../public/images/Home.png",
+        stdId:"2",
         stddate:"dd/mm/aaaa",
         stdresult:"Hernia de discos"
     }
@@ -63,11 +59,10 @@ let allUserStudies=[ //Hardcodeado
 
 allUserStudies.forEach(el => {
     var id= el.stdId
-    var image= el.stdimage
     var date=el.stddate
     var result=el.stdresult
     
-    var studyBox = createStudyBox(id, image, date, result)
+    var studyBox = createStudyBox(id, date, result)
     studiesArray.push(studyBox)
 });
 
