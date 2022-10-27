@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap'); 
 
 body {
-    background: linear-gradient(107.56deg, #502660 0%, #5286C2 100%);   
-    height: 110vh;
+    background: linear-gradient(107.56deg, #502660 0%, #5286C2 100%);       
+    min-height: 100vh;
     padding: 0;
     margin: 0;
 }
@@ -49,7 +49,7 @@ form{
     background-color: #5286C2;
     border: #502660 dashed 5px;
     border-radius: 10px;    
-    height: 65vh; width: 50vw;
+    height: 52vh; width: 40vw;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -82,7 +82,7 @@ form{
     background-color: #5286C2;
     border: #502660 solid 5px;
     border-radius: 10px;
-    height: 65vh; width: 50vw;
+    height: 52vh; width: 40vw;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -91,15 +91,27 @@ form{
 }
 .previews img{
     display: none;
-    max-width: 90%;
-    max-height: 90%; 
-    border-radius: 15px;
-    border: #502660 solid 5px;
+    border-radius: 5px;
     opacity: 0.8;
 }
-.bigPreview{
-    width: 70vw;
-    height: 70vh;
+
+.img-preview__image{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.subform{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.subform input{
+    height: fit-content;
+}
+.datelbl{
+    margin: 10px;
+    color: #fff;
 }
 
 .enviarDatos{   

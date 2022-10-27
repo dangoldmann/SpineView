@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
     const imgInput = document.getElementById("imgInput");
     const btn_submit = document.getElementById("btn_submit");
     var inputArea = document.getElementById("ingresarImagenes");
+    var date;
     var imageToUpload;
 
     btn_submit.onclick = e => {
@@ -22,6 +23,8 @@ document.addEventListener("DOMContentLoaded", ()=>{
         }
 
         const formData = new FormData();
+        date= document.getElementById("stddate").value
+        formData.append('date', date)
         formData.append('image', imageToUpload);
         
         sendImage(formData);
