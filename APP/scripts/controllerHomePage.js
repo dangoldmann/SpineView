@@ -3,14 +3,14 @@ import {getRequest} from './http_requests.js'
 import { logOut } from './logout.js'
 import { verifyRefreshToken } from './refreshToken.js'
 
-const lblNombreCompleto = document.getElementById('lblNombreCompleto')
-const lblNombreSideMenu= document.getElementById("lblNombreCompletoSideMenu")
+
 const accessToken = localStorage.getItem('accessToken')
+const lblNombreCompleto = document.getElementById('lblNombreCompleto')
+const lblNombreSideMenu = document.getElementById("lblNombreCompletoSideMenu")
+const btn_logout = document.getElementById('btn_logOut')
 
 document.addEventListener('DOMContentLoaded', () => {
     loadUserName()
-
-    const btn_logout = document.getElementById('btn_logOut')
 
     btn_logout.onclick = e => {
         e.preventDefault()
@@ -63,3 +63,5 @@ wrapper.addEventListener("scroll", () => {
     quienesSomos.classList.toggle("alt", wrapper.scrollTop>600 && wrapper.scrollTop<=1331);
     a_escanear.classList.toggle("alt", wrapper.scrollTop>1331);
 });
+
+export {loadUserName}

@@ -1,11 +1,14 @@
 import {apiUrl} from './config.js'
 import {postRequest} from './http_requests.js'
+import { verifyRefreshToken } from './refreshToken.js'
 
 var lbl_email = document.getElementById("email")
 var txt_field_email = document.getElementById("txt_field_email")
 var txt_field_pwd = document.getElementById("pwd")
+let accessToken = localStorage.getItem('accessToken')
 
 document.addEventListener('DOMContentLoaded', () => {
+    isLoggedIn()  
     const btn_submit = document.getElementById("btn_submit");
     var form = document.getElementById("formLogIn");
 
@@ -31,7 +34,7 @@ async function login(formdata){
   
   localStorage.setItem('accessToken', res.access_token)
   
-  window.location.href = './HomePage.html'
+  //window.location.href = './HomePage.html'
 }
 
 function actOnError(msg){
@@ -52,3 +55,19 @@ function actOnError(msg){
     alert("Algo salio mal")
   }
 }
+
+async function isLoggedIn(){
+  const url = apiUrl + '/auth/access-token'
+
+  let res = await postRequest(url, {}, accessToken)
+  
+  if(!res.redirect) {
+    verifyRefreshToken(true)
+    accessToken = localStorage.getItem('accessToken')
+    res = await postRequest(url, {}, accessToken)
+  }
+
+  if(res.redirect) window.location.href = res.redirect.destination
+}
+
+export {isLoggedIn}

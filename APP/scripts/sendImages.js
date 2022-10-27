@@ -1,10 +1,12 @@
 import {html, render} from 'https://unpkg.com/lit-html?module';
 import {apiUrl} from './config.js'
 import { verifyRefreshToken } from './refreshToken.js';
+import {loadUserName} from './controllerHomePage.js'
 
 let accessToken = localStorage.getItem('accessToken')
 
 document.addEventListener("DOMContentLoaded", ()=>{
+    loadUserName()
     const imgInput = document.getElementById("imgInput");
     const btn_submit = document.getElementById("btn_submit");
     var inputArea = document.getElementById("ingresarImagenes");
@@ -38,9 +40,9 @@ async function sendImage(formData) {
 
     if(res.error) return alert(res.error.message)
 
-    if(res.ok){
-        let id = res.stdId
-        window.location.href="./ResultadosImagen.html?="+id
+    if(res.radiographyId){
+        const id = res.radiographyId
+        window.location.href="./ResultadosImagen.html?id=" + id
     }
 }
 

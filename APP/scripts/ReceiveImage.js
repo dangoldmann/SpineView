@@ -1,9 +1,15 @@
 import {html, render} from 'https://unpkg.com/lit-html?module';
-import {getRequest} from './http_requests.js'
+import { apiUrl } from './config.js';
+import { verifyRefreshToken } from './refreshToken.js';
 
+let accessToken = localStorage.getItem('accessToken')
 const heroDiv=document.getElementById("hero")
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
+
+document.addEventListener('DOMContentLoaded', () => {
+    loadResult()
+})
 
 const studyresult = (stdimage, stddate, stdname, stdresult, stdlocation, stdprecisison) => html`
 <div class="below">
@@ -35,6 +41,35 @@ const studyresult = (stdimage, stddate, stdname, stdresult, stdlocation, stdprec
         </tr>
     </table>
 </div>`;
+
+async function loadResult(){
+    const id = urlParams.get('id')
+    const url = apiUrl + `/radiographies/${id}/result`
+
+    let res = await getRequest(url, id, accessToken)
+    
+    // if(res.error) {
+    //     verifyRefreshToken()
+    //     accessToken = localStorage.getItem('accessToken')
+    //     res = await getRequest(url, accessToken)
+    // }
+
+    if(res.error) return alert(res.error.message)
+
+    const result = res.result
+    console.log(result)
+}
+
+async function getRequest(url, accessToken) {
+    const res = await fetch(url, {
+        method: 'GET',
+        headers: {
+            'Authorization' : 'Bearer ' + accessToken
+        }
+    })
+
+    return res.json()
+}
 
 // const result = await getRequest('/api/studyresult');
 //let stdurl = urlParams.get("id")

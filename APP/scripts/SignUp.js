@@ -1,5 +1,6 @@
 import {apiUrl} from './config.js'
 import {postRequest} from './http_requests.js';
+import { isLoggedIn } from './LogIn.js';
 
 var lbl_email = document.getElementById("lbl_email");
 const btn_submit = document.getElementById("btn_submit");
@@ -8,6 +9,7 @@ var txts_passwords = document.getElementById("pass");
 var lbl_password = document.getElementById("lblpass")
 
 document.addEventListener("DOMContentLoaded", ()=>{
+  isLoggedIn()
   let isComplete = dataform => {
     let arraydata = [];
     for (let el of dataform.values()){
