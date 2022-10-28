@@ -3,6 +3,7 @@ import { getRequest } from './http_requests.js'
 import { logOut } from './logout.js'
 import { getStudies } from './getstudies.js'
 import { isNotLoggedIn } from './tokens.js'
+import {deleteStudy} from './deleteStudy.js'
 
 let accessToken = localStorage.getItem('accessToken')
 const lblFullName = document.getElementById('fullName')
@@ -36,3 +37,13 @@ async function loadUserInfo(){
     lblPhone.textContent = userInfo.phone
     lblNombreSideMenu.textContent = userInfo.fullName
 }
+
+let elementsRendered=()=>{
+    const btn_delete = document.getElementById('dltstd')
+    btn_delete.onclick = e => {
+        e.preventDefault()
+        deleteStudy()
+    }
+}
+
+export {elementsRendered}

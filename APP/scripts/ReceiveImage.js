@@ -52,7 +52,8 @@ async function loadResult(){
     const result = res.result
     
     render(studyresult(id, result.date, result.fullName, result.injury, 'Recuadrada en la imagen', result.precisison), heroDiv);
-    document.getElementById("loading").style.display="none"
+    document.getElementById("loading").style.display="none"    
+    elementsrendered()
 }
 
 let elementsrendered=()=>{

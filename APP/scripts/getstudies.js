@@ -1,6 +1,7 @@
 import {html, render} from 'https://unpkg.com/lit-html?module';
 import {apiUrl} from './config.js'
 import {getRequest} from './http_requests.js'
+import {elementsRendered} from './controllerUserInfo.js'
 
 const accessToken = localStorage.getItem('accessToken')
 const studiesTab= document.getElementById("studies")
@@ -21,19 +22,27 @@ async function getStudies(){
         studiesArray.push(studyBox)
     })
     render(studiesArray, studiesTab)
+    elementsRendered()
 }
 
 var createStudyBox = (stdid, date, result) => {
     var studybox = (stdid, stddate, stdresult) => html`
-    <a href="./ResultadosImagen.html?id=${stdid}">
-        <div class="study">
-            <img src="${apiUrl}/radiographies/${stdid}" alt="">
-            <div class="studytext">
-                <h5>Fecha: <span>${stddate}</span></h5>
-                <h5>Resultado: <span>${stdresult}</span></h5>
+    <div class="studybox">
+        <button id="dltstd" class="dltstd" onClick=deleteStudy(${stdid})>
+            <div class="icon text">&#10006;</div>
+            <div class="secondary text">¿Eliminar estudio?</div>
+        </button>
+        <a href="./ResultadosImagen.html?id=${stdid}">
+            <div class="study">
+                
+                <img src="${apiUrl}/radiographies/${stdid}" alt="">
+                <div class="studytext">
+                    <h5>Fecha: <span>${stddate}</span></h5>
+                    <h5>Resultado: <span>${stdresult}</span></h5>
+                </div>
             </div>
-        </div>
-    </a>`
+        </a>
+    </div>`
     ;
     var completestudybox = studybox(stdid, date, result)
     return completestudybox;

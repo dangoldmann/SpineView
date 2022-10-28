@@ -101,6 +101,10 @@ tr:nth-child(even) {background-color: #ffffff}
     text-decoration: none;
 }
 
+.studies .studybox{
+    display: flex;
+    justify-content: flex-end;
+}
 .studies .study{
     margin: 10px;
     display: flex;
@@ -111,6 +115,46 @@ tr:nth-child(even) {background-color: #ffffff}
     border-radius: 10px;
     background-color: #e1efff;
 }
+
+.studies .dltstd{
+    position: absolute;
+    margin: 30px;
+    background-color: #332c2b99;
+    color: white;
+    font-family: poppins;
+    font-size: 15px;
+    cursor: pointer;
+    border-radius: 10px;
+    border: none;
+    height: 30px;
+    width: 30px;
+    padding-top: 3px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    transition: all 0.5s;
+    overflow: hidden;
+}
+.studies .dltstd .text {
+    width: 180px;
+    height: 45px;
+    position: relative;
+}
+.secondary {
+    width: 150px;
+    display: none;
+}
+.dltstd:hover .icon {
+    display: none;
+}
+.dltstd:hover .secondary {
+    display: block;
+}
+.dltstd:hover{
+    background-color: #d96459;
+    width: 150px;
+}
+
 
 .studies .study img{  
     width: 260px;
