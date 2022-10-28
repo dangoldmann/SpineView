@@ -40,13 +40,3 @@ async function loadUserInfo(){
     lblPhone.textContent = userInfo.phone
     lblNombreSideMenu.textContent = userInfo.fullName
 }
-
-let elementsRendered=()=>{
-    const btn_delete = document.getElementById('dltstd')
-    btn_delete.onclick = e => {
-        e.preventDefault()
-        deleteStudy()
-    }
-}
-
-export {elementsRendered}
