@@ -1,6 +1,6 @@
 import {html, render} from 'https://unpkg.com/lit-html?module';
 import { apiUrl } from './config.js';
-import {isNotLoggedIn} from './tokens.js'
+import {handleInvalidAccessToken, isNotLoggedIn} from './tokens.js'
 import {getRequest} from './http_requests.js'
 
 const imageTest = 'https://picsum.photos/2500/3000'
@@ -47,6 +47,8 @@ async function loadResult(){
 
     const res = await getRequest(url, accessToken)
     
+    if(res.error) res = await handleInvalidAccessToken(url)
+
     if(res.error) return alert(res.error.message)
 
     const result = res.result
