@@ -10,10 +10,10 @@ let imageTag;
 let label;
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
-const studyresult = (stdimage, stddate, stdname, stdresult, stdlocation, stdprecisison) => html`
+const studyresult = (stdid, stddate, stdname, stdresult, stdlocation, stdprecisison) => html`
 <div class="below">
     <div class="image">
-        <img id="stdimage" src="${stdimage}" alt="" onclick="window.open(this.src, '_blank');">
+        <img id="stdimage" src="${apiUrl}/radiographies/${stdid}" alt="" onclick="window.open(this.src, '_blank');">
         <h1>Espera mientras carga la imagen, esto puede tardar unos momentos</h1>
         <h2 id="label">Abrir en una pestaña</h2>
     </div> 
@@ -51,9 +51,8 @@ async function loadResult(){
 
     const result = res.result
     
-    render(studyresult(`${apiUrl}/radiographies/${id}`, result.date, result.fullName, result.injury, 'Recuadrada en la imagen', result.precisison), heroDiv);
-    
-    elementsrendered()
+    render(studyresult(id, result.date, result.fullName, result.injury, 'Recuadrada en la imagen', result.precisison), heroDiv);
+    document.getElementById("loading").style.display="none"
 }
 
 let elementsrendered=()=>{
