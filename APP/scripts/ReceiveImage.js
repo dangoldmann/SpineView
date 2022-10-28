@@ -50,6 +50,7 @@ async function loadResult(){
     const result = res.result
     
     render(studyresult(`${apiUrl}/radiographies/${id}`, result.date, result.fullName, result.injury, 'Recuadrada en la imagen', result.precisison), heroDiv);
+    document.getElementById("loading").style.display="none"
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -57,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
     loadResult()
 })
 
-document.getElementById("loading").style.display="none"
+
 
 var imageTag = document.getElementById("stdimage")
 var label = document.getElementById("label")
