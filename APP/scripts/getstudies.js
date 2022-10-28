@@ -24,7 +24,7 @@ async function getStudies(){
 
 var createStudyBox=(stdid, date, result)=>{
     var studybox = (stdid, stddate, stdresult)=> html`
-    <a href="./ResultadosImagen.html?=${stdid}">
+    <a href="./ResultadosImagen.html?id=${stdid}">
         <div class="study">
             <img src="https://picsum.photos/200/300?id=${stdid}" alt="">
             <div class="studytext">
