@@ -3,6 +3,7 @@ import { apiUrl } from './config.js';
 import {isNotLoggedIn} from './tokens.js'
 import {getRequest} from './http_requests.js'
 
+const imageTest = 'https://picsum.photos/2500/3000'
 let accessToken = localStorage.getItem('accessToken')
 const heroDiv=document.getElementById("hero")
 const queryString = window.location.search;
@@ -38,11 +39,6 @@ const studyresult = (stdimage, stddate, stdname, stdresult, stdlocation, stdprec
     </table>
 </div>`;
 
-document.addEventListener('DOMContentLoaded', () => {
-    isNotLoggedIn()
-    loadResult()
-})
-
 async function loadResult(){
     const id = urlParams.get('id')
     const url = apiUrl + `/radiographies/${id}/result`
@@ -52,34 +48,23 @@ async function loadResult(){
     if(res.error) return alert(res.error.message)
 
     const result = res.result
-    console.log(result)
+    
+    render(studyresult(`${apiUrl}/radiographies/${id}`, result.date, result.fullName, result.injury, 'Recuadrada en la imagen', result.precisison), heroDiv);
 }
 
-const result = {
-    stdurl:"https://picsum.photos/2500/3000",
-    Date:"2021-05-05",
-    name: "Juan Perez",
-    result: "Hernia", 
-    location: "Recuadrada en la imagen",
-    precision: "99%"
-};
+document.addEventListener('DOMContentLoaded', () => {
+    isNotLoggedIn()
+    loadResult()
+})
 
-let stdurl = result.stdurl
-let stdname = result.name
-let stddate = result.Date
-let stdresult = result.result
-let stdlocation = result.location
-let stdprecisison = result.precision
-
-render(studyresult(stdurl, stddate, stdname, stdresult, stdlocation, stdprecisison), heroDiv);
 document.getElementById("loading").style.display="none"
 
 var imageTag = document.getElementById("stdimage")
 var label = document.getElementById("label")
-console.log(imageTag)
-imageTag.addEventListener("mouseover", ()=>{
-    label.style.opacity="0.9"
-})
-imageTag.addEventListener("mouseout", ()=>{
-    label.style.opacity="0"
-})
+
+// imageTag.addEventListener("mouseover", ()=>{
+//     label.style.opacity="0.9"
+// })
+// imageTag.addEventListener("mouseout", ()=>{
+//     label.style.opacity="0"
+// })
