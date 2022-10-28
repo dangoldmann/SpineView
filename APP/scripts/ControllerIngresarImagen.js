@@ -2,6 +2,11 @@ document.addEventListener("DOMContentLoaded", ()=>{
     var form = document.getElementById("ingresarImagenes");
     var fileInput = document.getElementById("imgInput");
     var dropArea = document.getElementById("ingresarImagenes")
+    const btn_wrongimg = document.getElementById('btn_wrongimg')
+
+    btn_wrongimg.onclick = e => {
+        fileInput.click()
+    }
 
     form.addEventListener("click", () =>{
         fileInput.click();
@@ -48,7 +53,6 @@ document.addEventListener("DOMContentLoaded", ()=>{
         const dT = new DataTransfer();
         dT.items.add(evt.dataTransfer.files[0]);
         fileInput[0] = dT.files;
-        console.log(fileInput.files);
     
         evt.preventDefault();
         previewDroppedImage(fileInput.files[0]);
