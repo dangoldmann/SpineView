@@ -2,7 +2,6 @@ import { apiUrl } from './config.js'
 import { getRequest } from './http_requests.js'
 import { logOut } from './logout.js'
 import { getStudies } from './getstudies.js'
-import {deleteStudy} from './deleteStudy.js'
 import { isNotLoggedIn, handleInvalidAccessToken } from './tokens.js'
 
 let accessToken = localStorage.getItem('accessToken')
