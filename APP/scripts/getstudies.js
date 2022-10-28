@@ -26,7 +26,7 @@ var createStudyBox=(stdid, date, result)=>{
     var studybox = (stdid, stddate, stdresult)=> html`
     <a href="./ResultadosImagen.html?=${stdid}">
         <div class="study">
-            <img src="https://picsum.photos/200/300?=${stdid}" alt="">
+            <img src="https://picsum.photos/200/300?id=${stdid}" alt="">
             <div class="studytext">
                 <h5>Fecha: <span>${stddate}</span></h5>
                 <h5>Resultado: <span>${stdresult}</span></h5>
