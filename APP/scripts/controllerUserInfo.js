@@ -2,7 +2,6 @@ import { apiUrl } from './config.js'
 import { getRequest } from './http_requests.js'
 import { logOut } from './logout.js'
 import { getStudies } from './getstudies.js'
-import {deleteStudy} from './deleteStudy.js'
 import { isNotLoggedIn, handleInvalidAccessToken } from './tokens.js'
 
 let accessToken = localStorage.getItem('accessToken')
@@ -26,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
 async function loadUserInfo(){
     const url = apiUrl + '/users/info'
 
-    const res = await getRequest(url, accessToken)
+    let res = await getRequest(url, accessToken)
 
     if(res.error) res = await handleInvalidAccessToken(url)
 
