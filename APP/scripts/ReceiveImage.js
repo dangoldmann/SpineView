@@ -56,11 +56,7 @@ async function loadResult(){
 document.addEventListener('DOMContentLoaded', () => {
     isNotLoggedIn()
     loadResult()
-    let id = urlParams.get('id')
-    console.log(id)
 })
-
-
 
 var imageTag = document.getElementById("stdimage")
 var label = document.getElementById("label")
