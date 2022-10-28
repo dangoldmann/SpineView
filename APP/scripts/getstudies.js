@@ -1,7 +1,7 @@
 import {html, render} from 'https://unpkg.com/lit-html?module';
 import {apiUrl} from './config.js'
 import {getRequest} from './http_requests.js'
-import { verifyRefreshToken } from './refreshToken.js';
+import { verifyRefreshToken } from './tokens.js';
 
 const accessToken = localStorage.getItem('accessToken')
 const studiesTab= document.getElementById("studies")
@@ -11,12 +11,6 @@ async function getStudies(){
     const url = apiUrl + '/radiographies/all'
 
     const res = await getRequest(url, accessToken)
-
-    if(res.error) {
-        verifyRefreshToken()    
-        accessToken = localStorage.getItem('accessToken')
-        res = await getRequest(url, accessToken)
-    }  
 
     if(res.error) return alert(res.error.message)
 

@@ -2,9 +2,9 @@ import { apiUrl } from './config.js'
 import { getRequest } from './http_requests.js'
 import { logOut } from './logout.js'
 import { getStudies } from './getstudies.js'
-import { verifyRefreshToken } from './refreshToken.js'
+import { verifyRefreshToken, isNotLoggedIn } from './tokens.js'
 
-const accessToken = localStorage.getItem('accessToken')
+let accessToken = localStorage.getItem('accessToken')
 const lblFullName = document.getElementById('fullName')
 const lblEmail = document.getElementById('email')
 const lblPhone = document.getElementById('phone')
@@ -12,6 +12,7 @@ const lblNombreSideMenu = document.getElementById("lblNombreCompletoSideMenu")
 const btn_logout = document.getElementById('btn_logOut')
 
 document.addEventListener('DOMContentLoaded', () => {
+    isNotLoggedIn()
     loadUserInfo()
     getStudies()
     
@@ -25,12 +26,6 @@ async function loadUserInfo(){
     const url = apiUrl + '/users/info'
 
     const res = await getRequest(url, accessToken)
-    console.log(res)
-    if(res.error) {
-        verifyRefreshToken()    
-        accessToken = localStorage.getItem('accessToken')
-        res = await getRequest(url, accessToken)
-    }  
 
     if(res.error) return alert(res.error.message)
 

@@ -1,12 +1,11 @@
 import {html, render} from 'https://unpkg.com/lit-html?module';
 import {apiUrl} from './config.js'
-import { verifyRefreshToken } from './refreshToken.js';
-import {loadUserName} from './controllerHomePage.js'
+import { verifyRefreshToken, isNotLoggedIn } from './tokens.js';
 
 let accessToken = localStorage.getItem('accessToken')
 
 document.addEventListener("DOMContentLoaded", ()=>{
-    loadUserName()
+    isNotLoggedIn()
     const imgInput = document.getElementById("imgInput");
     const btn_submit = document.getElementById("btn_submit");
     var inputArea = document.getElementById("ingresarImagenes");
@@ -33,19 +32,13 @@ document.addEventListener("DOMContentLoaded", ()=>{
 async function sendImage(formData) {
     const url = apiUrl + '/radiographies/upload'
     
-    let res = await postRequest(url, formData)
-
-    if(res.error) {
-        verifyRefreshToken()    
-        accessToken = localStorage.getItem('accessToken')
-        res = await postRequest(url, formData)
-    }  
+    const res = await postRequest(url, formData)
 
     if(res.error) return alert(res.error.message)
 
     if(res.radiographyId){
         const id = res.radiographyId
-        window.location.href="./ResultadosImagen.html?id=" + id
+        window.location.href = `./ResultadosImagen.html?id=${id}`
     }
 }
 

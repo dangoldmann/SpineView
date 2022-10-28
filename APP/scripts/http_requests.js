@@ -22,4 +22,17 @@ async function postRequest(url, data, accessToken) {
     return res.json()
 }
 
-export {getRequest, postRequest}
+async function postRequestForAuthentication(url, data){
+    const res = await fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        credentials: 'include',
+        body: JSON.stringify(data)
+    })
+
+    return res.json()
+}
+
+export {getRequest, postRequest, postRequestForAuthentication}

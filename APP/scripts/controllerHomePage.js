@@ -1,15 +1,15 @@
 import {apiUrl} from './config.js'
 import {getRequest} from './http_requests.js'
 import { logOut } from './logout.js'
-import { verifyRefreshToken } from './refreshToken.js'
+import { verifyRefreshToken, isNotLoggedIn } from './tokens.js'
 
-
-const accessToken = localStorage.getItem('accessToken')
+let accessToken = localStorage.getItem('accessToken')
 const lblNombreCompleto = document.getElementById('lblNombreCompleto')
 const lblNombreSideMenu = document.getElementById("lblNombreCompletoSideMenu")
 const btn_logout = document.getElementById('btn_logOut')
 
 document.addEventListener('DOMContentLoaded', () => {
+    isNotLoggedIn()
     loadUserName()
 
     btn_logout.onclick = e => {
@@ -22,12 +22,6 @@ async function loadUserName(){
     const url = apiUrl + '/users/full-name'
 
     const res = await getRequest(url, accessToken)
-
-    if(res.error) {
-        verifyRefreshToken()    
-        accessToken = localStorage.getItem('accessToken')
-        res = await getRequest(url, accessToken)
-    }  
 
     if(res.error) return alert(res.error.message)
 

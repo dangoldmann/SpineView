@@ -1,6 +1,7 @@
 import {html, render} from 'https://unpkg.com/lit-html?module';
 import { apiUrl } from './config.js';
-import { verifyRefreshToken } from './refreshToken.js';
+import {isNotLoggedIn} from './tokens.js'
+import {getRequest} from './http_requests.js'
 
 let accessToken = localStorage.getItem('accessToken')
 const heroDiv=document.getElementById("hero")
@@ -8,6 +9,7 @@ const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 
 document.addEventListener('DOMContentLoaded', () => {
+    isNotLoggedIn()
     loadResult()
 })
 
@@ -46,38 +48,13 @@ async function loadResult(){
     const id = urlParams.get('id')
     const url = apiUrl + `/radiographies/${id}/result`
 
-    let res = await getRequest(url, id, accessToken)
-    
-    // if(res.error) {
-    //     verifyRefreshToken()
-    //     accessToken = localStorage.getItem('accessToken')
-    //     res = await getRequest(url, accessToken)
-    // }
+    const res = await getRequest(url, id, accessToken)
 
     if(res.error) return alert(res.error.message)
 
     const result = res.result
     console.log(result)
 }
-
-async function getRequest(url, accessToken) {
-    const res = await fetch(url, {
-        method: 'GET',
-        headers: {
-            'Authorization' : 'Bearer ' + accessToken
-        }
-    })
-
-    return res.json()
-}
-
-// const result = await getRequest('/api/studyresult');
-//let stdurl = urlParams.get("id")
-// var stdname = result[0].name;
-// var stddate = result[0].date;
-// var stdresult = result[0].result;
-// var stdlocation = result[0].location;
-// var stdprecisison = result[0].precision;
 
 const result = {
     stdurl:"https://picsum.photos/2500/3000",

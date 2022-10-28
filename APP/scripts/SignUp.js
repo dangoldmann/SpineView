@@ -1,6 +1,6 @@
 import {apiUrl} from './config.js'
-import {postRequest} from './http_requests.js';
-import { isLoggedIn } from './LogIn.js';
+import {postRequestForAuthentication} from './http_requests.js';
+import { isLoggedIn } from './tokens.js';
 
 var lbl_email = document.getElementById("lbl_email");
 const btn_submit = document.getElementById("btn_submit");
@@ -60,7 +60,7 @@ async function register(formdata){
     password: formdata.get('password')
   }
 
-  const res = await postRequest(url, user, '')
+  const res = await postRequestForAuthentication(url, user)
 
   if(res.error) return actOnError(res.error.message)
   
