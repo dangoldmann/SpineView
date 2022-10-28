@@ -62,9 +62,9 @@ document.getElementById("loading").style.display="none"
 var imageTag = document.getElementById("stdimage")
 var label = document.getElementById("label")
 
-// imageTag.addEventListener("mouseover", ()=>{
-//     label.style.opacity="0.9"
-// })
-// imageTag.addEventListener("mouseout", ()=>{
-//     label.style.opacity="0"
-// })
+imageTag.addEventListener("mouseover", ()=>{
+    label.style.opacity="0.9"
+})
+imageTag.addEventListener("mouseout", ()=>{
+    label.style.opacity="0"
+})
