@@ -6,6 +6,8 @@ import {getRequest} from './http_requests.js'
 const imageTest = 'https://picsum.photos/2500/3000'
 let accessToken = localStorage.getItem('accessToken')
 const heroDiv=document.getElementById("hero")
+let imageTag;
+let label;
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const studyresult = (stdimage, stddate, stdname, stdresult, stdlocation, stdprecisison) => html`
@@ -50,20 +52,24 @@ async function loadResult(){
     const result = res.result
     
     render(studyresult(`${apiUrl}/radiographies/${id}`, result.date, result.fullName, result.injury, 'Recuadrada en la imagen', result.precisison), heroDiv);
+    
+    elementsrendered()
+}
+
+let elementsrendered=()=>{
     document.getElementById("loading").style.display="none"
+    imageTag = document.getElementById("stdimage")
+    label = document.getElementById("label")
+    console.log(imageTag)
+    imageTag.addEventListener("mouseover", ()=>{
+        label.style.opacity="0.9"
+    })
+    imageTag.addEventListener("mouseout", ()=>{
+        label.style.opacity="0"
+    })
 }
 
 document.addEventListener('DOMContentLoaded', () => {
     isNotLoggedIn()
     loadResult()
-})
-
-var imageTag = document.getElementById("stdimage")
-var label = document.getElementById("label")
-
-imageTag.addEventListener("mouseover", ()=>{
-    label.style.opacity="0.9"
-})
-imageTag.addEventListener("mouseout", ()=>{
-    label.style.opacity="0"
-})
+});
