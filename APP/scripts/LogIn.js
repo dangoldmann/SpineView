@@ -1,5 +1,5 @@
 import {apiUrl} from './config.js'
-import {postRequestForAuthentication} from './http_requests.js'
+import {postRequestWithCredentials} from './http_requests.js'
 import {isLoggedIn} from './tokens.js'
 
 var lbl_email = document.getElementById("email")
@@ -21,13 +21,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
 async function login(formdata){
   const url = apiUrl + '/auth/login'
-
+  
   const user = {
     email: formdata.get('email'),
     password: formdata.get('password')
   }
 
-  const res = await postRequestForAuthentication(url, user)
+  const res = await postRequestWithCredentials(url, user)
   
   if(res.error) return actOnError(res.error.message)
   

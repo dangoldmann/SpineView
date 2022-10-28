@@ -9,6 +9,15 @@ async function getRequest(url, accessToken) {
     return res.json()
 }
 
+async function getRequestWithCredentials(url){
+    const res = await fetch(url, {
+        method: 'GET',
+        credentials: 'include'
+    })
+
+    return res.json()
+}
+
 async function postRequest(url, data, accessToken) {
     const res = await fetch(url, {
         method: 'POST',
@@ -22,7 +31,7 @@ async function postRequest(url, data, accessToken) {
     return res.json()
 }
 
-async function postRequestForAuthentication(url, data){
+async function postRequestWithCredentials(url, data){
     const res = await fetch(url, {
         method: 'POST',
         headers: {
@@ -35,4 +44,4 @@ async function postRequestForAuthentication(url, data){
     return res.json()
 }
 
-export {getRequest, postRequest, postRequestForAuthentication}
+export {getRequest, getRequestWithCredentials, postRequest, postRequestWithCredentials}
