@@ -32,7 +32,16 @@ document.addEventListener("DOMContentLoaded", ()=>{
 async function sendImage(formData) {
     const url = apiUrl + '/radiographies/upload'
     
-    const res = await postRequest(url, formData)
+    let res = await postRequest(url, formData)
+
+    if(res.error) {
+        accessToken = await verifyRefreshToken()
+        if(typeof accessToken != 'undefined'){
+            localStorage.setItem('accessToken', accessToken)
+            res = await postRequest(url, formData)
+        }
+        else window.location.href = './LogIn.html'
+    }
 
     if(res.error) return alert(res.error.message)
 

@@ -1,5 +1,5 @@
 import {apiUrl} from './config.js'
-import {postRequest} from './http_requests.js'
+import {getRequest, postRequest} from './http_requests.js'
 
 let accessToken = localStorage.getItem('accessToken')
 
@@ -60,5 +60,14 @@ async function postRequestRT(url) {
     return res.json()
 }
 
-export {verifyRefreshToken, isLoggedIn, isNotLoggedIn}
+async function handleInvalidAccessToken(url){
+    accessToken = await verifyRefreshToken()
+    if(typeof accessToken != 'undefined'){
+        localStorage.setItem('accessToken', accessToken)
+        return await getRequest(url, accessToken)
+    }
+    window.location.href = './LogIn.html'
+}
+
+export {verifyRefreshToken, isLoggedIn, isNotLoggedIn, handleInvalidAccessToken}
 

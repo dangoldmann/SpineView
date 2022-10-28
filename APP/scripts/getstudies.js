@@ -2,6 +2,7 @@ import {html, render} from 'https://unpkg.com/lit-html?module';
 import {apiUrl} from './config.js'
 import {getRequest} from './http_requests.js'
 import {elementsRendered} from './controllerUserInfo.js'
+import { handleInvalidAccessToken } from './tokens.js';
 
 const accessToken = localStorage.getItem('accessToken')
 const studiesTab= document.getElementById("studies")
@@ -11,8 +12,10 @@ async function getStudies(){
 
     const url = apiUrl + '/radiographies/all'
     
-    const res = await getRequest(url, accessToken)
+    let res = await getRequest(url, accessToken)
     
+    if(res.error) res = await handleInvalidAccessToken(url)
+
     if(res.error) return alert(res.error.message)
 
     const studies = res.radiographies

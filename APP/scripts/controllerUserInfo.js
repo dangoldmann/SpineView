@@ -4,6 +4,7 @@ import { logOut } from './logout.js'
 import { getStudies } from './getstudies.js'
 import { isNotLoggedIn } from './tokens.js'
 import {deleteStudy} from './deleteStudy.js'
+import { isNotLoggedIn, handleInvalidAccessToken } from './tokens.js'
 
 let accessToken = localStorage.getItem('accessToken')
 const lblFullName = document.getElementById('fullName')
@@ -27,6 +28,8 @@ async function loadUserInfo(){
     const url = apiUrl + '/users/info'
 
     const res = await getRequest(url, accessToken)
+
+    if(res.error) res = await handleInvalidAccessToken(url)
 
     if(res.error) return alert(res.error.message)
 
