@@ -60,7 +60,6 @@ let elementsrendered=()=>{
     document.getElementById("loading").style.display="none"
     imageTag = document.getElementById("stdimage")
     label = document.getElementById("label")
-    console.log(imageTag)
     imageTag.addEventListener("mouseover", ()=>{
         label.style.opacity="0.9"
     })
