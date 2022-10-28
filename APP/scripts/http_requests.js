@@ -44,5 +44,15 @@ async function postRequestWithCredentials(url, data){
     return res.json()
 }
 
+async function deleteRequest(url, accessToken) {
+    const res = await fetch(url, {
+        method: 'DELETE',
+        headers: {
+            'Authorization' : 'Bearer ' + accessToken
+        }
+    })
 
-export {getRequest, getRequestWithCredentials, postRequest, postRequestWithCredentials}
+    return res.json()
+}
+
+export {getRequest, getRequestWithCredentials, postRequest, postRequestWithCredentials, deleteRequest}

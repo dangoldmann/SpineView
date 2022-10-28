@@ -1,6 +1,7 @@
 import {html, render} from 'https://unpkg.com/lit-html?module';
 import {apiUrl} from './config.js'
 import {getRequest} from './http_requests.js'
+import {elementsRendered} from './controllerUserInfo.js'
 import { handleInvalidAccessToken } from './tokens.js';
 
 const accessToken = localStorage.getItem('accessToken')
@@ -24,6 +25,7 @@ async function getStudies(){
         studiesArray.push(studyBox)
     })
     render(studiesArray, studiesTab)
+    elementsRendered()
 }
 
 var createStudyBox = (stdid, date, result) => {
