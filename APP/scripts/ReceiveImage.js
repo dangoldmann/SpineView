@@ -7,12 +7,6 @@ let accessToken = localStorage.getItem('accessToken')
 const heroDiv=document.getElementById("hero")
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
-
-document.addEventListener('DOMContentLoaded', () => {
-    isNotLoggedIn()
-    loadResult()
-})
-
 const studyresult = (stdimage, stddate, stdname, stdresult, stdlocation, stdprecisison) => html`
 <div class="below">
     <div class="image">
@@ -44,12 +38,17 @@ const studyresult = (stdimage, stddate, stdname, stdresult, stdlocation, stdprec
     </table>
 </div>`;
 
+document.addEventListener('DOMContentLoaded', () => {
+    isNotLoggedIn()
+    loadResult()
+})
+
 async function loadResult(){
     const id = urlParams.get('id')
     const url = apiUrl + `/radiographies/${id}/result`
 
-    const res = await getRequest(url, id, accessToken)
-
+    const res = await getRequest(url, accessToken)
+    
     if(res.error) return alert(res.error.message)
 
     const result = res.result
