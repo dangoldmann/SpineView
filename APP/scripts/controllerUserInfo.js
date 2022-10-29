@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
 async function loadUserInfo(){
     const url = apiUrl + '/users/info'
 
-    const res = await getRequest(url, accessToken)
+    let res = await getRequest(url, accessToken)
 
     if(res.error) res = await handleInvalidAccessToken(url)
 
