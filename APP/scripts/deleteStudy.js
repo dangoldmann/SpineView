@@ -5,7 +5,6 @@ async function deleteStudy(id){
     const url = apiUrl + '/radiographies/' + id
     const res = await deleteRequest(url, accessToken)
     if(res.error) return alert(res.error.message)
-    alert("Estudio eliminado"+id)
     window.location.reload()
 }
 
