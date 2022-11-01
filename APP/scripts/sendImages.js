@@ -22,9 +22,15 @@ document.addEventListener("DOMContentLoaded", ()=>{
         }
 
         const formData = new FormData();
-        date= document.getElementById("stddate").value
+        let datebox =  document.getElementById("stddate")
+        let date= datebox.value
         formData.append('date', date)
         formData.append('image', imageToUpload);
+        if(!date){
+            datebox.classList.add("highlight")
+            alert("Verifique haber ingresado todos los campos")
+            return
+        }
         
         sendImage(formData);
     }

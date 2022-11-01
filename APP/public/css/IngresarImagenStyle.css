@@ -49,7 +49,7 @@ form{
     background-color: #5286C2;
     border: #502660 dashed 5px;
     border-radius: 10px;    
-    height: 52vh; width: 40vw;
+    height: 50vh; width: 40vw;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -69,7 +69,7 @@ form{
     color: #502660;
 }
 
-#ingresarImagenes.highlight{
+.highlight{
     border: #502660 solid 5px;
     border-radius: 10px;
     background-color: #f15656;
@@ -82,7 +82,7 @@ form{
     background-color: #5286C2;
     border: #502660 solid 5px;
     border-radius: 10px;
-    height: 52vh; width: 40vw;
+    height: 50vh; width: 40vw;
     display: flex;
     justify-content: center;
     align-items: center;
