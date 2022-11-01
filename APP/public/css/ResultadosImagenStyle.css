@@ -126,8 +126,8 @@ nav a:hover{
 }
 
 .hero .image img{
-    height: 400px;
-    width: 400px;
+    height: 350px;
+    width: 500px;
     object-fit: cover;
     cursor: pointer;
     transition: all .2s ease-in-out;
@@ -181,3 +181,18 @@ nav a:hover{
 }
 tr:nth-child(Odd) {background-color: #646464}
 tr:nth-child(even) {background-color: #787878}
+
+.hero .downloadImage{
+    font-size: larger;
+    background-color: #f15656;
+    text-decoration: none;
+    text-align: center;
+    border-radius:  5px;
+    padding: 10px;
+    color: #000;
+    transition: all .2s;
+}
+.hero .downloadImage:hover{
+    background-color: #e44646;
+    color: #1d68be;
+}

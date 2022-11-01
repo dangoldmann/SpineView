@@ -1,4 +1,5 @@
-const apiUrl ="http://localhost:3000"
+const apiUrl = 'https://osia-api-production.up.railway.app'
+//const apiUrl = 'http://localhost:3000'
 const accessToken = localStorage.getItem('accessToken')
 
 async function deleteStudy(id){
