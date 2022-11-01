@@ -19,6 +19,16 @@ async function getStudies(){
 
     const studies = res.radiographies
 
+    if(studies==false){
+        render (html`
+        <div class="noStudies">
+            <h1>Parece que todavia no has escaneado ningun estudio</h1>
+            <a href="./IngresarImagen.html">Escanear tu primer estudio</a>
+        </div>
+        `, studiesTab)
+        return
+    }
+
     studies.forEach(e => {
         const studyBox = createStudyBox(e.id, e.date, e.injury)
         studiesArray.push(studyBox)

@@ -175,3 +175,25 @@ tr:nth-child(even) {background-color: #ffffff}
 .studytext span{
     font-weight: 400;
 }
+
+.noStudies{
+    width: 100%;
+    text-align: center;
+}
+
+.noStudies h1{
+    font-family: poppins;
+    font-size: 30px;
+    color: #332c2b;
+}
+
+.noStudies a{
+    color: #332c2b99;
+    text-decoration: underline;
+    font-size: 20px;
+    font-family: poppins;
+    cursor: pointer;
+    border-radius: 10px;
+    padding: 10px 20px;
+    margin: 20px;
+}
