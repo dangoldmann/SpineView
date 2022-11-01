@@ -197,3 +197,7 @@ tr:nth-child(even) {background-color: #ffffff}
     padding: 10px 20px;
     margin: 20px;
 }
+
+.noStudies a:hover{
+    color: #332c2b;
+}
