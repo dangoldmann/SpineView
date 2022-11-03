@@ -8,7 +8,6 @@ const studiesTab= document.getElementById("studies")
 var studiesArray=[]
 
 async function getStudies(){
-
     const url = apiUrl + '/radiographies/all'
     
     let res = await getRequest(url, accessToken)
@@ -19,7 +18,8 @@ async function getStudies(){
 
     const studies = res.radiographies
 
-    if(studies==false){
+    console.log("aa")
+    if(studies==[] || studies==false){
         render (html`
         <div class="noStudies">
             <h1>Parece que todavia no has escaneado ningun estudio</h1>
@@ -36,8 +36,8 @@ async function getStudies(){
     render(studiesArray, studiesTab)
 }
 
-var createStudyBox = (stdid, date, result) => {
-    var studybox = (stdid, stddate, stdresult) => html`
+var createStudyBox = (stdid, date) => {
+    var studybox = (stdid, stddate) => html`
     <div class="studybox">
         <button id="dltstd" class="dltstd" onClick=deleteStudy(${stdid})>
             <div class="icon text">&#10006;</div>
@@ -49,13 +49,12 @@ var createStudyBox = (stdid, date, result) => {
                 <img src="${apiUrl}/radiographies/${stdid}" alt="">
                 <div class="studytext">
                     <h5>Fecha: <span>${stddate}</span></h5>
-                    <h5>Resultado: <span>${stdresult}</span></h5>
                 </div>
             </div>
         </a>
     </div>`
     ;
-    var completestudybox = studybox(stdid, date, result)
+    var completestudybox = studybox(stdid, date)
     return completestudybox;
 }
 

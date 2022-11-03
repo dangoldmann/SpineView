@@ -15,31 +15,17 @@ const studyresult = (stdid, stddate, stdname, stdresult, stdlocation, stdprecisi
 <div class="below">
     <div class="image">
         <img id="stdimage" src="${apiUrl}/radiographies/${stdid}" alt="" onclick="window.open(this.src, '_blank');">
-        <h1>Espera mientras carga la imagen, esto puede tardar unos momentos</h1>
         <h2 id="label">Abrir en una pestaña</h2>
     </div>
     
     <table>
-        <caption>Detectado:</caption>
         <tr>
-            <th>Fecha de realización</th>
+            <th>Fecha de realización:</th>
             <td>${stddate}</td>
         </tr>
         <tr>
-            <th>Paciente</th>
+            <th>Paciente:</th>
             <td>${stdname}</td>
-        <tr>
-            <th>Lesión:</th>
-            <td>${stdresult}</td>
-        </tr>
-        <tr>
-            <th>Ubicación</th>
-            <td>${stdlocation}</td>
-        </tr>
-        <tr>
-            <th>Precisión</th>
-            <td>${stdprecisison}</td>
-        </tr>
     </table>
 </div>
 <a class="downloadImage" id="downloadImage" href="">Descargar Imagen</a>`;
