@@ -18,7 +18,6 @@ async function getStudies(){
 
     const studies = res.radiographies
 
-    console.log("aa")
     if(studies==[] || studies==false){
         render (html`
         <div class="noStudies">
