@@ -1,5 +1,5 @@
 import {html, render} from 'https://unpkg.com/lit-html?module';
-import {apiUrl} from './config.js'
+import {apiUrl, cloudinaryApiUrl} from './config.js'
 import {getRequest} from './http_requests.js'
 import { handleInvalidAccessToken } from './tokens.js';
 
@@ -29,31 +29,31 @@ async function getStudies(){
     }
 
     studies.forEach(e => {
-        const studyBox = createStudyBox(e.id, e.date, e.injury)
+        const studyBox = createStudyBox(e.id, e.image_route, e.date)
         studiesArray.push(studyBox)
     })
     render(studiesArray, studiesTab)
 }
 
-var createStudyBox = (stdid, date) => {
-    var studybox = (stdid, stddate) => html`
+var createStudyBox = (id, imageRoute, date) => {
+    var studybox = (id, imageRoute, date) => html`
     <div class="studybox">
-        <button id="dltstd" class="dltstd" onClick=deleteStudy(${stdid})>
+        <button id="dltstd" class="dltstd" onClick=deleteStudy(${id})>
             <div class="icon text">&#10006;</div>
             <div class="secondary text">¿Eliminar estudio?</div>
         </button>
-        <a href="./ResultadosImagen.html?id=${stdid}">
+        <a href="./ResultadosImagen.html?id=${id}">
             <div class="study">
                 
-                <img src="${apiUrl}/radiographies/${stdid}" alt="">
+                <img src="${cloudinaryApiUrl}${imageRoute}" alt="">
                 <div class="studytext">
-                    <h5>Fecha: <span>${stddate}</span></h5>
+                    <h5>Fecha: <span>${date}</span></h5>
                 </div>
             </div>
         </a>
     </div>`
     ;
-    var completestudybox = studybox(stdid, date)
+    var completestudybox = studybox(id, imageRoute, date)
     return completestudybox;
 }
 

@@ -1,5 +1,5 @@
 import {html, render} from 'https://unpkg.com/lit-html?module';
-import { apiUrl } from './config.js';
+import { apiUrl, cloudinaryApiUrl } from './config.js';
 import {handleInvalidAccessToken, isNotLoggedIn} from './tokens.js'
 import {getRequest} from './http_requests.js'
 
@@ -11,10 +11,10 @@ let label;
 let id;
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
-const studyresult = (stdid, stddate, stdname, stdresult, stdlocation, stdprecisison) => html`
+const studyresult = (imageRoute, stddate, stdname) => html`
 <div class="below">
     <div class="image">
-        <img id="stdimage" src="${apiUrl}/radiographies/${stdid}" alt="" onclick="window.open(this.src, '_blank');">
+        <img id="stdimage" src="${cloudinaryApiUrl}${imageRoute}" alt="" onclick="window.open(this.src, '_blank');">
         <h2 id="label">Abrir en una pestaña</h2>
     </div>
     
@@ -34,7 +34,7 @@ async function loadResult(){
     id = urlParams.get('id')
     const url = apiUrl + `/radiographies/${id}/result`
 
-    const res = await getRequest(url, accessToken)
+    let res = await getRequest(url, accessToken)
     
     if(res.error) res = await handleInvalidAccessToken(url)
 
@@ -42,7 +42,7 @@ async function loadResult(){
 
     const result = res.result
     
-    render(studyresult(id, result.date, result.fullName, result.injury, 'Recuadrada en la imagen', result.precisison), heroDiv);
+    render(studyresult(result.imageRoute, result.date, result.fullName), heroDiv);
     elementsrendered()  
 }
 
