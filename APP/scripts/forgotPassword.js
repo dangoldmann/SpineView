@@ -1,6 +1,7 @@
 import {html, render} from 'https://unpkg.com/lit-html?module';
 import {apiUrl} from './config.js'
 import {postRequest} from './http_requests.js'
+import {getRequestWithCredentials} from './http_requests.js'
 
 document.addEventListener('DOMContentLoaded', () => {
     const btn_submit = document.getElementById('btn_submit')
@@ -22,10 +23,12 @@ async function forgotPassword(formData) {
 
     if(res.error) return alert(res.error.message)
 
+    logOut()
+
     let heroDiv= document.getElementById('hero')
     let center= document.getElementById("center")
     heroDiv.style.display = "none"
-
+    
     const myTemplate = () => html`
         <div id="mailsent">
             <h1>Se envio el email</h1>
@@ -34,4 +37,11 @@ async function forgotPassword(formData) {
         </div>`;
     
     render(myTemplate(), center)
+}
+
+async function logOut() {
+    const url = apiUrl + '/auth/logout'
+
+    localStorage.removeItem('accessToken')
+    const _ = await getRequestWithCredentials(url)
 }
